@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   const animatedElements = document.querySelectorAll(
-    ".animate-up, .column-card, .card, .service-item, .detail-item, .proof-grid > div",
+    ".animate-up, .column-card, .card, .service-item, .detail-item, .proof-grid > div, .trayectoria-item",
   );
 
   animatedElements.forEach((el, index) => {
@@ -48,6 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
     frameworkSection.addEventListener("mouseleave", () => activateFrameworkStep(3));
   }
 
+  // Language-aware form messages
+  const lang = document.documentElement.lang || "es";
+  const isEN = lang.startsWith("en");
+
   const form = document.querySelector(".lead-form");
   if (form) {
     const note = form.querySelector(".form-note");
@@ -56,19 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      button.textContent = "Solicitud preparada";
+      button.textContent = isEN ? "Request prepared" : "Solicitud preparada";
       button.disabled = true;
 
       if (note) {
-        note.textContent =
-          "Gracias. El siguiente paso es conectar este formulario con tu correo o CRM para recibir la solicitud.";
+        note.textContent = isEN
+          ? "Thank you. The next step is to connect this form to your email or CRM to receive the request."
+          : "Gracias. El siguiente paso es conectar este formulario con tu correo o CRM para recibir la solicitud.";
       }
 
       setTimeout(() => {
-        button.textContent = "Preparar solicitud";
+        button.textContent = isEN ? "Prepare Request" : "Preparar solicitud";
         button.disabled = false;
         form.reset();
       }, 4200);
     });
   }
 });
+

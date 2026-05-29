@@ -799,6 +799,247 @@ section {
   padding: 96px 0;
 }
 
+/* =============================================
+   NOSOTROS / QUIÉNES SOMOS
+   ============================================= */
+
+.nosotros {
+  padding: var(--spacing-xl) 0;
+}
+
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.nosotros-lead {
+  margin-bottom: 40px;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.trayectoria-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.trayectoria-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px;
+  border: 1px solid var(--border-color);
+  background: white;
+  transition: var(--transition-standard);
+}
+
+.trayectoria-item:hover {
+  border-color: rgba(200, 169, 106, 0.5);
+  box-shadow: 0 8px 24px rgba(15, 30, 46, 0.07);
+}
+
+.tray-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-gold);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.trayectoria-item strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  color: var(--primary-dark);
+}
+
+.trayectoria-item p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Caso de aplicación card */
+.nosotros-caso {
+  padding: 44px;
+  border: 1px solid rgba(15, 30, 46, 0.14);
+  background: var(--primary-dark);
+  color: white;
+  position: relative;
+}
+
+.caso-badge {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 6px 16px;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.caso-title {
+  margin-bottom: 16px;
+  font-size: 28px;
+  line-height: 1.22;
+  color: white;
+}
+
+.caso-desc {
+  margin-bottom: 28px;
+  color: #d8e0ea;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.caso-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.caso-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  color: #cdd6e3;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.caso-list li::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 8px;
+  height: 1px;
+  background: var(--accent-gold);
+}
+
+.caso-footer {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.caso-footer span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+/* =============================================
+   CONTACT OPTIONS (WhatsApp + Calendly CTAs)
+   ============================================= */
+
+.contact-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-options {
+  margin-top: 36px;
+}
+
+.contact-options-label {
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: white;
+  border: none;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  transition: var(--transition-standard);
+}
+
+.btn-whatsapp:hover {
+  background: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+
+.btn-calendly {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 12px;
+  transition: var(--transition-standard);
+}
+
+.btn-calendly:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   WHATSAPP FLOATING BUTTON
+   ============================================= */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px 14px 18px;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+  transition: var(--transition-standard);
+  animation: floatIn 0.6s 1.2s both cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.whatsapp-float:hover {
+  background: #1ebe5d;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.55);
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
 .footer {
   padding: 44px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -839,7 +1080,8 @@ section {
   .agency-grid,
   .framework-layout,
   .authority-grid,
-  .contact-grid {
+  .contact-grid,
+  .nosotros-grid {
     grid-template-columns: 1fr;
   }
 
@@ -940,7 +1182,8 @@ section {
   .service-item,
   .problem-card,
   .lead-form,
-  .authority-list {
+  .authority-list,
+  .nosotros-caso {
     padding: 28px;
   }
 
@@ -966,5 +1209,19 @@ section {
   .footer-grid {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .whatsapp-float {
+    bottom: 20px;
+    right: 16px;
+    padding: 12px 16px 12px 14px;
+    font-size: 12px;
+  }
+
+  .btn-whatsapp,
+  .btn-calendly {
+    width: 100%;
+    justify-content: center;
+    margin-right: 0;
   }
 }
