@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unidad de Inteligencia | Arquitecto de Decisiones LatAm 2026</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="brand-identity">
+          <p>Unidad de Inteligencia Estratégica</p>
+          <h1>Arquitecto de Decisiones</h1>
+          <p>LatAm 2026 | Consultoría de Andrez Felipe Guerrero Torres</p>
+        </div>
+        <div class="status-indicator">
+          <span class="module-tag">SISTEMA ACTIVO</span>
+        </div>
+      </header>
+
+      <main class="main-layout">
+        <div class="content-area">
+          <section class="terminal-section">
+            <div class="terminal-card">
+              <div class="input-group">
+                <label for="input-signal" class="brand-font" style="font-size: 0.8rem; color: var(--text-secondary);">Entrada de Señal (URL / PDF Text / Noticias)</label>
+                <textarea id="input-signal" placeholder="Pegue aquí el reporte de la IEA, BID o Gaceta Regulatoria para procesar..."></textarea>
+                <button id="deploy-btn" class="btn-deploy">
+                  <span>Ejecutar Despliegue</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+                <div id="loading-indicator" class="loading">Procesando bajo lentes de Economía, Diplomacia y Resiliencia...</div>
+              </div>
+            </div>
+          </section>
+
+          <section id="results-section" class="output-grid">
+            <article class="module" id="module-radar">
+              <div class="module-header">
+                <h3>Radar de Riesgos</h3>
+                <span class="module-tag">Briefing Técnico</span>
+              </div>
+              <div class="module-content" id="content-radar">Esperando señal de entrada...</div>
+            </article>
+
+            <article class="module" id="module-linkedin">
+              <div class="module-header">
+                <h3>Táctica de LinkedIn</h3>
+                <span class="module-tag">Thought Leadership</span>
+              </div>
+              <div class="module-content" id="content-linkedin">Esperando señal de entrada...</div>
+            </article>
+
+            <article class="module" id="module-networking">
+              <div class="module-header">
+                <h3>Conector de Círculos</h3>
+                <span class="module-tag">Networking</span>
+              </div>
+              <div class="module-content" id="content-networking">Esperando señal de entrada...</div>
+            </article>
+
+            <article class="module" id="module-consulting">
+              <div class="module-header">
+                <h3>Filtro de Valor</h3>
+                <span class="module-tag">Consultoría</span>
+              </div>
+              <div class="module-content" id="content-consulting">Esperando señal de entrada...</div>
+            </article>
+          </section>
+        </div>
+
+        <aside class="sidebar">
+          <section class="sidebar-module">
+            <h3 class="brand-font">Fichas Técnicas Gob</h3>
+            <div class="specs-menu">
+              <a href="./portfolio-government-solutions.html#s-01" target="_blank" class="spec-link">
+                <span class="spec-code">S-01</span>
+                <span class="spec-title">Efectividad Institucional</span>
+                <span class="spec-icon">↗</span>
+              </a>
+              <a href="./portfolio-government-solutions.html#s-02" target="_blank" class="spec-link">
+                <span class="spec-code">S-02</span>
+                <span class="spec-title">Evaluación de Impacto</span>
+                <span class="spec-icon">↗</span>
+              </a>
+              <a href="./portfolio-government-solutions.html#s-03" target="_blank" class="spec-link">
+                <span class="spec-code">S-03</span>
+                <span class="spec-title">Mapeo Socioeconómico</span>
+                <span class="spec-icon">↗</span>
+              </a>
+              <a href="./portfolio-government-solutions.html#s-04" target="_blank" class="spec-link">
+                <span class="spec-code">S-04</span>
+                <span class="spec-title">Estrategia de Crisis</span>
+                <span class="spec-icon">↗</span>
+              </a>
+              <a href="./portfolio-government-solutions.html#s-05" target="_blank" class="spec-link">
+                <span class="spec-code">S-05</span>
+                <span class="spec-title">Formación Institucional</span>
+                <span class="spec-icon">↗</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="sidebar-module">
+            <h3 class="brand-font">Feed de Inteligencia</h3>
+            <div class="feed-list">
+              <div class="feed-item">
+                <span class="feed-date">04 MAY 2026</span>
+                <p>ISSB Brasil: Nuevas normas de reporte NIIF S1/S2 entrarán en vigor en Q3.</p>
+              </div>
+              <div class="feed-item">
+                <span class="feed-date">03 MAY 2026</span>
+                <p>Hidrógeno Verde Chile: Planta Magallanes incrementa capacidad HVDC.</p>
+              </div>
+              <div class="feed-item">
+                <span class="feed-date">02 MAY 2026</span>
+                <p>Minería Colombia: Revisión de licencias en zona de reserva.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-module">
+            <h3 class="brand-font">Calculadora de Impacto</h3>
+            <div class="calculator-mini">
+              <div class="calc-field">
+                <label>CAPEX Estimado (M USD)</label>
+                <input type="number" id="calc-capex" placeholder="0.00">
+              </div>
+              <div class="calc-field">
+                <label>Rentabilidad Social (%)</label>
+                <input type="number" id="calc-social" placeholder="0.00">
+              </div>
+              <button id="calc-btn" class="btn-deploy" style="padding: 0.5rem; font-size: 0.7rem; width: 100%;">Proyectar Impacto</button>
+              <div id="calc-result" style="margin-top: 1rem; font-size: 0.8rem; color: var(--accent-gold); display: none;"></div>
+            </div>
+          </section>
+
+          <section class="sidebar-module">
+            <h3 class="brand-font">Lente Verde IA</h3>
+            <div class="ai-module">
+              <p style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1rem;">Modelo no supervisado de clasificación territorial (Colombia 2026).</p>
+              <button id="ai-run-btn" class="btn-deploy" style="padding: 0.5rem; font-size: 0.7rem; width: 100%; border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold);">Ejecutar Clusterización</button>
+              
+              <div id="ai-results" class="ai-status" style="display: none; margin-top: 1rem;">
+                <div class="cluster-tag alfa">Cluster Alfa: Hubs de Transición</div>
+                <div class="cluster-tag beta">Cluster Beta: Riesgo Crítico</div>
+                <div class="cluster-tag gamma">Cluster Gamma: Activos Varados</div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+      <footer>
+        <div>&copy; 2026 AFGT Consultoría. Rigor y Resiliencia.</div>
+        <div>ISSB NIIF S1/S2 | Energy Transition | Applied Economics</div>
+      </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

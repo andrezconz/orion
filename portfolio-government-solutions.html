@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Solutions — Portafolio de Servicios</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1117;
+    --paper: #f5f2eb;
+    --gold: #c9a84c;
+    --gold-light: #e8d49a;
+    --slate: #2d3748;
+    --muted: #6b7280;
+    --rule: #d4c9b0;
+    --accent: #1a3a5c;
+    --accent-light: #e8f0f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 280px; height: 280px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  header h1 span {
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 15px;
+    color: rgba(245,242,235,0.7);
+    max-width: 520px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  .meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .meta-value {
+    font-size: 14px;
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .intro-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--accent);
+  }
+
+  .intro-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  .intro-text {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .differentiators {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .diff-item {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 20px;
+    border-radius: 2px;
+  }
+
+  .diff-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .diff-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .diff-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0 60px;
+  }
+
+  /* SERVICES SECTION */
+  .services-section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--rule);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .section-title-block {}
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* SERVICE CARD */
+  .service-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+    padding: 48px;
+    margin-bottom: 32px;
+    position: relative;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 12px 40px rgba(15,17,23,0.08);
+    transform: translateY(-2px);
+  }
+
+  .card-number {
+    position: absolute;
+    top: 48px; right: 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-light);
+    background: #fdf8ee;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+    line-height: 1.2;
+    padding-right: 80px;
+  }
+
+  .card-question {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 24px;
+    padding-left: 16px;
+    border-left: 2px solid var(--gold-light);
+  }
+
+  .card-desc {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .card-col-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card-list li {
+    font-size: 13px;
+    color: var(--slate);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .card-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .card-deliverable {
+    font-size: 13px;
+    color: var(--slate);
+  }
+
+  .card-deliverable strong {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .card-ticket {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 8px 20px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* PRICING */
+  .pricing-section {
+    background: var(--accent);
+    padding: 80px 60px;
+  }
+
+  .pricing-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pricing-section .section-eyebrow {
+    color: var(--gold);
+  }
+
+  .pricing-section .section-title {
+    color: var(--paper);
+    margin-bottom: 48px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .price-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 36px;
+    position: relative;
+  }
+
+  .price-card.featured {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -1px; right: 24px;
+    background: var(--gold);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    text-transform: uppercase;
+  }
+
+  .price-mode {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .price-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+
+  .price-range {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .price-list {
+    list-style: none;
+  }
+
+  .price-list li {
+    font-size: 13px;
+    color: rgba(245,242,235,0.7);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 8px;
+  }
+
+  .price-list li::before {
+    content: '·';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* CLIENTS */
+  .clients-section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .client-group {
+    padding: 32px;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+
+  .client-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    display: block;
+  }
+
+  .client-list {
+    list-style: none;
+  }
+
+  .client-list li {
+    font-size: 13px;
+    color: var(--slate);
+    padding: 7px 0;
+    border-bottom: 1px solid #f0ece3;
+    line-height: 1.4;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px;
+    text-align: center;
+  }
+
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  footer .footer-title {
+    font-size: 14px;
+    color: rgba(245,242,235,0.5);
+    margin-bottom: 32px;
+  }
+
+  footer .footer-contact {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  footer .contact-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+  }
+
+  footer .footer-rule {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 32px auto;
+    max-width: 200px;
+  }
+
+  footer .footer-copy {
+    font-size: 12px;
+    color: rgba(245,242,235,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .service-card {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .service-card:nth-child(1) { animation-delay: 0.1s; }
+  .service-card:nth-child(2) { animation-delay: 0.2s; }
+  .service-card:nth-child(3) { animation-delay: 0.3s; }
+  .service-card:nth-child(4) { animation-delay: 0.4s; }
+  .service-card:nth-child(5) { animation-delay: 0.5s; }
+
+  @media (max-width: 768px) {
+    header, .intro, .services-section, .pricing-section, .clients-section, footer { padding: 48px 24px; }
+    .intro { grid-template-columns: 1fr; gap: 40px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .clients-grid { grid-template-columns: 1fr; }
+    .differentiators { grid-template-columns: 1fr; }
+    .section-divider { margin: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <p class="header-eyebrow">Portafolio de Servicios · 2026</p>
+  <h1>Government<br><span>Solutions</span></h1>
+  <p class="header-sub">Analítica aplicada y estrategia para el sector público colombiano. Transformamos datos territoriales en decisiones de política basadas en evidencia.</p>
+  <div class="header-meta">
+    <div class="meta-item">
+      <span class="meta-label">Especialidad</span>
+      <span class="meta-value">Políticas Públicas & Datos</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Mercado</span>
+      <span class="meta-value">Colombia · Cooperación Internacional</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Modalidad</span>
+      <span class="meta-value">Proyecto · Retainer · Formación</span>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div>
+    <span class="intro-label">Propuesta de valor</span>
+    <h2 class="intro-title">Lo que nos hace diferentes</h2>
+    <div class="intro-rule"></div>
+  </div>
+  <div>
+    <p class="intro-text">Combinamos el lenguaje institucional del sector público con capacidad analítica rigurosa. No somos una firma de datos que no entiende el gobierno, ni una consultora política que no entiende los datos.</p>
+    <p class="intro-text">Entendemos cómo funciona una secretaría, una mesa técnica y un proceso normativo — y al mismo tiempo diseñamos evaluaciones de impacto, modelos econométricos y dashboards de monitoreo.</p>
+    <div class="differentiators">
+      <div class="diff-item">
+        <span class="diff-icon">🏛️</span>
+        <div class="diff-title">Desde adentro</div>
+        <p class="diff-desc">Experiencia directa en Secretarías distritales y Consejo de Planeación.</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-icon">📊</span>
+        <div class="diff-title">Rigor cuantitativo</div>
+        <p class="diff-desc">Econometría, evaluación de impacto, ML aplicado al sector público.</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-icon">🌐</span>
+        <div class="diff-title">Red internacional</div>
+        <p class="diff-desc">Vínculos activos con CAF, Hanns Seidel, cooperación alemana y americana.</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-icon">🎓</span>
+        <div class="diff-title">Credenciales élite</div>
+        <p class="diff-desc">Uniandes + Externado. Certificaciones CAF, evaluación de impacto y Big Data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <div class="section-title-block">
+      <span class="section-eyebrow">Fichas técnicas</span>
+      <h2 class="section-title">Líneas de Servicio</h2>
+    </div>
+  </div>
+
+  <!-- SERVICIO 1 -->
+  <div class="service-card" id="s-01">
+    <span class="card-number">S-01</span>
+    <span class="card-tag">Analítica Territorial</span>
+    <h3 class="card-title">Diagnóstico de Efectividad Institucional</h3>
+    <p class="card-question">"¿Cómo saber si los servicios que prestamos realmente están funcionando?"</p>
+    <p class="card-desc">Medición rigurosa de resultados de programas y servicios públicos mediante metodología mixta. Combinamos análisis cuantitativo de indicadores con evaluación cualitativa de procesos para ofrecer un diagnóstico integral, accionable y presentable ante tomadores de decisión y organismos de control.</p>
+    <div class="card-grid">
+      <div>
+        <span class="card-col-title">Actividades</span>
+        <ul class="card-list">
+          <li>Levantamiento y limpieza de datos institucionales</li>
+          <li>Análisis estadístico descriptivo e inferencial</li>
+          <li>Entrevistas a actores clave y grupos focales</li>
+          <li>Benchmarking con casos comparables</li>
+          <li>Formulación de recomendaciones priorizadas</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Entregables</span>
+        <ul class="card-list">
+          <li>Informe ejecutivo (máx. 30 páginas)</li>
+          <li>Dashboard interactivo de indicadores</li>
+          <li>Presentación para directivos</li>
+          <li>Plan de mejora con hoja de ruta</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Clientes típicos</span>
+        <ul class="card-list">
+          <li>Secretarías distritales y municipales</li>
+          <li>Entidades descentralizadas</li>
+          <li>Organismos de cooperación</li>
+          <li>Contralorías y veedurías</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="card-deliverable"><strong>Duración:</strong> 6–12 semanas · <strong>Equipo:</strong> 2–3 consultores</p>
+      <span class="card-ticket">$20M – $60M COP</span>
+    </div>
+  </div>
+
+  <!-- SERVICIO 2 -->
+  <div class="service-card" id="s-02">
+    <span class="card-number">S-02</span>
+    <span class="card-tag">Evaluación de Impacto</span>
+    <h3 class="card-title">Evaluación de Políticas y Programas Públicos</h3>
+    <p class="card-question">"¿Cómo demostrar que nuestra política generó un cambio real y no fue coincidencia?"</p>
+    <p class="card-desc">Diseño y ejecución de evaluaciones de impacto con métodos cuasiexperimentales: diferencias en diferencias, regresión discontinua, variables instrumentales y emparejamiento estadístico. Generamos evidencia robusta sobre causalidad que resiste el escrutinio técnico y político.</p>
+    <div class="card-grid">
+      <div>
+        <span class="card-col-title">Actividades</span>
+        <ul class="card-list">
+          <li>Diseño de la estrategia de identificación causal</li>
+          <li>Construcción de base de datos de panel</li>
+          <li>Estimación econométrica y pruebas de robustez</li>
+          <li>Análisis de heterogeneidad de efectos</li>
+          <li>Validación con pares académicos</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Entregables</span>
+        <ul class="card-list">
+          <li>Informe técnico con metodología detallada</li>
+          <li>Resumen ejecutivo para tomadores de decisión</li>
+          <li>Código reproducible (R / Stata / Python)</li>
+          <li>Nota de política pública (policy brief)</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Clientes típicos</span>
+        <ul class="card-list">
+          <li>DNP, Prosperidad Social</li>
+          <li>BID, Banco Mundial, PNUD</li>
+          <li>Ministerios sectoriales</li>
+          <li>Fundaciones con programas sociales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="card-deliverable"><strong>Duración:</strong> 8–16 semanas · <strong>Equipo:</strong> 2–4 consultores</p>
+      <span class="card-ticket">$40M – $120M COP</span>
+    </div>
+  </div>
+
+  <!-- SERVICIO 3 -->
+  <div class="service-card" id="s-03">
+    <span class="card-number">S-03</span>
+    <span class="card-tag">Inteligencia Territorial</span>
+    <h3 class="card-title">Mapeo Socioeconómico Territorial</h3>
+    <p class="card-question">"¿Cómo identificar con precisión dónde están las brechas y cómo priorizar la inversión?"</p>
+    <p class="card-desc">Análisis geoespacial de indicadores socioeconómicos a nivel sublocal: pobreza multidimensional, acceso a servicios, brechas de género, concentración de vulnerabilidades. Producimos capas de información que permiten focalizar la inversión pública con criterios técnicos defensibles.</p>
+    <div class="card-grid">
+      <div>
+        <span class="card-col-title">Actividades</span>
+        <ul class="card-list">
+          <li>Integración de fuentes (DANE, SDP, SISBEN)</li>
+          <li>Análisis espacial y construcción de índices</li>
+          <li>Modelación de brechas por unidad territorial</li>
+          <li>Cruce con datos de oferta institucional</li>
+          <li>Talleres de validación con comunidad</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Entregables</span>
+        <ul class="card-list">
+          <li>Atlas territorial digital interactivo</li>
+          <li>Índice de priorización territorial</li>
+          <li>Informe narrativo con hallazgos clave</li>
+          <li>Shapefile y datos en formato abierto</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Clientes típicos</span>
+        <ul class="card-list">
+          <li>Secretarías de Planeación</li>
+          <li>Alcaldías locales</li>
+          <li>Fondos de Desarrollo Local</li>
+          <li>USAID, GIZ, UE en Colombia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="card-deliverable"><strong>Duración:</strong> 8–14 semanas · <strong>Equipo:</strong> 3 consultores + geomático</p>
+      <span class="card-ticket">$30M – $80M COP</span>
+    </div>
+  </div>
+
+  <!-- SERVICIO 4 -->
+  <div class="service-card" id="s-04">
+    <span class="card-number">S-04</span>
+    <span class="card-tag">Gestión de Crisis</span>
+    <h3 class="card-title">Estrategia de Respuesta a Crisis Institucionales</h3>
+    <p class="card-question">"¿Cómo responder con rapidez y coordinación cuando todo pasa al mismo tiempo?"</p>
+    <p class="card-desc">Diseño de protocolos, mapeo de actores, simulaciones de escenarios y planes de contingencia para entidades con responsabilidad en gestión del riesgo, seguridad ciudadana o emergencias sociales. Integramos análisis de datos en tiempo real con marcos de coordinación interinstitucional.</p>
+    <div class="card-grid">
+      <div>
+        <span class="card-col-title">Actividades</span>
+        <ul class="card-list">
+          <li>Diagnóstico de capacidades institucionales</li>
+          <li>Mapeo de riesgos y actores críticos</li>
+          <li>Diseño de protocolos de respuesta</li>
+          <li>Simulacros y ejercicios de mesa</li>
+          <li>Plan de comunicación de crisis</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Entregables</span>
+        <ul class="card-list">
+          <li>Manual de protocolos de crisis</li>
+          <li>Mapa de actores y rutas de coordinación</li>
+          <li>Informe de vulnerabilidades institucionales</li>
+          <li>Taller de simulación con equipo directivo</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Clientes típicos</span>
+        <ul class="card-list">
+          <li>Secretaría de Gobierno Distrital</li>
+          <li>Unidad Nacional de Gestión del Riesgo</li>
+          <li>Gobernaciones con zonas de conflicto</li>
+          <li>Entidades con mandato de orden público</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="card-deliverable"><strong>Duración:</strong> 6–10 semanas · <strong>Equipo:</strong> 2 consultores</p>
+      <span class="card-ticket">$15M – $50M COP</span>
+    </div>
+  </div>
+
+  <!-- SERVICIO 5 -->
+  <div class="service-card" id="s-05">
+    <span class="card-number">S-05</span>
+    <span class="card-tag">Formación Institucional</span>
+    <h3 class="card-title">Capacitación en Analítica y Política Basada en Evidencia</h3>
+    <p class="card-question">"¿Cómo fortalecer las capacidades internas de mi equipo sin contratar más gente?"</p>
+    <p class="card-desc">Programas de formación diseñados específicamente para funcionarios públicos, líderes comunitarios y equipos técnicos. Desde talleres introductorios de análisis de datos hasta diplomados en formulación y evaluación de políticas públicas. Metodología activa, casos colombianos y entornos institucionales reales.</p>
+    <div class="card-grid">
+      <div>
+        <span class="card-col-title">Módulos disponibles</span>
+        <ul class="card-list">
+          <li>Análisis de datos para no especialistas</li>
+          <li>Formulación de proyectos de inversión social</li>
+          <li>Evaluación y monitoreo de programas</li>
+          <li>Participación ciudadana y territorio</li>
+          <li>Liderazgo institucional y toma de decisiones</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Formatos</span>
+        <ul class="card-list">
+          <li>Taller intensivo (8–16 horas)</li>
+          <li>Diplomado (40–80 horas)</li>
+          <li>Acompañamiento en cascada (ToT)</li>
+          <li>Modalidad virtual, presencial o híbrida</li>
+        </ul>
+      </div>
+      <div>
+        <span class="card-col-title">Clientes típicos</span>
+        <ul class="card-list">
+          <li>Secretarías y entidades distritales</li>
+          <li>Escuelas de gobierno (ESAP)</li>
+          <li>ONGs con equipos territoriales</li>
+          <li>Programas de cooperación técnica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="card-deliverable"><strong>Duración:</strong> 1 día – 3 meses · <strong>Equipo:</strong> 1–2 facilitadores</p>
+      <span class="card-ticket">$3M – $25M COP</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="pricing-inner">
+    <span class="section-eyebrow">Modalidades de contratación</span>
+    <h2 class="section-title">Estructura de Precios</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="price-mode">Modalidad A</span>
+        <h3 class="price-title">Proyecto por Contrato</h3>
+        <span class="price-range">$15M – $120M COP</span>
+        <ul class="price-list">
+          <li>Alcance y entregables definidos</li>
+          <li>Pago por hitos (30/40/30)</li>
+          <li>Ideal para diagnósticos y evaluaciones</li>
+          <li>Informe final + presentación ejecutiva</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge">Recomendado</span>
+        <span class="price-mode">Modalidad B</span>
+        <h3 class="price-title">Retainer Mensual</h3>
+        <span class="price-range">$5M – $15M COP/mes</span>
+        <ul class="price-list">
+          <li>Acompañamiento técnico continuo</li>
+          <li>Disponibilidad garantizada</li>
+          <li>Ideal para secretarías en gestión activa</li>
+          <li>Revisiones y alertas periódicas incluidas</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <span class="price-mode">Modalidad C</span>
+        <h3 class="price-title">Cooperación Internacional</h3>
+        <span class="price-range">$50M – $300M COP</span>
+        <ul class="price-list">
+          <li>Postulación a convocatorias abiertas</li>
+          <li>Consorcios con universidades o ONGs</li>
+          <li>Informes en inglés disponibles</li>
+          <li>GIZ, USAID, BID, PNUD, UE</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-section">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <div class="section-title-block">
+      <span class="section-eyebrow">Mercado objetivo</span>
+      <h2 class="section-title">Clientes Potenciales</h2>
+    </div>
+  </div>
+  <div class="clients-grid">
+    <div class="client-group">
+      <span class="client-group-title">Sector Público Nacional</span>
+      <ul class="client-list">
+        <li>Departamento Nacional de Planeación (DNP)</li>
+        <li>Prosperidad Social</li>
+        <li>Ministerio del Interior</li>
+        <li>Ministerio de Hacienda</li>
+        <li>Unidad Nacional de Gestión del Riesgo</li>
+        <li>DANE — proyectos de fortalecimiento</li>
+      </ul>
+    </div>
+    <div class="client-group">
+      <span class="client-group-title">Gobierno Distrital y Local</span>
+      <ul class="client-list">
+        <li>Secretaría Distrital de Gobierno</li>
+        <li>Secretaría Distrital de Planeación</li>
+        <li>Fondos de Desarrollo Local</li>
+        <li>Alcaldías municipales en Colombia</li>
+        <li>Consejos de Planeación Distritales</li>
+        <li>Personerías y contralorías locales</li>
+      </ul>
+    </div>
+    <div class="client-group">
+      <span class="client-group-title">Cooperación y Tercer Sector</span>
+      <ul class="client-list">
+        <li>CAF — Banco de Desarrollo</li>
+        <li>PNUD Colombia</li>
+        <li>GIZ — Cooperación Alemana</li>
+        <li>USAID Colombia</li>
+        <li>Banco Interamericano de Desarrollo</li>
+        <li>Fundación Hanns Seidel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-name">Andrez Felipe Guerrero Torres</p>
+  <p class="footer-title">Government Solutions · Consultoría en Políticas Públicas y Analítica Aplicada</p>
+  <div class="footer-contact">
+    <span class="contact-item">+57 315 473 2360</span>
+    <span class="contact-item">andrezfelipe.gt@gmail.com</span>
+    <span class="contact-item">solo.to/andrezconz</span>
+  </div>
+  <hr class="footer-rule">
+  <p class="footer-copy">BOGOTÁ, COLOMBIA · 2026</p>
+</footer>
+
+</body>
+</html>
