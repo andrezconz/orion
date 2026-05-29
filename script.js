@@ -1,80 +1,74 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Animations
-    const observerOptions = {
-        threshold: 0.1
-    };
+document.addEventListener("DOMContentLoaded", () => {
+  const observerOptions = {
+    threshold: 0.12,
+    rootMargin: "0px 0px -40px 0px",
+  };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.8s forwards ease-out';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const animatedElements = document.querySelectorAll('.animate-up, .column-card, .card, .service-item');
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease-out';
-        el.style.transitionDelay = `${index * 0.1}s`;
-        observer.observe(el);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = "fadeInUp 0.75s forwards ease-out";
+        observer.unobserve(entry.target);
+      }
     });
+  }, observerOptions);
 
-    // Framework Interaction
-    const nodes = document.querySelectorAll('.node');
-    const details = document.querySelectorAll('.detail-item');
+  const animatedElements = document.querySelectorAll(
+    ".animate-up, .column-card, .card, .service-item, .detail-item, .proof-grid > div",
+  );
 
-    nodes.forEach((node, index) => {
-        node.addEventListener('mouseenter', () => {
-            // Remove active class from all
-            nodes.forEach(n => n.classList.remove('active'));
-            details.forEach(d => d.classList.remove('active-detail'));
-            
-            // Add to current
-            node.classList.add('active');
-            details[index].classList.add('active-detail');
-        });
+  animatedElements.forEach((el, index) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(24px)";
+    el.style.animationDelay = `${Math.min(index * 0.05, 0.35)}s`;
+    observer.observe(el);
+  });
+
+  const nodes = document.querySelectorAll(".node");
+  const details = document.querySelectorAll(".detail-item");
+
+  const activateFrameworkStep = (index) => {
+    nodes.forEach((node) => node.classList.remove("active"));
+    details.forEach((detail) => detail.classList.remove("active-detail"));
+
+    if (nodes[index] && details[index]) {
+      nodes[index].classList.add("active");
+      details[index].classList.add("active-detail");
+    }
+  };
+
+  nodes.forEach((node, index) => {
+    node.addEventListener("mouseenter", () => activateFrameworkStep(index));
+    node.addEventListener("focus", () => activateFrameworkStep(index));
+    node.addEventListener("click", () => activateFrameworkStep(index));
+  });
+
+  const frameworkSection = document.querySelector(".framework-diagram");
+  if (frameworkSection && nodes.length > 3 && details.length > 3) {
+    frameworkSection.addEventListener("mouseleave", () => activateFrameworkStep(3));
+  }
+
+  const form = document.querySelector(".lead-form");
+  if (form) {
+    const note = form.querySelector(".form-note");
+    const button = form.querySelector("button");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      button.textContent = "Solicitud preparada";
+      button.disabled = true;
+
+      if (note) {
+        note.textContent =
+          "Gracias. El siguiente paso es conectar este formulario con tu correo o CRM para recibir la solicitud.";
+      }
+
+      setTimeout(() => {
+        button.textContent = "Preparar solicitud";
+        button.disabled = false;
+        form.reset();
+      }, 4200);
     });
-
-    // Reset to "DECIDIR" as default active (index 3)
-    const resetToDefault = () => {
-        nodes.forEach(n => n.classList.remove('active'));
-        details.forEach(d => d.classList.remove('active-detail'));
-        nodes[3].classList.add('active');
-        details[3].classList.add('active-detail');
-    };
-
-    const frameworkSection = document.querySelector('.framework-diagram');
-    frameworkSection.addEventListener('mouseleave', resetToDefault);
-
-    // Form Handling
-    const form = document.querySelector('.lead-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = form.querySelector('input').value;
-            const button = form.querySelector('button');
-            
-            button.textContent = 'Enviando...';
-            button.disabled = true;
-
-            setTimeout(() => {
-                button.textContent = '¡Gracias!';
-                form.querySelector('input').value = '';
-                button.style.backgroundColor = '#48BB78'; // Success green
-            }, 1000);
-        });
-    }
-
-    // Hero tracking span animation
-    const titleSpan = document.querySelector('.hero-title span');
-    if (titleSpan) {
-        titleSpan.style.letterSpacing = '0px';
-        setTimeout(() => {
-            titleSpan.style.transition = 'letter-spacing 2s ease-in-out';
-            titleSpan.style.letterSpacing = '4px';
-        }, 500);
-    }
+  }
 });
