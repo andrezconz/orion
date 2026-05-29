@@ -1,163 +1,519 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unidad de Inteligencia | Arquitecto de Decisiones LatAm 2026</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>ORIÓN | Agencia estratégica, inteligencia económica y prospectiva</title>
+    <meta
+      name="description"
+      content="Consultoría estratégica para gobiernos, territorios y proyectos de alto impacto. ORIÓN integra enfoque de agencia, inteligencia económica, datos alternativos y prospectiva para tomar mejores decisiones."
+    />
+    <meta
+      name="keywords"
+      content="consultoría estratégica, agencia estratégica, inteligencia económica, AI economics, arquitectura de decisiones, análisis prospectivo, estrategia política, gobierno, datos alternativos, escenarios, formación ejecutiva"
+    />
+    <meta name="author" content="ORIÓN Estrategia" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#0f1e2e" />
+    <meta name="application-name" content="ORIÓN Estrategia" />
+    <meta name="apple-mobile-web-app-title" content="ORIÓN Estrategia" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="https://andrezconz.github.io/orion/" />
+    <link rel="alternate" hreflang="es-CO" href="https://andrezconz.github.io/orion/" />
+    <link rel="alternate" hreflang="x-default" href="https://andrezconz.github.io/orion/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="ORIÓN Estrategia" />
+    <meta property="og:title" content="ORIÓN | Agencia estratégica e inteligencia económica" />
+    <meta
+      property="og:description"
+      content="Consultoría estratégica para decisiones públicas y territoriales: enfoque de agencia, inteligencia económica, datos alternativos, prospectiva y arquitectura de acción."
+    />
+    <meta property="og:url" content="https://andrezconz.github.io/orion/" />
+    <meta property="og:image" content="https://andrezconz.github.io/orion/assets/logo.jpeg" />
+    <meta property="og:image:secure_url" content="https://andrezconz.github.io/orion/assets/logo.jpeg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="540" />
+    <meta property="og:image:height" content="360" />
+    <meta property="og:image:alt" content="Logo de ORIÓN Estrategia" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ORIÓN | Agencia estratégica e inteligencia económica" />
+    <meta
+      name="twitter:description"
+      content="Inteligencia económica, enfoque de agencia y prospectiva aplicada para decisiones de gobierno, territorio y proyectos de alto impacto."
+    />
+    <meta name="twitter:image" content="https://andrezconz.github.io/orion/assets/logo.jpeg" />
+    <meta name="twitter:image:alt" content="Logo de ORIÓN Estrategia" />
+    <link rel="icon" href="assets/logo.jpeg" type="image/jpeg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://andrezconz.github.io/orion/#organization",
+            "name": "ORIÓN Estrategia",
+            "url": "https://andrezconz.github.io/orion/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://andrezconz.github.io/orion/assets/logo.jpeg",
+              "width": 540,
+              "height": 360
+            },
+            "description": "Consultoría estratégica en agencia, inteligencia económica, prospectiva y arquitectura de decisiones."
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://andrezconz.github.io/orion/#service",
+            "name": "ORIÓN Estrategia",
+            "url": "https://andrezconz.github.io/orion/",
+            "image": "https://andrezconz.github.io/orion/assets/logo.jpeg",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Colombia"
+            },
+            "serviceType": [
+              "Consultoría estratégica",
+              "Inteligencia económica",
+              "Prospectiva aplicada",
+              "Arquitectura de decisiones",
+              "Formación ejecutiva"
+            ],
+            "provider": {
+              "@id": "https://andrezconz.github.io/orion/#organization"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://andrezconz.github.io/orion/#website",
+            "name": "ORIÓN Estrategia",
+            "url": "https://andrezconz.github.io/orion/",
+            "inLanguage": "es-CO",
+            "publisher": {
+              "@id": "https://andrezconz.github.io/orion/#organization"
+            },
+            "description": "Agencia estratégica, inteligencia económica y prospectiva aplicada para decisiones públicas, territoriales y de alto impacto."
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div class="app-container">
-      <header>
-        <div class="brand-identity">
-          <p>Unidad de Inteligencia Estratégica</p>
-          <h1>Arquitecto de Decisiones</h1>
-          <p>LatAm 2026 | Consultoría de Andrez Felipe Guerrero Torres</p>
+    <header class="header">
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="logo" href="#inicio" aria-label="Ir al inicio">
+          <img src="assets/logo.jpeg" alt="ORIÓN Estrategia" id="main-logo" />
+        </a>
+        <div class="nav-links">
+          <a href="#enfoque" class="nav-link">Enfoque</a>
+          <a href="#agencia" class="nav-link">Agencia</a>
+          <a href="#proceso" class="nav-link">Framework</a>
+          <a href="#aplicaciones" class="nav-link">Aplicaciones</a>
+          <a href="#diagnostico" class="btn btn-outline">Diagnóstico</a>
         </div>
-        <div class="status-indicator">
-          <span class="module-tag">SISTEMA ACTIVO</span>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow animate-up">Agencia estratégica e inteligencia económica</p>
+            <h1 class="hero-title animate-up">
+              Decisiones públicas y territoriales para escenarios donde
+              <span>equivocarse cuesta</span>
+            </h1>
+            <p class="hero-subtitle animate-up">
+              ORIÓN convierte datos, contexto y comportamiento de actores en
+              criterio ejecutivo: inteligencia económica, escenarios accionables
+              y rutas de agencia para avanzar con claridad.
+            </p>
+            <div class="hero-actions animate-up">
+              <a href="#diagnostico" class="btn btn-primary">Solicitar diagnóstico</a>
+              <a href="#proceso" class="btn btn-secondary">Ver metodología</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel animate-up" aria-label="Síntesis del enfoque ORIÓN">
+            <img src="assets/framework.svg" alt="Diagrama ORIÓN Framework" />
+            <div class="panel-note">
+              <span>ORIÓN Framework</span>
+              <strong>Observar, interpretar, proyectar, decidir y ejecutar.</strong>
+            </div>
+          </aside>
         </div>
-      </header>
+      </section>
 
-      <main class="main-layout">
-        <div class="content-area">
-          <section class="terminal-section">
-            <div class="terminal-card">
-              <div class="input-group">
-                <label for="input-signal" class="brand-font" style="font-size: 0.8rem; color: var(--text-secondary);">Entrada de Señal (URL / PDF Text / Noticias)</label>
-                <textarea id="input-signal" placeholder="Pegue aquí el reporte de la IEA, BID o Gaceta Regulatoria para procesar..."></textarea>
-                <button id="deploy-btn" class="btn-deploy">
-                  <span>Ejecutar Despliegue</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                </button>
-                <div id="loading-indicator" class="loading">Procesando bajo lentes de Economía, Diplomacia y Resiliencia...</div>
-              </div>
-            </div>
-          </section>
-
-          <section id="results-section" class="output-grid">
-            <article class="module" id="module-radar">
-              <div class="module-header">
-                <h3>Radar de Riesgos</h3>
-                <span class="module-tag">Briefing Técnico</span>
-              </div>
-              <div class="module-content" id="content-radar">Esperando señal de entrada...</div>
-            </article>
-
-            <article class="module" id="module-linkedin">
-              <div class="module-header">
-                <h3>Táctica de LinkedIn</h3>
-                <span class="module-tag">Thought Leadership</span>
-              </div>
-              <div class="module-content" id="content-linkedin">Esperando señal de entrada...</div>
-            </article>
-
-            <article class="module" id="module-networking">
-              <div class="module-header">
-                <h3>Conector de Círculos</h3>
-                <span class="module-tag">Networking</span>
-              </div>
-              <div class="module-content" id="content-networking">Esperando señal de entrada...</div>
-            </article>
-
-            <article class="module" id="module-consulting">
-              <div class="module-header">
-                <h3>Filtro de Valor</h3>
-                <span class="module-tag">Consultoría</span>
-              </div>
-              <div class="module-content" id="content-consulting">Esperando señal de entrada...</div>
-            </article>
-          </section>
+      <section class="proof-strip" aria-label="Áreas de trabajo">
+        <div class="container proof-grid">
+          <div>
+            <span>Agencia</span>
+            <strong>Actores, incentivos y capacidad real de acción.</strong>
+          </div>
+          <div>
+            <span>Inteligencia económica</span>
+            <strong>Señales tempranas para orientar política y estrategia.</strong>
+          </div>
+          <div>
+            <span>Territorio</span>
+            <strong>Lectura granular de dinámicas sociales y productivas.</strong>
+          </div>
+          <div>
+            <span>Impacto</span>
+            <strong>Modelos de decisión que conectan diagnóstico y ejecución.</strong>
+          </div>
         </div>
+      </section>
 
-        <aside class="sidebar">
-          <section class="sidebar-module">
-            <h3 class="brand-font">Fichas Técnicas Gob</h3>
-            <div class="specs-menu">
-              <a href="./portfolio-government-solutions.html#s-01" target="_blank" class="spec-link">
-                <span class="spec-code">S-01</span>
-                <span class="spec-title">Efectividad Institucional</span>
-                <span class="spec-icon">↗</span>
-              </a>
-              <a href="./portfolio-government-solutions.html#s-02" target="_blank" class="spec-link">
-                <span class="spec-code">S-02</span>
-                <span class="spec-title">Evaluación de Impacto</span>
-                <span class="spec-icon">↗</span>
-              </a>
-              <a href="./portfolio-government-solutions.html#s-03" target="_blank" class="spec-link">
-                <span class="spec-code">S-03</span>
-                <span class="spec-title">Mapeo Socioeconómico</span>
-                <span class="spec-icon">↗</span>
-              </a>
-              <a href="./portfolio-government-solutions.html#s-04" target="_blank" class="spec-link">
-                <span class="spec-code">S-04</span>
-                <span class="spec-title">Estrategia de Crisis</span>
-                <span class="spec-icon">↗</span>
-              </a>
-              <a href="./portfolio-government-solutions.html#s-05" target="_blank" class="spec-link">
-                <span class="spec-code">S-05</span>
-                <span class="spec-title">Formación Institucional</span>
-                <span class="spec-icon">↗</span>
-              </a>
+      <section class="problem bg-dark">
+        <div class="container grid-problem">
+          <div class="problem-content">
+            <p class="eyebrow text-gold">El desafío real</p>
+            <h2 class="section-title text-white">
+              La complejidad no se resuelve con más datos, sino entendiendo quién puede actuar.
+            </h2>
+            <ul class="problem-list">
+              <li>Información fragmentada entre instituciones, territorio y mercado.</li>
+              <li>Indicadores tardíos que no explican lo que está ocurriendo ahora.</li>
+              <li>Actores con incentivos distintos, capacidades desiguales y agendas en tensión.</li>
+              <li>Políticas y estrategias que no conectan diagnóstico, ejecución y medición.</li>
+            </ul>
+          </div>
+          <div class="problem-card">
+            <span>La pregunta que ordena el trabajo</span>
+            <p>
+              ¿Qué actor debe moverse, con qué incentivo, bajo qué restricción y
+              con qué evidencia para producir impacto?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="enfoque" class="proposal">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow text-gold">Propuesta de valor</p>
+            <h2 class="section-title">
+              Convertimos complejidad económica y social en capacidad de acción.
+            </h2>
+            <p class="section-subtitle">
+              Nuestro trabajo no termina en un informe. Diseñamos criterios,
+              escenarios y mecanismos de seguimiento para que cada actor sepa
+              qué hacer, por qué hacerlo y cómo medir si produjo efecto.
+            </p>
+          </div>
+
+          <div class="grid-columns-3">
+            <div class="column-card">
+              <span class="card-number">01</span>
+              <h3>Mapa de agencia</h3>
+              <p>
+                Ordenamos actores, capacidades, incentivos y restricciones para
+                entender quién puede mover el sistema y en qué condiciones.
+              </p>
             </div>
-          </section>
+            <div class="column-card border-x">
+              <span class="card-number">02</span>
+              <h3>Inteligencia económica</h3>
+              <p>
+                Integramos datos tradicionales, señales alternativas y lectura
+                territorial para anticipar cambios antes de que sean evidentes.
+              </p>
+            </div>
+            <div class="column-card">
+              <span class="card-number">03</span>
+              <h3>Arquitectura de acción</h3>
+              <p>
+                Convertimos el análisis en prioridades, instrumentos, mensajes,
+                rutas de implementación y métricas de impacto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <section class="sidebar-module">
-            <h3 class="brand-font">Feed de Inteligencia</h3>
-            <div class="feed-list">
-              <div class="feed-item">
-                <span class="feed-date">04 MAY 2026</span>
-                <p>ISSB Brasil: Nuevas normas de reporte NIIF S1/S2 entrarán en vigor en Q3.</p>
+      <section id="agencia" class="agency bg-dark text-white">
+        <div class="container agency-grid">
+          <div class="agency-copy">
+            <p class="eyebrow text-gold">Enfoque de agencia</p>
+            <h2 class="section-title text-white">
+              La estrategia mejora cuando modela actores, no solo variables.
+            </h2>
+            <p>
+              Inspirado en la lógica de la inteligencia económica avanzada, el
+              enfoque de agencia de ORIÓN observa cómo se comportan ciudadanos,
+              instituciones, empresas y territorios para diseñar decisiones que
+              puedan ejecutarse en el mundo real.
+            </p>
+          </div>
+
+          <div class="agency-stack" aria-label="Componentes del enfoque de agencia">
+            <article>
+              <span>01</span>
+              <h3>Señales en tiempo útil</h3>
+              <p>
+                Lectura de indicadores, datos alternativos y señales tempranas
+                para reducir la dependencia de información tardía.
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Actores e incentivos</h3>
+              <p>
+                Mapeo de quién decide, quién bloquea, quién ejecuta y qué
+                condiciones cambian su comportamiento.
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Modelos de impacto</h3>
+              <p>
+                Escenarios para estimar consecuencias, priorizar intervenciones
+                y ajustar la ruta según evidencia.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="proceso" class="framework bg-light">
+        <div class="container">
+          <div class="section-header text-center">
+            <p class="eyebrow text-gold">Metodología</p>
+            <h2 class="section-title">ORIÓN Framework</h2>
+            <p class="section-subtitle">
+              Un sistema de trabajo para pasar de datos dispersos y actores en
+              tensión a decisiones ejecutables.
+            </p>
+          </div>
+
+          <div class="framework-layout">
+            <div class="framework-visual">
+              <img src="assets/framework.svg" alt="Mapa visual del ORIÓN Framework" />
+            </div>
+            <div class="framework-diagram">
+              <div class="diagram-container">
+                <button class="node" data-label="datos" type="button">OBSERVAR</button>
+                <div class="line"></div>
+                <button class="node" data-label="contexto" type="button">INTERPRETAR</button>
+                <div class="line"></div>
+                <button class="node" data-label="escenarios" type="button">PROYECTAR</button>
+                <div class="line"></div>
+                <button class="node active" data-label="estrategia" type="button">DECIDIR</button>
+                <div class="line"></div>
+                <button class="node" data-label="implementacion" type="button">EJECUTAR</button>
               </div>
-              <div class="feed-item">
-                <span class="feed-date">03 MAY 2026</span>
-                <p>Hidrógeno Verde Chile: Planta Magallanes incrementa capacidad HVDC.</p>
-              </div>
-              <div class="feed-item">
-                <span class="feed-date">02 MAY 2026</span>
-                <p>Minería Colombia: Revisión de licencias en zona de reserva.</p>
+
+              <div class="framework-details">
+                <div class="detail-item">
+                  <strong>Observar</strong>
+                  <span>Datos, señales, territorio, actores y restricciones.</span>
+                </div>
+                <div class="detail-item">
+                  <strong>Interpretar</strong>
+                  <span>Contexto político, económico, social y conductual.</span>
+                </div>
+                <div class="detail-item">
+                  <strong>Proyectar</strong>
+                  <span>Escenarios, riesgos, oportunidades e impacto esperado.</span>
+                </div>
+                <div class="detail-item active-detail">
+                  <strong>Decidir</strong>
+                  <span>Criterios, instrumentos, prioridades y narrativas.</span>
+                </div>
+                <div class="detail-item">
+                  <strong>Ejecutar</strong>
+                  <span>Ruta crítica, gobernanza, métricas y aprendizaje.</span>
+                </div>
               </div>
             </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
-          <section class="sidebar-module">
-            <h3 class="brand-font">Calculadora de Impacto</h3>
-            <div class="calculator-mini">
-              <div class="calc-field">
-                <label>CAPEX Estimado (M USD)</label>
-                <input type="number" id="calc-capex" placeholder="0.00">
-              </div>
-              <div class="calc-field">
-                <label>Rentabilidad Social (%)</label>
-                <input type="number" id="calc-social" placeholder="0.00">
-              </div>
-              <button id="calc-btn" class="btn-deploy" style="padding: 0.5rem; font-size: 0.7rem; width: 100%;">Proyectar Impacto</button>
-              <div id="calc-result" style="margin-top: 1rem; font-size: 0.8rem; color: var(--accent-gold); display: none;"></div>
+      <section id="aplicaciones" class="applications">
+        <div class="container">
+          <div class="section-header">
+            <p class="eyebrow text-gold">Dónde aportamos</p>
+            <h2 class="section-title">Inteligencia aplicada para decisiones de alto impacto.</h2>
+          </div>
+
+          <div class="grid-columns-3">
+            <article class="card bg-dark text-white">
+              <span>01</span>
+              <h3>Gobierno</h3>
+              <p>
+                Nowcasting institucional, priorización de agenda, lectura
+                territorial, diseño de políticas públicas y seguimiento de gestión.
+              </p>
+            </article>
+            <article class="card bg-dark text-white">
+              <span>02</span>
+              <h3>Economía territorial</h3>
+              <p>
+                Mapas de actividad, brechas de capacidad, señales productivas y
+                escenarios para orientar inversión e intervención pública.
+              </p>
+            </article>
+            <article class="card bg-dark text-white">
+              <span>03</span>
+              <h3>Crisis e impacto</h3>
+              <p>
+                Modelos de riesgo, respuesta rápida, monitoreo de shocks y rutas
+                de acción para proteger continuidad e impacto.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="services bg-light">
+        <div class="container">
+          <div class="section-header text-center">
+            <p class="eyebrow text-gold">Intervenciones</p>
+            <h2 class="section-title">Cómo trabajamos</h2>
+          </div>
+
+          <div class="service-grid">
+            <div class="service-item">
+              <h3>Consultoría de agencia</h3>
+              <p>
+                Acompañamiento directo para ordenar actores, incentivos,
+                restricciones y decisiones con capacidad real de ejecución.
+              </p>
+              <ul>
+                <li>Sesiones ejecutivas</li>
+                <li>Mapas de agencia</li>
+                <li>Rutas de implementación</li>
+              </ul>
             </div>
-          </section>
-
-          <section class="sidebar-module">
-            <h3 class="brand-font">Lente Verde IA</h3>
-            <div class="ai-module">
-              <p style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1rem;">Modelo no supervisado de clasificación territorial (Colombia 2026).</p>
-              <button id="ai-run-btn" class="btn-deploy" style="padding: 0.5rem; font-size: 0.7rem; width: 100%; border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold);">Ejecutar Clusterización</button>
-              
-              <div id="ai-results" class="ai-status" style="display: none; margin-top: 1rem;">
-                <div class="cluster-tag alfa">Cluster Alfa: Hubs de Transición</div>
-                <div class="cluster-tag beta">Cluster Beta: Riesgo Crítico</div>
-                <div class="cluster-tag gamma">Cluster Gamma: Activos Varados</div>
-              </div>
+            <div class="service-item">
+              <h3>Inteligencia económica</h3>
+              <p>
+                Informes y tableros accionables para leer coyunturas, actividad
+                económica, tendencias, shocks y riesgos antes de mover recursos.
+              </p>
+              <ul>
+                <li>Nowcasting estratégico</li>
+                <li>Escenarios de impacto</li>
+                <li>Tableros de señales tempranas</li>
+              </ul>
             </div>
-          </section>
-        </aside>
-      </main>
+            <div class="service-item">
+              <h3>Formación ejecutiva</h3>
+              <p>
+                Entrenamiento en pensamiento estratégico, lectura de datos,
+                agencia institucional y toma de decisiones bajo incertidumbre.
+              </p>
+              <ul>
+                <li>Talleres directivos</li>
+                <li>Laboratorios de escenarios</li>
+                <li>Metodologías aplicadas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <footer>
-        <div>&copy; 2026 AFGT Consultoría. Rigor y Resiliencia.</div>
-        <div>ISSB NIIF S1/S2 | Energy Transition | Applied Economics</div>
-      </footer>
-    </div>
-    <script type="module" src="/main.js"></script>
+      <section class="authority">
+        <div class="container authority-grid">
+          <div>
+            <p class="eyebrow text-gold">Criterio + método</p>
+            <h2 class="authority-text">
+              ORIÓN combina análisis político, inteligencia económica,
+              investigación aplicada, prospectiva y diseño estratégico para
+              decisiones que deben producir capacidad de acción.
+            </h2>
+          </div>
+          <div class="authority-list">
+            <span>Entregables posibles</span>
+            <ul>
+              <li>Mapa de agencia, actores e incentivos.</li>
+              <li>Escenarios económicos y territoriales.</li>
+              <li>Modelo de impacto y señales tempranas.</li>
+              <li>Ruta crítica, gobernanza e indicadores.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="diagnostico" class="content-magnet bg-dark text-white">
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow text-gold">Primer paso</p>
+            <h2 class="section-title text-white">Solicita un diagnóstico estratégico inicial</h2>
+            <p>
+              Cuéntanos qué decisión, política, territorio o proyecto necesita
+              mayor claridad. Te ayudaremos a ordenar actores, señales,
+              incentivos, riesgos y ruta de acción.
+            </p>
+          </div>
+
+          <form class="lead-form" aria-label="Formulario de diagnóstico estratégico">
+            <label>
+              Nombre
+              <input type="text" name="name" placeholder="Tu nombre" required />
+            </label>
+            <label>
+              Correo electrónico
+              <input type="email" name="email" placeholder="correo@ejemplo.com" required />
+            </label>
+            <label>
+              Tipo de reto
+              <select name="challenge" required>
+                <option value="">Selecciona una opción</option>
+                <option>Gobierno</option>
+                <option>Agencia e inteligencia económica</option>
+                <option>Economía territorial</option>
+                <option>Proyecto estratégico</option>
+                <option>Formación ejecutiva</option>
+              </select>
+            </label>
+            <label>
+              Contexto
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Describe brevemente la decisión, territorio o reto de agencia que quieres ordenar"
+                required
+              ></textarea>
+            </label>
+            <button type="submit" class="btn btn-gold">Preparar solicitud</button>
+            <p class="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="contacto" class="final-cta text-center">
+        <div class="container narrow">
+          <p class="eyebrow text-gold">Decidir mejor exige entender capacidad de acción</p>
+          <h2 class="section-title">Diseñemos una ruta con evidencia, contexto, actores e impacto.</h2>
+          <a href="#diagnostico" class="btn btn-primary lg">Iniciar conversación</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer bg-dark text-white">
+      <div class="container footer-grid">
+        <div class="footer-logo">ORIÓN</div>
+        <div class="footer-copy">
+          &copy; 2026 ORIÓN. Arquitectura de decisiones.
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
