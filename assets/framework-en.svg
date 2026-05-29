@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" role="img" aria-labelledby="title desc">
+  <title id="title">ORIÓN Framework</title>
+  <desc id="desc">Map of the ORIÓN framework with the stages observe, interpret, project, decide, and execute.</desc>
+  <rect width="1080" height="720" fill="#ffffff" />
+  <rect x="58" y="46" width="964" height="628" fill="#ffffff" stroke="#eef1f4" stroke-width="2" />
+
+  <text
+    x="540"
+    y="116"
+    text-anchor="middle"
+    fill="#0f1e2e"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="700"
+    letter-spacing="6"
+  >
+    ORIÓN Framework
+  </text>
+
+  <g fill="none" stroke="#0f1e2e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M365 242 L480 190 L566 284 L695 296" />
+    <path d="M365 242 L455 312 L566 284" />
+    <path d="M480 190 L560 178 L625 234 L566 284" />
+    <path d="M566 284 L612 396" />
+    <path d="M566 284 L520 508 L352 508" />
+    <path d="M520 508 L520 598" />
+    <path d="M520 508 L612 396" />
+  </g>
+
+  <g>
+    <circle cx="365" cy="242" r="14" fill="#0f1e2e" />
+    <circle cx="480" cy="190" r="14" fill="#0f1e2e" />
+    <circle cx="560" cy="178" r="14" fill="#0f1e2e" />
+    <circle cx="455" cy="312" r="14" fill="#0f1e2e" />
+    <circle cx="566" cy="284" r="14" fill="#0f1e2e" />
+    <circle cx="695" cy="296" r="14" fill="#0f1e2e" />
+    <circle cx="520" cy="508" r="14" fill="#0f1e2e" />
+    <circle cx="352" cy="508" r="14" fill="#0f1e2e" />
+    <circle cx="520" cy="598" r="14" fill="#0f1e2e" />
+    <circle cx="612" cy="396" r="16" fill="#c8a96a" />
+    <circle cx="625" cy="234" r="14" fill="#c8a96a" />
+  </g>
+
+  <g
+    fill="#0f1e2e"
+    font-family="Inter, Arial, sans-serif"
+    font-size="22"
+    font-weight="700"
+    letter-spacing="5"
+  >
+    <text x="185" y="291">INTERPRET</text>
+    <text x="714" y="281">PROJECT</text>
+    <text x="215" y="461">OBSERVE</text>
+    <text x="604" y="449" fill="#c8a96a">DECIDE</text>
+    <text x="462" y="660">EXECUTE</text>
+  </g>
+</svg>
