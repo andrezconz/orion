@@ -248,6 +248,29 @@ section {
   width: 100%;
 }
 
+.lang-switch {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 16px;
+}
+
+.lang-btn {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: var(--transition-standard);
+}
+
+.lang-btn:hover, .lang-btn.active {
+  color: var(--primary-dark);
+}
+
+.lang-sep {
+  margin: 0 8px;
+  color: var(--border-color);
+}
+
 .hero {
   min-height: 100vh;
   display: flex;
