@@ -229,6 +229,50 @@
     margin: 0 auto;
   }
 
+  /* FOUR AGES SECTION */
+  .four-ages-section {
+    padding: 80px 60px;
+    background: var(--paper);
+  }
+  .four-ages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .age-item {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 24px;
+    border-radius: 2px;
+    text-align: left;
+  }
+  .age-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .age-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 8px;
+  }
+  .age-desc {
+    font-size: 14px;
+    color: var(--slate);
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .four-ages-grid { grid-template-columns: 1fr; }
+  }
+
   .section-header {
     display: flex;
     align-items: baseline;
@@ -624,9 +668,9 @@
     <span class="lang-sep">|</span>
     <a href="portfolio-government-solutions-en.html" class="lang-btn">EN</a>
   </div>
-  <p class="header-eyebrow">Portafolio de Servicios · 2026</p>
-  <h1>Soluciones<br><span>Gubernamentales</span></h1>
-  <p class="header-sub">Analítica aplicada y estrategia para el sector público colombiano. Transformamos datos territoriales en decisiones de política basadas en evidencia.</p>
+  <p class="header-eyebrow">ORIÓN ESTRATEGIA · PORTAFOLIO DE SERVICIOS · 2026</p>
+  <h1>Colombia está entrando a la era de los datos.<br><span>¿Tu institución también?</span></h1>
+  <p class="header-sub">Cada época de desarrollo exige nuevas capacidades institucionales. Orión acompaña al sector público colombiano en la transición hacia decisiones basadas en evidencia, gobierno territorial inteligente y autonomía técnica real.</p>
   <div class="header-meta">
     <div class="meta-item">
       <span class="meta-label">Especialidad</span>
@@ -642,6 +686,33 @@
     </div>
   </div>
 </header>
+
+<div class="four-ages-section">
+  <div class="four-ages-grid">
+    <div class="age-item">
+      <div class="age-number">01</div>
+      <div class="age-title">Primera edad – La Tierra</div>
+      <div class="age-desc">Comunidad y pertenencia como valor central</div>
+    </div>
+    <div class="age-item">
+      <div class="age-number">02</div>
+      <div class="age-title">Segunda edad – El Trabajo</div>
+      <div class="age-desc">Orden institucional y expansión del Estado</div>
+    </div>
+    <div class="age-item">
+      <div class="age-number">03</div>
+      <div class="age-title">Tercera edad – El Capital</div>
+      <div class="age-desc">Crecimiento económico como medida del éxito</div>
+    </div>
+    <div class="age-item">
+      <div class="age-number">04</div>
+      <div class="age-title">Cuarta edad – Los Datos</div>
+      <div class="age-desc">Autonomía, evidencia y bienestar individual</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
 
 
 <!-- SERVICES -->
