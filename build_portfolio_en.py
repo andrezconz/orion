@@ -9,141 +9,125 @@ with open(file_path, "r", encoding="utf-8") as f:
 # Translations map
 translations = {
     '<html lang="es">': '<html lang="en">',
-    'Portafolio de Servicios': 'Service Portfolio',
-    'Analítica aplicada y estrategia para el sector público colombiano. Transformamos datos territoriales en decisiones de política basadas en evidencia.': 'Applied analytics and strategy for the public sector. We transform territorial data into evidence-based policy decisions.',
+    'Soluciones Gubernamentales — Portafolio de Servicios': 'Government Solutions — Service Portfolio',
+    'ORION INTELLIGENCE · PORTAFOLIO DE SERVICIOS · 2026': 'ORION INTELLIGENCE · SERVICE PORTFOLIO · 2026',
+    'Las decisiones públicas de hoy<br>exigen <span>Decision Intelligence</span>': 'Today\'s public decisions<br>demand <span>Decision Intelligence</span>',
+    'Orion Intelligence transforma datos complejos en decisiones estratégicas mediante analítica avanzada, inteligencia artificial y diseño de políticas públicas basadas en evidencia. Acompañamos al sector público y organizaciones de desarrollo en la transición hacia la autonomía técnica real.': 'Orion Intelligence transforms complex data into strategic decisions through advanced analytics, artificial intelligence, and evidence-based public policy design. We accompany the public sector and development organizations in the transition towards real technical autonomy.',
     'Especialidad': 'Specialty',
     'Políticas Públicas & Datos': 'Public Policy & Data',
     'Mercado': 'Market',
     'Colombia · Cooperación Internacional': 'Colombia · International Cooperation',
     'Modalidad': 'Modality',
     'Proyecto · Retainer · Formación': 'Project · Retainer · Training',
-    'Propuesta de valor': 'Value Proposition',
-    'Lo que nos hace diferentes': 'What makes us different',
-    'Combinamos el lenguaje institucional del sector público con capacidad analítica rigurosa. No somos una firma de datos que no entiende el gobierno, ni una consultora política que no entiende los datos.': 'We combine the institutional language of the public sector with rigorous analytical capacity. We are not a data firm that doesn\'t understand government, nor a political consultancy that doesn\'t understand data.',
-    'Entendemos cómo funciona una secretaría, una mesa técnica y un proceso normativo — y al mismo tiempo diseñamos evaluaciones de impacto, modelos econométricos y dashboards de monitoreo.': 'We understand how a secretariat, a technical round table, and a regulatory process work — and at the same time we design impact evaluations, econometric models, and monitoring dashboards.',
-    'Desde adentro': 'From the inside',
-    'Experiencia directa en Secretarías distritales y Consejo de Planeación.': 'Direct experience in district Secretariats and Planning Councils.',
-    'Rigor cuantitativo': 'Quantitative rigor',
-    'Econometría, evaluación de impacto, ML aplicado al sector público.': 'Econometrics, impact evaluation, ML applied to the public sector.',
-    'Red internacional': 'International network',
-    'Vínculos activos con CAF, Hanns Seidel, cooperación alemana y americana.': 'Active links with CAF, Hanns Seidel, German and American cooperation.',
-    'Credenciales élite': 'Elite credentials',
-    'Uniandes + Externado. Certificaciones CAF, evaluación de impacto y Big Data.': 'Uniandes + Externado. CAF certifications, impact evaluation and Big Data.',
-    'Fichas técnicas': 'Technical data sheets',
+    'Primera edad – La Tierra': 'First Age – The Earth',
+    'Comunidad y pertenencia como valor central.': 'Community and belonging as a central value.',
+    'Segunda edad – El Trabajo': 'Second Age – Labor',
+    'Orden institucional y expansión del Estado.': 'Institutional order and State expansion.',
+    'Tercera edad – El Capital': 'Third Age – Capital',
+    'Crecimiento económico como medida del éxito.': 'Economic growth as a measure of success.',
+    'Cuarta edad – Las Decisiones': 'Fourth Age – Decisions',
+    'Decision Intelligence, evidencia y bienestar institucional.': 'Decision Intelligence, evidence, and institutional well-being.',
+    'Fichas técnicas': 'Technical Data Sheets',
     'Líneas de Servicio': 'Service Lines',
-    'Analítica Territorial': 'Territorial Analytics',
-    'Diagnóstico de Efectividad Institucional': 'Institutional Effectiveness Diagnostic',
-    '"¿Cómo saber si los servicios que prestamos realmente están funcionando?"': '"How do we know if the services we provide are really working?"',
-    'Medición rigurosa de resultados de programas y servicios públicos mediante metodología mixta. Combinamos análisis cuantitativo de indicadores con evaluación cualitativa de procesos para ofrecer un diagnóstico integral, accionable y presentable ante tomadores de decisión y organismos de control.': 'Rigorous measurement of results of public programs and services using a mixed methodology. We combine quantitative analysis of indicators with qualitative evaluation of processes to offer a comprehensive, actionable diagnostic, ready to present to decision-makers and oversight bodies.',
+    
+    # L-01
+    'Inteligencia Política': 'Political Intelligence',
+    '"¿Cómo anticipar dinámicas de poder, incentivos electorales y riesgos de gobernabilidad?"': '"How to anticipate power dynamics, electoral incentives, and governance risks?"',
+    'Análisis avanzado de comportamiento electoral, estabilidad de coaliciones, riesgo político y opinión pública. Ayudamos a gobiernos y campañas a mapear el territorio político, interpretar incentivos de actores locales e identificar señales de polarización y cambios en el electorado para tomar decisiones estratégicas de comunicación y posicionamiento basadas en evidencia.': 'Advanced analysis of electoral behavior, coalition stability, political risk, and public opinion. We help governments and campaigns map the political territory, interpret the incentives of local actors, and identify signals of polarization and shifts in the electorate to make evidence-based strategic communication and positioning decisions.',
     '<span class="card-col-title">Actividades</span>': '<span class="card-col-title">Activities</span>',
-    '<li>Levantamiento y limpieza de datos institucionales</li>': '<li>Collection and cleaning of institutional data</li>',
-    '<li>Análisis estadístico descriptivo e inferencial</li>': '<li>Descriptive and inferential statistical analysis</li>',
-    '<li>Entrevistas a actores clave y grupos focales</li>': '<li>Interviews with key actors and focus groups</li>',
-    '<li>Benchmarking con casos comparables</li>': '<li>Benchmarking against comparable cases</li>',
-    '<li>Formulación de recomendaciones priorizadas</li>': '<li>Formulation of prioritized recommendations</li>',
-    '<span class="card-col-title">Entregables</span>': '<span class="card-col-title">Deliverables</span>',
-    '<li>Informe ejecutivo (máx. 30 páginas)</li>': '<li>Executive report (max. 30 pages)</li>',
-    '<li>Dashboard interactivo de indicadores</li>': '<li>Interactive dashboard of indicators</li>',
-    '<li>Presentación para directivos</li>': '<li>Presentation for directors</li>',
-    '<li>Plan de mejora con hoja de ruta</li>': '<li>Improvement plan with roadmap</li>',
+    '<li>Análisis de comportamiento electoral a nivel de mesa y puesto de votación</li>': '<li>Analysis of electoral behavior at the polling station and table level</li>',
+    '<li>Modelación de estabilidad de partidos y coaliciones legislativas</li>': '<li>Modeling the stability of parties and legislative coalitions</li>',
+    '<li>Monitoreo cuali-cuantitativo de polarización y opinión pública</li>': '<li>Quali-quantitative monitoring of polarization and public opinion</li>',
+    '<li>Evaluación continua de riesgo político y gobernabilidad territorial</li>': '<li>Continuous assessment of political risk and territorial governance</li>',
+    '<li>Mapeo de incentivos y relaciones de actores locales clave</li>': '<li>Mapping incentives and relationships of key local actors</li>',
+    '<span class="card-col-title">Productos</span>': '<span class="card-col-title">Deliverables</span>',
+    '<li>Tableros dinámicos de análisis electoral histórico y en tiempo real</li>': '<li>Dynamic dashboards of historical and real-time electoral analysis</li>',
+    '<li>Mapeo interactivo de actores e influencia territorial</li>': '<li>Interactive mapping of actors and territorial influence</li>',
+    '<li>Reportes periódicos (Briefings) de riesgo de gobernabilidad</li>': '<li>Periodic reports (briefings) on governance risk</li>',
+    '<li>Modelos de simulación de escenarios de coaliciones políticas</li>': '<li>Simulation models of political coalition scenarios</li>',
     '<span class="card-col-title">Clientes típicos</span>': '<span class="card-col-title">Typical Clients</span>',
-    '<li>Secretarías distritales y municipales</li>': '<li>District and municipal secretariats</li>',
-    '<li>Entidades descentralizadas</li>': '<li>Decentralized entities</li>',
-    '<li>Organismos de cooperación</li>': '<li>Cooperation agencies</li>',
-    '<li>Contralorías y veedurías</li>': '<li>Comptrollers and oversight bodies</li>',
+    '<li>Campañas electorales nacionales y territoriales</li>': '<li>National and territorial electoral campaigns</li>',
+    '<li>Secretarías de Gobierno y oficinas de asuntos políticos</li>': '<li>Government Secretariats and political affairs offices</li>',
+    '<li>Think tanks y firmas de consultoría estratégica nacional</li>': '<li>Think tanks and national strategic consulting firms</li>',
+    '<li>Gremios sectoriales y ONGs interesadas en coyuntura</li>': '<li>Sectoral associations and NGOs interested in current affairs</li>',
     '<strong>Duración:</strong>': '<strong>Duration:</strong>',
     'semanas': 'weeks',
     '<strong>Equipo:</strong>': '<strong>Team:</strong>',
-    'consultores': 'consultants',
-    'Evaluación de Impacto': 'Impact Evaluation',
-    'Evaluación de Políticas y Programas Públicos': 'Evaluation of Public Policies and Programs',
-    '"¿Cómo demostrar que nuestra política generó un cambio real y no fue coincidencia?"': '"How do we show that our policy generated real change and wasn\'t a coincidence?"',
-    'Diseño y ejecución de evaluaciones de impacto con métodos cuasiexperimentales: diferencias en diferencias, regresión discontinua, variables instrumentales y emparejamiento estadístico. Generamos evidencia robusta sobre causalidad que resiste el escrutinio técnico y político.': 'Design and execution of impact evaluations with quasi-experimental methods: differences in differences, regression discontinuity, instrumental variables, and statistical matching. We generate robust evidence on causality that withstands technical and political scrutiny.',
-    '<li>Diseño de la estrategia de identificación causal</li>': '<li>Design of the causal identification strategy</li>',
-    '<li>Construcción de base de datos de panel</li>': '<li>Construction of panel database</li>',
-    '<li>Estimación econométrica y pruebas de robustez</li>': '<li>Econometric estimation and robustness tests</li>',
-    '<li>Análisis de heterogeneidad de efectos</li>': '<li>Heterogeneity of effects analysis</li>',
-    '<li>Validación con pares académicos</li>': '<li>Validation with academic peers</li>',
-    '<li>Informe técnico con metodología detallada</li>': '<li>Technical report with detailed methodology</li>',
-    '<li>Resumen ejecutivo para tomadores de decisión</li>': '<li>Executive summary for decision makers</li>',
-    '<li>Código reproducible (R / Stata / Python)</li>': '<li>Reproducible code (R / Stata / Python)</li>',
-    '<li>Nota de política pública (policy brief)</li>': '<li>Public policy note (policy brief)</li>',
-    '<li>DNP, Prosperidad Social</li>': '<li>DNP, Social Prosperity</li>',
-    '<li>BID, Banco Mundial, PNUD</li>': '<li>IDB, World Bank, UNDP</li>',
-    '<li>Ministerios sectoriales</li>': '<li>Sectoral ministries</li>',
-    '<li>Fundaciones con programas sociales</li>': '<li>Foundations with social programs</li>',
-    'Inteligencia Territorial': 'Territorial Intelligence',
-    'Mapeo Socioeconómico Territorial': 'Territorial Socioeconomic Mapping',
-    '"¿Cómo identificar con precisión dónde están las brechas y cómo priorizar la inversión?"': '"How do we accurately identify where the gaps are and prioritize investment?"',
-    'Análisis geoespacial de indicadores socioeconómicos a nivel sublocal: pobreza multidimensional, acceso a servicios, brechas de género, concentración de vulnerabilidades. Producimos capas de información que permiten focalizar la inversión pública con criterios técnicos defensibles.': 'Geospatial analysis of socioeconomic indicators at the sub-local level: multidimensional poverty, access to services, gender gaps, concentration of vulnerabilities. We produce layers of information that allow targeting public investment with defensible technical criteria.',
-    '<li>Integración de fuentes (DANE, SDP, SISBEN)</li>': '<li>Integration of sources (DANE, SDP, SISBEN)</li>',
-    '<li>Análisis espacial y construcción de índices</li>': '<li>Spatial analysis and index construction</li>',
-    '<li>Modelación de brechas por unidad territorial</li>': '<li>Modeling of gaps by territorial unit</li>',
-    '<li>Cruce con datos de oferta institucional</li>': '<li>Cross-referencing with institutional supply data</li>',
-    '<li>Talleres de validación con comunidad</li>': '<li>Validation workshops with the community</li>',
-    '<li>Atlas territorial digital interactivo</li>': '<li>Interactive digital territorial atlas</li>',
-    '<li>Índice de priorización territorial</li>': '<li>Territorial prioritization index</li>',
-    '<li>Informe narrativo con hallazgos clave</li>': '<li>Narrative report with key findings</li>',
-    '<li>Shapefile y datos en formato abierto</li>': '<li>Shapefile and open format data</li>',
-    '<li>Secretarías de Planeación</li>': '<li>Planning Secretariats</li>',
-    '<li>Alcaldías locales</li>': '<li>Local mayoralties</li>',
-    '<li>Fondos de Desarrollo Local</li>': '<li>Local Development Funds</li>',
-    '<li>USAID, GIZ, UE en Colombia</li>': '<li>USAID, GIZ, EU in Colombia</li>',
-    '3 consultores + geomático': '3 consultants + geomatician',
-    'Gestión de Crisis': 'Crisis Management',
-    'Estrategia de Respuesta a Crisis Institucionales': 'Institutional Crisis Response Strategy',
-    '"¿Cómo responder con rapidez y coordinación cuando todo pasa al mismo tiempo?"': '"How to respond with speed and coordination when everything happens at once?"',
-    'Diseño de protocolos, mapeo de actores, simulaciones de escenarios y planes de contingencia para entidades con responsabilidad en gestión del riesgo, seguridad ciudadana o emergencias sociales. Integramos análisis de datos en tiempo real con marcos de coordinación interinstitucional.': 'Design of protocols, actor mapping, scenario simulations, and contingency plans for entities with responsibility in risk management, citizen security, or social emergencies. We integrate real-time data analysis with inter-institutional coordination frameworks.',
-    '<li>Diagnóstico de capacidades institucionales</li>': '<li>Diagnostic of institutional capacities</li>',
-    '<li>Mapeo de riesgos y actores críticos</li>': '<li>Mapping of risks and critical actors</li>',
-    '<li>Diseño de protocolos de respuesta</li>': '<li>Design of response protocols</li>',
-    '<li>Simulacros y ejercicios de mesa</li>': '<li>Simulations and tabletop exercises</li>',
-    '<li>Plan de comunicación de crisis</li>': '<li>Crisis communication plan</li>',
-    '<li>Manual de protocolos de crisis</li>': '<li>Crisis protocols manual</li>',
-    '<li>Mapa de actores y rutas de coordinación</li>': '<li>Map of actors and coordination routes</li>',
-    '<li>Informe de vulnerabilidades institucionales</li>': '<li>Report on institutional vulnerabilities</li>',
-    '<li>Taller de simulación con equipo directivo</li>': '<li>Simulation workshop with management team</li>',
-    '<li>Secretaría de Gobierno Distrital</li>': '<li>District Government Secretariat</li>',
-    '<li>Unidad Nacional de Gestión del Riesgo</li>': '<li>National Disaster Risk Management Unit</li>',
-    '<li>Gobernaciones con zonas de conflicto</li>': '<li>Governorships with conflict zones</li>',
-    '<li>Entidades con mandato de orden público</li>': '<li>Entities with a public order mandate</li>',
-    'Formación Institucional': 'Institutional Training',
-    'Capacitación en Analítica y Política Basada en Evidencia': 'Training in Analytics and Evidence-Based Policy',
-    '"¿Cómo fortalecer las capacidades internas de mi equipo sin contratar más gente?"': '"How do I strengthen my team\'s internal capacities without hiring more people?"',
-    'Programas de formación diseñados específicamente para funcionarios públicos, líderes comunitarios y equipos técnicos. Desde talleres introductorios de análisis de datos hasta diplomados en formulación y evaluación de políticas públicas. Metodología activa, casos colombianos y entornos institucionales reales.': 'Training programs designed specifically for public officials, community leaders, and technical teams. From introductory data analysis workshops to diplomas in public policy formulation and evaluation. Active methodology, Colombian cases, and real institutional environments.',
-    '<span class="card-col-title">Módulos disponibles</span>': '<span class="card-col-title">Available Modules</span>',
-    '<li>Análisis de datos para no especialistas</li>': '<li>Data analysis for non-specialists</li>',
-    '<li>Formulación de proyectos de inversión social</li>': '<li>Formulation of social investment projects</li>',
-    '<li>Evaluación y monitoreo de programas</li>': '<li>Program evaluation and monitoring</li>',
-    '<li>Participación ciudadana y territorio</li>': '<li>Citizen participation and territory</li>',
-    '<li>Liderazgo institucional y toma de decisiones</li>': '<li>Institutional leadership and decision making</li>',
-    '<span class="card-col-title">Formatos</span>': '<span class="card-col-title">Formats</span>',
-    '<li>Taller intensivo (8–16 horas)</li>': '<li>Intensive workshop (8-16 hours)</li>',
-    '<li>Diplomado (40–80 horas)</li>': '<li>Diploma (40-80 hours)</li>',
-    '<li>Acompañamiento en cascada (ToT)</li>': '<li>Cascade coaching (ToT)</li>',
-    '<li>Modalidad virtual, presencial o híbrida</li>': '<li>Virtual, in-person, or hybrid modality</li>',
-    '<li>Secretarías y entidades distritales</li>': '<li>District secretariats and entities</li>',
-    '<li>Escuelas de gobierno (ESAP)</li>': '<li>Schools of government (ESAP)</li>',
-    '<li>ONGs con equipos territoriales</li>': '<li>NGOs with territorial teams</li>',
-    '<li>Programas de cooperación técnica</li>': '<li>Technical cooperation programs</li>',
-    '1 día – 3 meses': '1 day – 3 months',
-    '1–2 facilitadores': '1–2 facilitators',
+    'consultores analistas': 'analyst consultants',
+    
+    # L-02
+    'Inteligencia de Políticas Públicas': 'Public Policy Intelligence',
+    '"¿Cómo diseñar y evaluar intervenciones públicas con impacto medible en el territorio?"': '"How to design and evaluate public interventions with measurable impact in the territory?"',
+    'Diagnóstico socioeconómico granular, diseño de políticas basadas en evidencia y evaluación rigurosa de impacto. Combinamos métodos econométricos aplicados con una lectura territorial profunda para identificar brechas de desarrollo, focalizar subsidios y demostrar de manera cuantitativa la efectividad de los programas públicos.': 'Granular socioeconomic diagnostic, evidence-based policy design, and rigorous impact evaluation. We combine applied econometric methods with a deep territorial reading to identify development gaps, target subsidies, and quantitatively demonstrate the effectiveness of public programs.',
+    '<li>Evaluación de impacto cuasiexperimental de programas sociales</li>': '<li>Quasi-experimental impact evaluation of social programs</li>',
+    '<li>Diagnósticos granulares de vulnerabilidad socioeconómica</li>': '<li>Granular diagnostics of socioeconomic vulnerability</li>',
+    '<li>Definición de KPIs y estructuración de marcos lógicos</li>': '<li>Definition of KPIs and structuring of logical frameworks</li>',
+    '<li>Análisis de brechas de capacidad institucional y territorio</li>': '<li>Analysis of institutional capacity gaps and territory</li>',
+    '<li>Levantamiento y limpieza de datos en territorio (surveys)</li>': '<li>Collection and cleaning of data in the field (surveys)</li>',
+    '<li>Informe de evaluación de impacto para organismos de control</li>': '<li>Impact evaluation report for oversight bodies</li>',
+    '<li>Índice digital de priorización y focalización territorial</li>': '<li>Digital index of territorial prioritization and targeting</li>',
+    '<li>Fichas metodológicas y matrices de indicadores de impacto</li>': '<li>Methodological sheets and matrices of impact indicators</li>',
+    '<li>Policy Briefs ejecutivos con recomendaciones de política</li>': '<li>Executive Policy Briefs with policy recommendations</li>',
+    '<li>Secretarías de Planeación, Desarrollo Social y Hacienda</li>': '<li>Secretariats of Planning, Social Development, and Finance</li>',
+    '<li>Agencias de planeación del nivel nacional (DNP) y ministerios</li>': '<li>National planning agencies (DNP) and ministries</li>',
+    '<li>Organismos multilaterales (BID, Banco Mundial, PNUD)</li>': '<li>Multilateral organizations (IDB, World Bank, UNDP)</li>',
+    '<li>Fundaciones y ONGs ejecutoras de programas sociales</li>': '<li>Foundations and NGOs executing social programs</li>',
+    'consultores especializados': 'specialized consultants',
+    
+    # L-03
+    'Inteligencia Artificial Gubernamental': 'Government AI',
+    '"¿Cómo automatizar procesos, analizar normativas y gestionar información masiva en el sector público?"': '"How to automate processes, analyze regulations, and manage massive information in the public sector?"',
+    'Implementación práctica de Inteligencia Artificial para el fortalecimiento de la gestión gubernamental. Desarrollamos asistentes de IA normativa, herramientas de IA documental, asistentes inteligentes para planes de desarrollo y sistemas de automatización de reportes que multiplican la capacidad técnica y operativa de los equipos del Estado.': 'Practical implementation of Artificial Intelligence to strengthen government management. We develop regulatory AI assistants, document AI tools, smart assistants for development plans, and report automation systems that multiply the technical and operational capacity of State teams.',
+    '<li>Fine-tuning de Modelos de Lenguaje (LLMs) con datos normativos</li>': '<li>Fine-tuning of Language Models (LLMs) with regulatory data</li>',
+    '<li>Implementación de sistemas RAG para búsqueda de gacetas jurídicas</li>': '<li>Implementation of RAG systems for legal gazette search</li>',
+    '<li>Extracción automatizada de información en documentos públicos</li>': '<li>Automated extraction of information from public documents</li>',
+    '<li>Formulación de asistentes de IA para proyectos de inversión</li>': '<li>Formulation of AI assistants for investment projects</li>',
+    '<li>Automatización de flujos de trabajo e informes de control</li>': '<li>Automation of workflows and control reports</li>',
+    '<li>Aplicativo Web (Chatbot) de consulta y análisis normativo</li>': '<li>Web Application (Chatbot) for consultation and regulatory analysis</li>',
+    '<li>Pipeline automatizado de procesamiento y extracción documental</li>': '<li>Automated pipeline for processing and document extraction</li>',
+    '<li>Dashboards interactivos con alertas de seguimiento automáticas</li>': '<li>Interactive dashboards with automatic tracking alerts</li>',
+    '<li>Guía de gobernanza de datos y principios de IA ética</li>': '<li>Data governance guide and ethical AI principles</li>',
+    '<li>Oficinas jurídicas y secretarías generales del sector público</li>': '<li>Legal offices and general secretariats of the public sector</li>',
+    '<li>Secretarías de Planeación municipal, distrital o departamental</li>': '<li>Municipal, district, or departmental Planning Secretariats</li>',
+    '<li>Unidades de contratación del Estado y control interno</li>': '<li>State contracting and internal control units</li>',
+    '<li>Entidades descentralizadas con alto volumen de peticiones y trámites</li>': '<li>Decentralized entities with a high volume of requests and procedures</li>',
+    '1 consultor senior + 1 ingeniero de datos/IA': '1 senior consultant + 1 data/AI engineer',
+    
+    # L-04
+    'Inteligencia de Decisiones': 'Decision Intelligence',
+    '"¿Cómo tomar decisiones óptimas bajo altos niveles de incertidumbre y riesgo?"': '"How to make optimal decisions under high levels of uncertainty and risk?"',
+    'Diseñamos modelos matemáticos y simulaciones para anticipar los efectos de decisiones críticas, optimizar la asignación de recursos limitados, analizar riesgos financieros/operativos y priorizar intervenciones territoriales. Transformamos modelos analíticos descriptivos en rutas claras de recomendación y acción.': 'We design mathematical models and simulations to anticipate the effects of critical decisions, optimize the allocation of limited resources, analyze financial/operational risks, and prioritize territorial interventions. We transform descriptive analytical models into clear recommendation and action paths.',
+    '<li>Modelación de escenarios de choques socioeconómicos y financieros</li>': '<li>Modeling scenarios of socioeconomic and financial shocks</li>',
+    '<li>Modelos de optimización matemática para distribución presupuestal</li>': '<li>Mathematical optimization models for budget distribution</li>',
+    '<li>Evaluación y cuantificación de riesgos de proyectos estratégicos</li>': '<li>Evaluation and quantification of risks of strategic projects</li>',
+    '<li>Análisis de sensibilidad y prospectiva de largo plazo</li>': '<li>Sensitivity analysis and long-term foresight</li>',
+    '<li>Talleres ejecutivos de simulación de crisis y juegos de rol</li>': '<li>Executive workshops on crisis simulation and role-playing</li>',
+    '<li>Decision Briefs orientados a gabinetes y juntas directivas</li>': '<li>Decision Briefs oriented to cabinets and boards of directors</li>',
+    '<li>Simuladores interactivos de impacto presupuestal y social</li>': '<li>Interactive budget and social impact simulators</li>',
+    '<li>Matriz analítica de riesgos con modelación de probabilidad</li>': '<li>Analytical risk matrix with probability modeling</li>',
+    '<li>Ruta crítica de recomendaciones priorizadas con restricciones</li>': '<li>Critical path of prioritized recommendations with constraints</li>',
+    '<li>Alcaldes, Gobernadores y equipos directivos centrales</li>': '<li>Mayors, Governors, and central management teams</li>',
+    '<li>Directores de empresas de servicios públicos y fondos de inversión</li>': '<li>Directors of public utility companies and investment funds</li>',
+    '<li>Comités de respuesta rápida ante emergencias y shocks</li>': '<li>Rapid response committees for emergencies and shocks</li>',
+    '<li>Gerencias de megaproyectos de infraestructura y APP</li>': '<li>Management of infrastructure megaprojects and PPPs</li>',
+    '2 consultores de decisión': '2 decision consultants',
+    
+    # Pricing & Clients
     'Modalidades de contratación': 'Contracting Modalities',
     'Estructura de Precios': 'Pricing Structure',
-    '<span class="price-mode">Modalidad A</span>': '<span class="price-mode">Modality A</span>',
+    'Modalidad A': 'Modality A',
     'Proyecto por Contrato': 'Project by Contract',
     '<li>Alcance y entregables definidos</li>': '<li>Defined scope and deliverables</li>',
     '<li>Pago por hitos (30/40/30)</li>': '<li>Payment by milestones (30/40/30)</li>',
     '<li>Ideal para diagnósticos y evaluaciones</li>': '<li>Ideal for diagnostics and evaluations</li>',
     '<li>Informe final + presentación ejecutiva</li>': '<li>Final report + executive presentation</li>',
-    'Recomendado': 'Recommended',
-    '<span class="price-mode">Modalidad B</span>': '<span class="price-mode">Modality B</span>',
+    'Modalidad B': 'Modality B',
     'Retainer Mensual': 'Monthly Retainer',
     '<li>Acompañamiento técnico continuo</li>': '<li>Continuous technical support</li>',
     '<li>Disponibilidad garantizada</li>': '<li>Guaranteed availability</li>',
     '<li>Ideal para secretarías en gestión activa</li>': '<li>Ideal for secretariats in active management</li>',
     '<li>Revisiones y alertas periódicas incluidas</li>': '<li>Periodic reviews and alerts included</li>',
-    '<span class="price-mode">Modalidad C</span>': '<span class="price-mode">Modality C</span>',
+    'Modalidad C': 'Modality C',
     'Cooperación Internacional': 'International Cooperation',
     '<li>Postulación a convocatorias abiertas</li>': '<li>Application to open calls</li>',
     '<li>Consorcios con universidades o ONGs</li>': '<li>Consortiums with universities or NGOs</li>',
@@ -171,53 +155,23 @@ translations = {
     '<li>USAID Colombia</li>': '<li>USAID Colombia</li>',
     '<li>Banco Interamericano de Desarrollo</li>': '<li>Inter-American Development Bank</li>',
     '<li>Fundación Hanns Seidel</li>': '<li>Hanns Seidel Foundation</li>',
-    'Consultoría en Políticas Públicas y Analítica Aplicada': 'Consulting in Public Policy and Applied Analytics',
+    'Soluciones Gubernamentales · Consultoría en Políticas Públicas y Analítica Aplicada': 'Government Solutions · Consulting in Public Policy and Applied Analytics',
 }
 
 for k, v in translations.items():
     content = content.replace(k, v)
 
-# Add Language Switcher HTML to the header
-header_start = content.find('<header>')
-if header_start != -1:
-    lang_html = """
-  <div class="lang-switch-portfolio">
-    <a href="portfolio-government-solutions.html" class="lang-btn">ES</a>
-    <span class="lang-sep">|</span>
-    <a href="portfolio-government-solutions-en.html" class="lang-btn active">EN</a>
-  </div>
-"""
-    content = content.replace('<header>', '<header>' + lang_html)
-
-# Add Language Switcher CSS
-css_start = content.find('  header {')
-if css_start != -1:
-    css_addition = """
-  .lang-switch-portfolio {
-    position: absolute;
-    top: 40px;
-    right: 60px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    z-index: 10;
-  }
-  .lang-switch-portfolio a {
-    text-decoration: none;
-    color: rgba(255,255,255,0.6);
-  }
-  .lang-switch-portfolio a.active {
-    color: var(--paper);
-  }
-  .lang-switch-portfolio a:hover {
-    color: var(--paper);
-  }
-  .lang-switch-portfolio .lang-sep {
-    margin: 0 8px;
-    color: rgba(255,255,255,0.3);
-  }
-"""
-    content = content.replace('  header {', css_addition + '  header {')
+# Fix switcher active states
+content = content.replace(
+    '<a href="portfolio-government-solutions.html" class="lang-btn active">ES</a>',
+    '<a href="portfolio-government-solutions.html" class="lang-btn">ES</a>'
+)
+content = content.replace(
+    '<a href="portfolio-government-solutions-en.html" class="lang-btn">EN</a>',
+    '<a href="portfolio-government-solutions-en.html" class="lang-btn active">EN</a>'
+)
 
 with open(out_path, "w", encoding="utf-8") as f:
     f.write(content)
+
+print("English portfolio compiled successfully!")

@@ -1,57 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" role="img" aria-labelledby="title desc">
-  <title id="title">ORIÓN Framework</title>
-  <desc id="desc">Map of the ORIÓN framework with the stages observe, interpret, project, decide, and execute.</desc>
+  <title id="title">ORIÓN Intelligence Framework</title>
+  <desc id="desc">Constellation of the ORION Intelligence Framework methodology with 7 connected stages.</desc>
   <rect width="1080" height="720" fill="#ffffff" />
   <rect x="58" y="46" width="964" height="628" fill="#ffffff" stroke="#eef1f4" stroke-width="2" />
 
   <text
     x="540"
-    y="116"
+    y="100"
     text-anchor="middle"
     fill="#0f1e2e"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="34"
-    font-weight="700"
-    letter-spacing="6"
-  >
-    ORIÓN Framework
-  </text>
-
-  <g fill="none" stroke="#0f1e2e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M365 242 L480 190 L566 284 L695 296" />
-    <path d="M365 242 L455 312 L566 284" />
-    <path d="M480 190 L560 178 L625 234 L566 284" />
-    <path d="M566 284 L612 396" />
-    <path d="M566 284 L520 508 L352 508" />
-    <path d="M520 508 L520 598" />
-    <path d="M520 508 L612 396" />
-  </g>
-
-  <g>
-    <circle cx="365" cy="242" r="14" fill="#0f1e2e" />
-    <circle cx="480" cy="190" r="14" fill="#0f1e2e" />
-    <circle cx="560" cy="178" r="14" fill="#0f1e2e" />
-    <circle cx="455" cy="312" r="14" fill="#0f1e2e" />
-    <circle cx="566" cy="284" r="14" fill="#0f1e2e" />
-    <circle cx="695" cy="296" r="14" fill="#0f1e2e" />
-    <circle cx="520" cy="508" r="14" fill="#0f1e2e" />
-    <circle cx="352" cy="508" r="14" fill="#0f1e2e" />
-    <circle cx="520" cy="598" r="14" fill="#0f1e2e" />
-    <circle cx="612" cy="396" r="16" fill="#c8a96a" />
-    <circle cx="625" cy="234" r="14" fill="#c8a96a" />
-  </g>
-
-  <g
-    fill="#0f1e2e"
-    font-family="Inter, Arial, sans-serif"
-    font-size="22"
+    font-size="30"
     font-weight="700"
     letter-spacing="5"
   >
-    <text x="185" y="291">INTERPRET</text>
-    <text x="714" y="281">PROJECT</text>
-    <text x="215" y="461">OBSERVE</text>
-    <text x="604" y="449" fill="#c8a96a">DECIDE</text>
-    <text x="462" y="660">EXECUTE</text>
+    ORION INTELLIGENCE FRAMEWORK
+  </text>
+
+  <!-- Constellation Connections -->
+  <g fill="none" stroke="#0f1e2e" stroke-width="3" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <!-- Outer borders of the hourglass -->
+    <path d="M280 180 L800 180" /> <!-- shoulders -->
+    <path d="M300 540 L780 540" /> <!-- knees -->
+    <path d="M280 180 L300 540" /> <!-- left outer -->
+    <path d="M800 180 L780 540" /> <!-- right outer -->
+    
+    <!-- Inner connections to the belt -->
+    <path d="M280 180 L440 360" /> <!-- Betelgeuse to Mintaka -->
+    <path d="M800 180 L640 360" /> <!-- Bellatrix to Alnitak -->
+    <path d="M300 540 L440 360" /> <!-- Saiph to Mintaka -->
+    <path d="M780 540 L640 360" /> <!-- Rigel to Alnitak -->
+    
+    <!-- The Belt -->
+    <path d="M440 360 L540 360 L640 360" stroke="#0f1e2e" stroke-width="4" stroke-dasharray="none" />
+  </g>
+
+  <!-- Stars (Nodes) -->
+  <g>
+    <!-- 1. Discovery -->
+    <circle cx="280" cy="180" r="12" fill="#0f1e2e" />
+    <circle cx="280" cy="180" r="18" fill="none" stroke="#0f1e2e" stroke-width="1.5" opacity="0.4" />
+    
+    <!-- 2. Integration -->
+    <circle cx="800" cy="180" r="12" fill="#0f1e2e" />
+    <circle cx="800" cy="180" r="18" fill="none" stroke="#0f1e2e" stroke-width="1.5" opacity="0.4" />
+    
+    <!-- 3. Modeling -->
+    <circle cx="440" cy="360" r="12" fill="#0f1e2e" />
+    <circle cx="440" cy="360" r="18" fill="none" stroke="#0f1e2e" stroke-width="1.5" opacity="0.4" />
+    
+    <!-- 4. Decision Intelligence (Highlight Center Belt) -->
+    <circle cx="540" cy="360" r="16" fill="#c8a96a" />
+    <circle cx="540" cy="360" r="24" fill="none" stroke="#c8a96a" stroke-width="2" opacity="0.6" />
+    
+    <!-- 5. Policy Design -->
+    <circle cx="640" cy="360" r="12" fill="#0f1e2e" />
+    <circle cx="640" cy="360" r="18" fill="none" stroke="#0f1e2e" stroke-width="1.5" opacity="0.4" />
+    
+    <!-- 6. AI & Automation -->
+    <circle cx="300" cy="540" r="12" fill="#0f1e2e" />
+    <circle cx="300" cy="540" r="18" fill="none" stroke="#0f1e2e" stroke-width="1.5" opacity="0.4" />
+    
+    <!-- 7. Monitoring & Learning -->
+    <circle cx="780" cy="540" r="12" fill="#0f1e2e" />
+    <circle cx="780" cy="540" r="18" fill="none" stroke="#0f1e2e" stroke-width="1.5" opacity="0.4" />
+  </g>
+
+  <!-- Labels -->
+  <g fill="#0f1e2e" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">
+    <text x="280" y="145" text-anchor="middle">1. INTELLIGENCE DISCOVERY</text>
+    <text x="800" y="145" text-anchor="middle">2. DATA INTEGRATION</text>
+    <text x="440" y="325" text-anchor="middle">3. ANALYTICAL MODELING</text>
+    <text x="540" y="405" fill="#c8a96a" text-anchor="middle">4. DECISION INTELLIGENCE</text>
+    <text x="640" y="325" text-anchor="middle">5. POLICY DESIGN</text>
+    <text x="300" y="585" text-anchor="middle">6. AI &amp; AUTOMATION</text>
+    <text x="780" y="585" text-anchor="middle">7. MONITORING &amp; LEARNING</text>
   </g>
 </svg>

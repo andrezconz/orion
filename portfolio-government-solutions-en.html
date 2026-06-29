@@ -29,8 +29,6 @@
     overflow-x: hidden;
   }
 
-  /* HEADER */
-
   .lang-switch-portfolio {
     position: absolute;
     top: 40px;
@@ -54,6 +52,8 @@
     margin: 0 8px;
     color: rgba(255,255,255,0.3);
   }
+
+  /* HEADER */
   header {
     background: var(--accent);
     color: var(--paper);
@@ -227,6 +227,50 @@
     padding: 80px 60px;
     max-width: 1100px;
     margin: 0 auto;
+  }
+
+  /* FOUR AGES SECTION */
+  .four-ages-section {
+    padding: 80px 60px;
+    background: var(--paper);
+  }
+  .four-ages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .age-item {
+    background: white;
+    border: 1px solid var(--rule);
+    padding: 24px;
+    border-radius: 2px;
+    text-align: left;
+  }
+  .age-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .age-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 8px;
+  }
+  .age-desc {
+    font-size: 14px;
+    color: var(--slate);
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .four-ages-grid { grid-template-columns: 1fr; }
   }
 
   .section-header {
@@ -624,14 +668,13 @@
     <span class="lang-sep">|</span>
     <a href="portfolio-government-solutions-en.html" class="lang-btn active">EN</a>
   </div>
-
-  <p class="header-eyebrow">Service Portfolio · 2026</p>
-  <h1>Government<br><span>Solutions</span></h1>
-  <p class="header-sub">Applied analytics and strategy for the public sector. We transform territorial data into evidence-based policy decisions.</p>
+  <p class="header-eyebrow">ORION INTELLIGENCE · SERVICE PORTFOLIO · 2026</p>
+  <h1>Today's public decisions<br>demand <span>Decision Intelligence</span></h1>
+  <p class="header-sub">Orion Intelligence transforms complex data into strategic decisions through advanced analytics, artificial intelligence, and evidence-based public policy design. We accompany the public sector and development organizations in the transition towards real technical autonomy.</p>
   <div class="header-meta">
     <div class="meta-item">
       <span class="meta-label">Specialty</span>
-      <span class="meta-value">Public Policy & Data</span>
+      <span class="meta-value">Decision Intelligence</span>
     </div>
     <div class="meta-item">
       <span class="meta-label">Market</span>
@@ -644,229 +687,210 @@
   </div>
 </header>
 
+<div class="four-ages-section">
+  <div class="four-ages-grid">
+    <div class="age-item">
+      <div class="age-number">01</div>
+      <div class="age-title">First Age – The Earth</div>
+      <div class="age-desc">Community and belonging as a central value.</div>
+    </div>
+    <div class="age-item">
+      <div class="age-number">02</div>
+      <div class="age-title">Second Age – Labor</div>
+      <div class="age-desc">Institutional order and State expansion.</div>
+    </div>
+    <div class="age-item">
+      <div class="age-number">03</div>
+      <div class="age-title">Third Age – Capital</div>
+      <div class="age-desc">Economic growth as a measure of success.</div>
+    </div>
+    <div class="age-item">
+      <div class="age-number">04</div>
+      <div class="age-title">Fourth Age – Decisions</div>
+      <div class="age-desc">Decision Intelligence, evidence, and institutional well-being.</div>
+    </div>
+  </div>
+</div>
 
 <!-- SERVICES -->
 <section class="services-section">
   <div class="section-header">
     <span class="section-number">01</span>
     <div class="section-title-block">
-      <span class="section-eyebrow">Technical data sheets</span>
+      <span class="section-eyebrow">Technical Data Sheets</span>
       <h2 class="section-title">Service Lines</h2>
     </div>
   </div>
 
-  <!-- SERVICIO 1 -->
-  <div class="service-card" id="s-01">
-    <span class="card-number">S-01</span>
-    <span class="card-tag">Territorial Analytics</span>
-    <h3 class="card-title">Institutional Effectiveness Diagnostic</h3>
-    <p class="card-question">"How do we know if the services we provide are really working?"</p>
-    <p class="card-desc">Rigorous measurement of results of public programs and services using a mixed methodology. We combine quantitative analysis of indicators with qualitative evaluation of processes to offer a comprehensive, actionable diagnostic, ready to present to decision-makers and oversight bodies.</p>
+  <!-- LÍNEA 1 -->
+  <div class="service-card" id="l-01">
+    <span class="card-number">L-01</span>
+    <span class="card-tag">Political Intelligence</span>
+    <h3 class="card-title">Political Intelligence</h3>
+    <p class="card-question">"How to anticipate power dynamics, electoral incentives, and governance risks?"</p>
+    <p class="card-desc">Advanced analysis of electoral behavior, coalition stability, political risk, and public opinion. We help governments and campaigns map the political territory, interpret the incentives of local actors, and identify signals of polarization and shifts in the electorate to make evidence-based strategic communication and positioning decisions.</p>
     <div class="card-grid">
       <div>
         <span class="card-col-title">Activities</span>
         <ul class="card-list">
-          <li>Collection and cleaning of institutional data</li>
-          <li>Descriptive and inferential statistical analysis</li>
-          <li>Interviews with key actors and focus groups</li>
-          <li>Benchmarking against comparable cases</li>
-          <li>Formulation of prioritized recommendations</li>
+          <li>Analysis of electoral behavior at the polling station and table level</li>
+          <li>Modeling the stability of parties and legislative coalitions</li>
+          <li>Quali-quantitative monitoring of polarization and public opinion</li>
+          <li>Continuous assessment of political risk and territorial governance</li>
+          <li>Mapping incentives and relationships of key local actors</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Deliverables</span>
         <ul class="card-list">
-          <li>Executive report (max. 30 pages)</li>
-          <li>Interactive dashboard of indicators</li>
-          <li>Presentation for directors</li>
-          <li>Improvement plan with roadmap</li>
+          <li>Dynamic dashboards of historical and real-time electoral analysis</li>
+          <li>Interactive mapping of actors and territorial influence</li>
+          <li>Periodic reports (briefings) on governance risk</li>
+          <li>Simulation models of political coalition scenarios</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Typical Clients</span>
         <ul class="card-list">
-          <li>District and municipal secretariats</li>
-          <li>Decentralized entities</li>
-          <li>Cooperation agencies</li>
-          <li>Comptrollers and oversight bodies</li>
+          <li>National and territorial electoral campaigns</li>
+          <li>Government Secretariats and political affairs offices</li>
+          <li>Think tanks and national strategic consulting firms</li>
+          <li>Sectoral associations and NGOs interested in current affairs</li>
         </ul>
       </div>
     </div>
     <div class="card-footer">
-      <p class="card-deliverable"><strong>Duration:</strong> 6–12 weeks · <strong>Team:</strong> 2–3 consultants</p>
-      <span class="card-ticket">$20M – $60M COP</span>
+      <p class="card-deliverable"><strong>Duration:</strong> 4–8 weeks · <strong>Team:</strong> 2 analyst consultants</p>
+      <span class="card-ticket">$15M – $45M COP</span>
     </div>
   </div>
 
-  <!-- SERVICIO 2 -->
-  <div class="service-card" id="s-02">
-    <span class="card-number">S-02</span>
-    <span class="card-tag">Impact Evaluation</span>
-    <h3 class="card-title">Evaluation of Public Policies and Programs</h3>
-    <p class="card-question">"How do we show that our policy generated real change and wasn't a coincidence?"</p>
-    <p class="card-desc">Design and execution of impact evaluations with quasi-experimental methods: differences in differences, regression discontinuity, instrumental variables, and statistical matching. We generate robust evidence on causality that withstands technical and political scrutiny.</p>
+  <!-- LÍNEA 2 -->
+  <div class="service-card" id="l-02">
+    <span class="card-number">L-02</span>
+    <span class="card-tag">Public Policy Intelligence</span>
+    <h3 class="card-title">Public Policy Intelligence</h3>
+    <p class="card-question">"How to design and evaluate public interventions with measurable impact in the territory?"</p>
+    <p class="card-desc">Granular socioeconomic diagnostic, evidence-based policy design, and rigorous impact evaluation. We combine applied econometric methods with a deep territorial reading to identify development gaps, target subsidies, and quantitatively demonstrate the effectiveness of public programs.</p>
     <div class="card-grid">
       <div>
         <span class="card-col-title">Activities</span>
         <ul class="card-list">
-          <li>Design of the causal identification strategy</li>
-          <li>Construction of panel database</li>
-          <li>Econometric estimation and robustness tests</li>
-          <li>Heterogeneity of effects analysis</li>
-          <li>Validation with academic peers</li>
+          <li>Quasi-experimental impact evaluation of social programs</li>
+          <li>Granular diagnostics of socioeconomic vulnerability</li>
+          <li>Definition of KPIs and structuring of logical frameworks</li>
+          <li>Analysis of institutional capacity gaps and territory</li>
+          <li>Collection and cleaning of data in the field (surveys)</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Deliverables</span>
         <ul class="card-list">
-          <li>Technical report with detailed methodology</li>
-          <li>Executive summary for decision makers</li>
-          <li>Reproducible code (R / Stata / Python)</li>
-          <li>Public policy note (policy brief)</li>
+          <li>Impact evaluation report for oversight bodies</li>
+          <li>Digital index of territorial prioritization and targeting</li>
+          <li>Methodological sheets and matrices of impact indicators</li>
+          <li>Executive Policy Briefs with policy recommendations</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Typical Clients</span>
         <ul class="card-list">
-          <li>DNP, Social Prosperity</li>
-          <li>IDB, World Bank, UNDP</li>
-          <li>Sectoral ministries</li>
-          <li>Foundations with social programs</li>
+          <li>Secretariats of Planning, Social Development, and Finance</li>
+          <li>National planning agencies (DNP) and ministries</li>
+          <li>Multilateral organizations (IDB, World Bank, UNDP)</li>
+          <li>Foundations and NGOs executing social programs</li>
         </ul>
       </div>
     </div>
     <div class="card-footer">
-      <p class="card-deliverable"><strong>Duration:</strong> 8–16 weeks · <strong>Team:</strong> 2–4 consultants</p>
-      <span class="card-ticket">$40M – $120M COP</span>
+      <p class="card-deliverable"><strong>Duration:</strong> 8–16 weeks · <strong>Team:</strong> 3 specialized consultants</p>
+      <span class="card-ticket">$35M – $90M COP</span>
     </div>
   </div>
 
-  <!-- SERVICIO 3 -->
-  <div class="service-card" id="s-03">
-    <span class="card-number">S-03</span>
-    <span class="card-tag">Territorial Intelligence</span>
-    <h3 class="card-title">Territorial Socioeconomic Mapping</h3>
-    <p class="card-question">"How do we accurately identify where the gaps are and prioritize investment?"</p>
-    <p class="card-desc">Geospatial analysis of socioeconomic indicators at the sub-local level: multidimensional poverty, access to services, gender gaps, concentration of vulnerabilities. We produce layers of information that allow targeting public investment with defensible technical criteria.</p>
+  <!-- LÍNEA 3 -->
+  <div class="service-card" id="l-03">
+    <span class="card-number">L-03</span>
+    <span class="card-tag">Government AI</span>
+    <h3 class="card-title">Government AI</h3>
+    <p class="card-question">"How to automate processes, analyze regulations, and manage massive information in the public sector?"</p>
+    <p class="card-desc">Practical implementation of Artificial Intelligence to strengthen government management. We develop regulatory AI assistants, document AI tools, smart assistants for development plans, and report automation systems that multiply the technical and operational capacity of State teams.</p>
     <div class="card-grid">
       <div>
         <span class="card-col-title">Activities</span>
         <ul class="card-list">
-          <li>Integration of sources (DANE, SDP, SISBEN)</li>
-          <li>Spatial analysis and index construction</li>
-          <li>Modeling of gaps by territorial unit</li>
-          <li>Cross-referencing with institutional supply data</li>
-          <li>Validation workshops with the community</li>
+          <li>Fine-tuning of Language Models (LLMs) with regulatory data</li>
+          <li>Implementation of RAG systems for legal gazette search</li>
+          <li>Automated extraction of information from public documents</li>
+          <li>Formulation of AI assistants for investment projects</li>
+          <li>Automation of workflows and control reports</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Deliverables</span>
         <ul class="card-list">
-          <li>Interactive digital territorial atlas</li>
-          <li>Territorial prioritization index</li>
-          <li>Narrative report with key findings</li>
-          <li>Shapefile and open format data</li>
+          <li>Web Application (Chatbot) for consultation and regulatory analysis</li>
+          <li>Automated pipeline for processing and document extraction</li>
+          <li>Interactive dashboards with automatic tracking alerts</li>
+          <li>Data governance guide and ethical AI principles</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Typical Clients</span>
         <ul class="card-list">
-          <li>Planning Secretariats</li>
-          <li>Local mayoralties</li>
-          <li>Local Development Funds</li>
-          <li>USAID, GIZ, EU in Colombia</li>
+          <li>Legal offices and general secretariats of the public sector</li>
+          <li>Municipal, district, or departmental Planning Secretariats</li>
+          <li>State contracting and internal control units</li>
+          <li>Decentralized entities with a high volume of requests and procedures</li>
         </ul>
       </div>
     </div>
     <div class="card-footer">
-      <p class="card-deliverable"><strong>Duration:</strong> 8–14 weeks · <strong>Team:</strong> 3 consultants + geomático</p>
-      <span class="card-ticket">$30M – $80M COP</span>
+      <p class="card-deliverable"><strong>Duration:</strong> 6–12 weeks · <strong>Team:</strong> 1 senior consultant + 1 data/AI engineer</p>
+      <span class="card-ticket">$30M – $75M COP</span>
     </div>
   </div>
 
-  <!-- SERVICIO 4 -->
-  <div class="service-card" id="s-04">
-    <span class="card-number">S-04</span>
-    <span class="card-tag">Crisis Management</span>
-    <h3 class="card-title">Institutional Crisis Response Strategy</h3>
-    <p class="card-question">"How to respond with speed and coordination when everything happens at once?"</p>
-    <p class="card-desc">Design of protocols, actor mapping, scenario simulations, and contingency plans for entities with responsibility in risk management, citizen security, or social emergencies. We integrate real-time data analysis with inter-institutional coordination frameworks.</p>
+  <!-- LÍNEA 4 -->
+  <div class="service-card" id="l-04">
+    <span class="card-number">L-04</span>
+    <span class="card-tag">Decision Intelligence</span>
+    <h3 class="card-title">Decision Intelligence</h3>
+    <p class="card-question">"How to make optimal decisions under high levels of uncertainty and risk?"</p>
+    <p class="card-desc">We design mathematical models and simulations to anticipate the effects of critical decisions, optimize the allocation of limited resources, analyze financial/operational risks, and prioritize territorial interventions. We transform descriptive analytical models into clear recommendation and action paths.</p>
     <div class="card-grid">
       <div>
         <span class="card-col-title">Activities</span>
         <ul class="card-list">
-          <li>Diagnostic of institutional capacities</li>
-          <li>Mapping of risks and critical actors</li>
-          <li>Design of response protocols</li>
-          <li>Simulations and tabletop exercises</li>
-          <li>Crisis communication plan</li>
+          <li>Modeling scenarios of socioeconomic and financial shocks</li>
+          <li>Mathematical optimization models for budget distribution</li>
+          <li>Evaluation and quantification of risks of strategic projects</li>
+          <li>Sensitivity analysis and long-term foresight</li>
+          <li>Executive workshops on crisis simulation and role-playing</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Deliverables</span>
         <ul class="card-list">
-          <li>Crisis protocols manual</li>
-          <li>Map of actors and coordination routes</li>
-          <li>Report on institutional vulnerabilities</li>
-          <li>Simulation workshop with management team</li>
+          <li>Decision Briefs oriented to cabinets and boards of directors</li>
+          <li>Interactive budget and social impact simulators</li>
+          <li>Analytical risk matrix with probability modeling</li>
+          <li>Critical path of prioritized recommendations with constraints</li>
         </ul>
       </div>
       <div>
         <span class="card-col-title">Typical Clients</span>
         <ul class="card-list">
-          <li>District Government Secretariat</li>
-          <li>National Disaster Risk Management Unit</li>
-          <li>Governorships with conflict zones</li>
-          <li>Entities with a public order mandate</li>
+          <li>Mayors, Governors, and central management teams</li>
+          <li>Directors of public utility companies and investment funds</li>
+          <li>Rapid response committees for emergencies and shocks</li>
+          <li>Management of infrastructure megaprojects and PPPs</li>
         </ul>
       </div>
     </div>
     <div class="card-footer">
-      <p class="card-deliverable"><strong>Duration:</strong> 6–10 weeks · <strong>Team:</strong> 2 consultants</p>
-      <span class="card-ticket">$15M – $50M COP</span>
-    </div>
-  </div>
-
-  <!-- SERVICIO 5 -->
-  <div class="service-card" id="s-05">
-    <span class="card-number">S-05</span>
-    <span class="card-tag">Institutional Training</span>
-    <h3 class="card-title">Training in Analytics and Evidence-Based Policy</h3>
-    <p class="card-question">"How do I strengthen my team's internal capacities without hiring more people?"</p>
-    <p class="card-desc">Training programs designed specifically for public officials, community leaders, and technical teams. From introductory data analysis workshops to diplomas in public policy formulation and evaluation. Active methodology, Colombian cases, and real institutional environments.</p>
-    <div class="card-grid">
-      <div>
-        <span class="card-col-title">Available Modules</span>
-        <ul class="card-list">
-          <li>Data analysis for non-specialists</li>
-          <li>Formulation of social investment projects</li>
-          <li>Program evaluation and monitoring</li>
-          <li>Citizen participation and territory</li>
-          <li>Institutional leadership and decision making</li>
-        </ul>
-      </div>
-      <div>
-        <span class="card-col-title">Formats</span>
-        <ul class="card-list">
-          <li>Intensive workshop (8-16 hours)</li>
-          <li>Diploma (40-80 hours)</li>
-          <li>Cascade coaching (ToT)</li>
-          <li>Modality virtual, presencial o híbrida</li>
-        </ul>
-      </div>
-      <div>
-        <span class="card-col-title">Typical Clients</span>
-        <ul class="card-list">
-          <li>District secretariats and entities</li>
-          <li>Schools of government (ESAP)</li>
-          <li>NGOs with territorial teams</li>
-          <li>Technical cooperation programs</li>
-        </ul>
-      </div>
-    </div>
-    <div class="card-footer">
-      <p class="card-deliverable"><strong>Duration:</strong> 1 day – 3 months · <strong>Team:</strong> 1–2 facilitators</p>
-      <span class="card-ticket">$3M – $25M COP</span>
+      <p class="card-deliverable"><strong>Duration:</strong> 6–10 weeks · <strong>Team:</strong> 2 decision consultants</p>
+      <span class="card-ticket">$25M – $65M COP</span>
     </div>
   </div>
 
@@ -890,7 +914,7 @@
         </ul>
       </div>
       <div class="price-card featured">
-        <span class="price-badge">Recommended</span>
+        <span class="price-badge">Recomendado</span>
         <span class="price-mode">Modality B</span>
         <h3 class="price-title">Monthly Retainer</h3>
         <span class="price-range">$5M – $15M COP/mes</span>
