@@ -9,6 +9,7 @@ with open(file_path, "r", encoding="utf-8") as f:
 # Translations map
 translations = {
     '<html lang="es">': '<html lang="en">',
+    '<a href="index.html" style="display:inline-block;margin-bottom:24px;">': '<a href="index-en.html" style="display:inline-block;margin-bottom:24px;">',
     'Soluciones Gubernamentales — Portafolio de Servicios': 'Government Solutions — Service Portfolio',
     'ORION INTELLIGENCE · PORTAFOLIO DE SERVICIOS · 2026': 'ORION INTELLIGENCE · SERVICE PORTFOLIO · 2026',
     'Las decisiones públicas de hoy<br>exigen <span>Decision Intelligence</span>': 'Today\'s public decisions<br>demand <span>Decision Intelligence</span>',
