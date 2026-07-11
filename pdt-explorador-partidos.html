@@ -59,8 +59,9 @@
   .buscador:focus { border-color: var(--accent); }
   .contador { font-size: 12px; color: var(--text-muted); margin: 10px 0 20px; }
 
-  .layout { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 24px; align-items: start; }
+  .layout { display: grid; grid-template-columns: minmax(280px, 380px) minmax(0, 1fr); gap: 24px; align-items: start; }
   @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+  .lista, .panel { min-width: 0; }
 
   .lista { border: 1px solid var(--line); max-height: 640px; overflow-y: auto; }
   .fila-resultado { padding: 12px 16px; border-bottom: 1px solid var(--line); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
@@ -82,12 +83,13 @@
 
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 28px; }
   @media (max-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-  .stat-tile { background: var(--surface-2); padding: 14px 16px; }
-  .stat-tile .valor { font-size: 21px; font-weight: 600; color: var(--accent); line-height: 1; }
+  .stat-tile { background: var(--surface-2); padding: 14px 16px; min-width: 0; }
+  .stat-tile .valor { font-size: 21px; font-weight: 600; color: var(--accent); line-height: 1.15; overflow-wrap: break-word; }
   .stat-tile .etq { font-size: 10.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.3; }
 
-  .flujos { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .flujos { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px; }
   @media (max-width: 640px) { .flujos { grid-template-columns: 1fr; } }
+  .panel { overflow-x: auto; }
   .flujo-titulo { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 7px; }
   .flujo-punto { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .barra-fila { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
