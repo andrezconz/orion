@@ -3,152 +3,239 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PDT-Colombia | Radar de Inteligencia Electoral — ORION Intelligence</title>
-<meta name="description" content="Motor de inteligencia electoral de ORION: 65 años de resultados electorales colombianos, identidad de actores resuelta, y seis módulos de machine learning para detectar outsiders, familias políticas, redes de poder y forecasting." />
+<title>ORIÓN — Hub metodológico de Machine Learning para el sector público</title>
+<meta name="description" content="ORIÓN: agencia estratégica e inteligencia económica. Cuatro líneas de capacidad de machine learning para el sector público, con el Political Digital Twin de Colombia como caso insignia desplegado." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-color: #0a0a0a;
-    --card-bg: #141414;
-    --card-bg-2: #1a1a1a;
-    --accent-gold: #c5a059;
-    --accent-gold-bright: #d4b370;
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --text-muted: #6b6b6b;
-    --border-color: #222222;
-    --local: #a86a3a; --regional: #2f8f6e; --nacleg: #3d6bb0; --nacejec: #c5a059;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg: #0d0f12; --surface-1: #14171b; --surface-2: #1a1e23; --surface-3: #20252b;
+    --border: #262b31; --border-strong: #343a41;
+    --text-1: #e8e6e0; --text-2: #9a9d9f; --text-3: #5f6366;
+    --signal: #7c93a8; --signal-dim: #4a5866;
+    --green: #7a9b6e; --green-bg: #171d15;
+    --red: #b3695a; --red-bg: #201512;
+    --gray-vote: #83807a; --gray-vote-bg: #191815;
+    --shadow-color: 0, 0, 0; --shadow-soft: 0 1px 2px rgba(var(--shadow-color), 0.3), 0 8px 24px -8px rgba(var(--shadow-color), 0.5);
+    --shadow-lift: 0 4px 10px rgba(var(--shadow-color), 0.35), 0 20px 40px -12px rgba(var(--shadow-color), 0.65);
+    --grid-line: rgba(232, 230, 224, 0.035);
   }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f2efe8; --surface-1: #fbfaf6; --surface-2: #e9e5da; --surface-3: #ded8c8;
+      --border: #d8d2c2; --border-strong: #c4bca6;
+      --text-1: #201d18; --text-2: #5c574c; --text-3: #8c8574;
+      --signal: #3d4c5c; --signal-dim: #8296a8;
+      --green: #4f6f44; --green-bg: #e7ecdf;
+      --red: #8a4536; --red-bg: #f1e0da;
+      --gray-vote: #6b675d; --gray-vote-bg: #e7e4da;
+      --shadow-color: 32, 29, 24; --shadow-soft: 0 1px 2px rgba(var(--shadow-color), 0.06), 0 8px 20px -8px rgba(var(--shadow-color), 0.12);
+      --shadow-lift: 0 4px 8px rgba(var(--shadow-color), 0.08), 0 18px 32px -12px rgba(var(--shadow-color), 0.16);
+      --grid-line: rgba(32, 29, 24, 0.04);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0f12; --surface-1: #14171b; --surface-2: #1a1e23; --surface-3: #20252b;
+    --border: #262b31; --border-strong: #343a41;
+    --text-1: #e8e6e0; --text-2: #9a9d9f; --text-3: #5f6366;
+    --signal: #7c93a8; --signal-dim: #4a5866;
+    --green: #7a9b6e; --green-bg: #171d15;
+    --red: #b3695a; --red-bg: #201512;
+    --gray-vote: #83807a; --gray-vote-bg: #191815;
+    --shadow-color: 0, 0, 0; --shadow-soft: 0 1px 2px rgba(var(--shadow-color), 0.3), 0 8px 24px -8px rgba(var(--shadow-color), 0.5);
+    --shadow-lift: 0 4px 10px rgba(var(--shadow-color), 0.35), 0 20px 40px -12px rgba(var(--shadow-color), 0.65);
+    --grid-line: rgba(232, 230, 224, 0.035);
+  }
+  :root[data-theme="light"] {
+    --bg: #f2efe8; --surface-1: #fbfaf6; --surface-2: #e9e5da; --surface-3: #ded8c8;
+    --border: #d8d2c2; --border-strong: #c4bca6;
+    --text-1: #201d18; --text-2: #5c574c; --text-3: #8c8574;
+    --signal: #3d4c5c; --signal-dim: #8296a8;
+    --shadow-color: 32, 29, 24; --shadow-soft: 0 1px 2px rgba(var(--shadow-color), 0.06), 0 8px 20px -8px rgba(var(--shadow-color), 0.12);
+    --shadow-lift: 0 4px 8px rgba(var(--shadow-color), 0.08), 0 18px 32px -12px rgba(var(--shadow-color), 0.16);
+    --grid-line: rgba(32, 29, 24, 0.04);
+    --green: #4f6f44; --green-bg: #e7ecdf;
+    --red: #8a4536; --red-bg: #f1e0da;
+    --gray-vote: #6b675d; --gray-vote-bg: #e7e4da;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.65;
-    overflow-x: hidden;
-  }
-  ::selection { background: var(--accent-gold); color: #000; }
-  h1, h2, h3, .brand-font {
-    font-family: 'Outfit', sans-serif;
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      var(--bg);
+    background-size: 48px 48px, 48px 48px, auto;
+    background-attachment: fixed;
+    color: var(--text-1);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    font-size: 15px; line-height: 1.6;
   }
   .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  h1, h2, h3, .display { font-family: 'Archivo', sans-serif; letter-spacing: -0.01em; }
+  .grid-wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  ::selection { background: var(--signal); color: var(--surface-1); }
   a { color: inherit; }
-  .container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
 
-  /* ---------- Portón de acceso ---------- */
-  #gate {
-    position: fixed; inset: 0; z-index: 100;
-    background: var(--bg-color);
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-  }
-  .gate-card {
-    max-width: 420px; width: 100%;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 48px 40px;
-    text-align: center;
-  }
-  .gate-card img { width: 56px; height: 56px; object-fit: cover; border-radius: 50%; border: 2px solid var(--accent-gold); margin-bottom: 20px; }
-  .gate-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; margin-bottom: 10px; }
-  .gate-card h2 { font-size: 20px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 10px; }
-  .gate-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.6; }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; }
+  .reveal.is-visible { animation: riseIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(122, 155, 110, 0.5); } 50% { opacity: 0.75; box-shadow: 0 0 0 4px rgba(122, 155, 110, 0); } }
+
+  /* ============ PORTÓN DE ACCESO ============ */
+  #gate { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .gate-card { max-width: 420px; width: 100%; background: var(--surface-1); border: 1px solid var(--border); box-shadow: var(--shadow-lift); padding: 48px 40px; text-align: center; }
+  .gate-card img { width: 52px; height: 52px; object-fit: cover; border-radius: 50%; border: 1px solid var(--border-strong); margin-bottom: 20px; }
+  .gate-eyebrow { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--signal); font-weight: 600; margin-bottom: 10px; }
+  .gate-card h2 { font-size: 19px; font-weight: 600; margin-bottom: 10px; }
+  .gate-card p { font-size: 12.5px; color: var(--text-2); margin-bottom: 26px; line-height: 1.6; }
   .gate-form { display: flex; flex-direction: column; gap: 12px; }
-  #gate-input {
-    background: #1a1a1a; border: 1px solid var(--border-color); color: var(--text-primary);
-    padding: 14px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; text-align: center;
-    letter-spacing: 0.1em; outline: none;
-  }
-  #gate-input:focus { border-color: var(--accent-gold); }
-  #gate-btn {
-    background: var(--accent-gold); color: #000; border: none; padding: 14px;
-    font-family: 'Outfit', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    font-size: 13px; cursor: pointer; transition: var(--transition);
-  }
-  #gate-btn:hover { background: var(--accent-gold-bright); }
-  #gate-error { font-size: 11.5px; color: #d38a7a; margin-top: 10px; min-height: 14px; }
-  .gate-hint { font-size: 10.5px; color: var(--text-muted); margin-top: 18px; }
+  #gate-input { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-1); padding: 13px 16px; font-family: 'IBM Plex Mono'; font-size: 13px; text-align: center; letter-spacing: 0.08em; outline: none; }
+  #gate-input:focus { border-color: var(--signal); }
+  #gate-btn { background: var(--text-1); color: var(--bg); border: none; padding: 13px; font-family: 'Archivo'; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; cursor: pointer; transition: opacity 0.2s ease; }
+  #gate-btn:hover { opacity: 0.85; }
+  #gate-error { font-size: 11px; color: var(--red); margin-top: 10px; min-height: 14px; }
+  .gate-hint { font-size: 10.5px; color: var(--text-3); margin-top: 18px; }
+  .gate-hint a { color: var(--signal); }
 
-  /* ---------- Contenido (oculto hasta desbloquear) ---------- */
   #contenido { display: none; }
   #contenido.visible { display: block; }
 
-  header.top-bar {
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
-  }
-  .top-bar-inner { display: flex; justify-content: space-between; align-items: center; }
-  .brand-mini { display: flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
-  .brand-mini img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-  .top-bar nav a { font-size: 12px; color: var(--text-secondary); text-decoration: none; margin-left: 24px; letter-spacing: 0.03em; }
-  .top-bar nav a:hover { color: var(--accent-gold); }
+  /* ============ MASTHEAD ============ */
+  .masthead { border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20; background: var(--bg); transition: box-shadow 0.3s ease; }
+  .masthead.is-scrolled { box-shadow: var(--shadow-soft); }
+  .masthead-top { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .wordmark { font-family: 'Archivo'; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .wordmark .mark { width: 20px; height: 20px; border: 1.5px solid var(--text-1); display: flex; align-items: center; justify-content: center; font-size: 10px; }
+  .masthead-nav { display: flex; gap: 32px; align-items: center; }
+  .masthead-nav a { font-size: 12px; color: var(--text-2); text-decoration: none; letter-spacing: 0.02em; }
+  .masthead-nav a:hover { color: var(--text-1); }
+  .masthead-nav a.current { color: var(--text-1); border-bottom: 1px solid var(--signal); padding-bottom: 4px; }
+  .masthead-nav a.back { color: var(--text-3); }
 
-  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border-color); }
-  .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; border: 1px solid var(--accent-gold); padding: 5px 12px; margin-bottom: 22px; }
-  .hero h1 { font-size: 44px; font-weight: 700; line-height: 1.12; max-width: 780px; letter-spacing: -0.01em; }
-  .hero .lead { font-size: 16px; color: var(--text-secondary); max-width: 640px; margin-top: 20px; line-height: 1.65; }
+  .readout-strip { display: grid; grid-template-columns: repeat(6, 1fr); }
+  .readout-item { padding: 14px 20px; border-right: 1px solid var(--border); }
+  .readout-item:last-child { border-right: none; }
+  .readout-item .val { font-family: 'IBM Plex Mono'; font-size: 16px; font-weight: 500; color: var(--text-1); }
+  .readout-item .lbl { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-top: 3px; }
 
-  .stat-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); margin-top: 40px; }
-  @media (max-width: 900px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } }
-  .stat-tile { background: var(--card-bg); padding: 20px 18px; }
-  .stat-tile .num { font-size: 26px; font-weight: 700; color: var(--accent-gold); line-height: 1; }
-  .stat-tile .lbl { font-size: 10.5px; color: var(--text-secondary); margin-top: 8px; line-height: 1.35; text-transform: uppercase; letter-spacing: 0.03em; }
+  /* ============ HERO EDITORIAL ============ */
+  .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--border); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+  .hero-index { font-family: 'IBM Plex Mono'; font-size: 11px; color: var(--text-3); margin-bottom: 18px; letter-spacing: 0.04em; }
+  .hero h1 { font-size: 40px; font-weight: 600; line-height: 1.14; color: var(--text-1); }
+  .hero-aside { border-left: 1px solid var(--border); padding-left: 28px; }
+  .hero-aside p { font-size: 13.5px; color: var(--text-2); line-height: 1.7; }
+  .hero-aside .note { font-size: 11px; color: var(--text-3); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
 
-  section.section { padding: 64px 0; border-bottom: 1px solid var(--border-color); }
-  .section-head { margin-bottom: 40px; max-width: 680px; }
-  .section-eyebrow { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; margin-bottom: 12px; }
-  .section-head h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.005em; }
-  .section-head p { font-size: 14.5px; color: var(--text-secondary); margin-top: 12px; line-height: 1.6; }
+  /* ============ SECTION SCAFFOLD ============ */
+  .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .section-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+  .section-num { font-family: 'IBM Plex Mono'; font-size: 11px; color: var(--signal); }
+  .section-label h2 { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); }
+  .section-desc { font-size: 12.5px; color: var(--text-3); max-width: 560px; margin-bottom: 28px; line-height: 1.6; }
 
-  /* ---------- Módulos técnicos (teoría ML) ---------- */
-  .modulos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); }
-  @media (max-width: 800px) { .modulos-grid { grid-template-columns: 1fr; } }
-  .modulo-card { background: var(--card-bg); padding: 30px 32px; }
-  .modulo-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
-  .modulo-num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-gold); }
-  .modulo-card h3 { font-size: 16.5px; font-weight: 600; letter-spacing: 0.01em; }
-  .modulo-tag { display: inline-block; font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border-color); padding: 3px 8px; margin-bottom: 12px; }
-  .modulo-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; }
-  .modulo-card p:last-child { margin-bottom: 0; }
-  .modulo-card strong { color: var(--text-primary); font-weight: 600; }
-  .modulo-card code { font-family: 'IBM Plex Mono', monospace; font-size: 0.88em; background: #1e1e1e; padding: 1px 5px; border-radius: 3px; color: var(--accent-gold-bright); }
+  /* ============ COMPARATIVA SENADO/CAMARA ============ */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+  .compare-col { padding: 24px 26px; }
+  .compare-col:first-child { border-right: 1px solid var(--border); }
+  .compare-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .compare-head h3 { font-size: 14px; font-weight: 600; }
+  .compare-head span { font-family: 'IBM Plex Mono'; font-size: 10.5px; color: var(--text-3); }
+  .compare-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row .k { color: var(--text-2); }
+  .compare-row .v { font-family: 'IBM Plex Mono'; color: var(--text-1); }
 
-  .pipeline-nota { background: var(--card-bg-2); border: 1px solid var(--border-color); border-left: 3px solid var(--accent-gold); padding: 18px 22px; margin-top: 32px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
-  .pipeline-nota strong { color: var(--text-primary); }
+  /* ============ COMPONENTE HISTORICO + MAPA ============ */
+  .historic-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+  .historic-map { background: var(--surface-1); padding: 24px 26px; min-height: 340px; display: flex; flex-direction: column; }
+  .map-canvas { flex: 1; position: relative; border: 1px solid var(--border); background: var(--surface-2); margin: 16px 0; overflow: hidden; box-shadow: inset 0 1px 3px rgba(var(--shadow-color), 0.25); }
+  .map-node { position: absolute; border-radius: 2px; box-shadow: 0 2px 5px rgba(var(--shadow-color), 0.3); transition: transform 0.25s ease; }
+  .map-node:hover { transform: scale(1.06); }
+  .map-legend { display: flex; gap: 22px; padding-top: 16px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .map-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--text-2); }
+  .map-legend-swatch { width: 13px; height: 13px; flex-shrink: 0; }
+  .historic-side { background: var(--surface-1); padding: 24px 26px; }
+  .side-metric { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .side-metric:last-child { border-bottom: none; }
+  .side-metric .val { font-family: 'IBM Plex Mono'; font-size: 20px; }
+  .side-metric .val.up { color: var(--green); }
+  .side-metric .val.down { color: var(--red); }
+  .side-metric .lbl { font-size: 11px; color: var(--text-3); margin-top: 4px; }
 
-  /* ---------- Acceso a dashboards ---------- */
-  .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  @media (max-width: 800px) { .dash-grid { grid-template-columns: 1fr; } }
-  .dash-card {
-    background: var(--card-bg); border: 1px solid var(--border-color); padding: 32px;
-    display: flex; flex-direction: column; text-decoration: none; transition: var(--transition);
-  }
-  .dash-card:hover { border-color: var(--accent-gold); transform: translateY(-2px); }
-  .dash-icon { width: 40px; height: 40px; border: 1px solid var(--accent-gold); color: var(--accent-gold); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 20px; }
-  .dash-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
-  .dash-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; flex: 1; }
-  .dash-meta { display: flex; gap: 18px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color); font-size: 11px; color: var(--text-muted); }
-  .dash-meta strong { color: var(--accent-gold); font-family: 'IBM Plex Mono', monospace; }
-  .dash-cta { margin-top: 18px; font-size: 12px; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  /* ============ RANKING + CUADRICULA TEMPORAL ============ */
+  .data-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+  table.clean tr { transition: background 0.15s ease; }
+  table.clean tbody tr:hover { background: var(--surface-2); }
+  .data-panel { background: var(--surface-1); padding: 24px 26px; }
+  .data-panel-head { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+  table.clean { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.clean th { text-align: left; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); padding: 0 10px 10px 0; border-bottom: 1px solid var(--border-strong); font-weight: 500; }
+  table.clean th.num { text-align: right; }
+  table.clean td { padding: 10px 10px 10px 0; border-bottom: 1px solid var(--border); color: var(--text-2); background: transparent; }
+  table.clean tr:last-child td { border-bottom: none; }
+  table.clean td.name { color: var(--text-1); font-weight: 500; }
+  table.clean td.num { text-align: right; font-family: 'IBM Plex Mono'; }
+  table.clean td.rank { font-family: 'IBM Plex Mono'; color: var(--text-3); }
+  .data-panel-note { font-size: 10.5px; color: var(--text-3); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); line-height: 1.5; }
 
-  .manual-strip { display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 24px 28px; margin-top: 20px; flex-wrap: wrap; }
-  .manual-strip-text h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-  .manual-strip-text p { font-size: 12.5px; color: var(--text-secondary); }
-  .btn-manual { background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 12px 22px; font-family: 'Outfit', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; text-decoration: none; white-space: nowrap; transition: var(--transition); }
-  .btn-manual:hover { background: var(--accent-gold); color: #000; }
+  /* ============ ARTICULOS ============ */
+  .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+  .article-card { background: var(--surface-1); padding: 28px 26px; display: flex; flex-direction: column; position: relative; transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease; text-decoration: none; }
+  .article-card.is-live { cursor: pointer; }
+  .article-card.is-live:hover { background: var(--surface-2); box-shadow: var(--shadow-lift); transform: translateY(-3px); z-index: 2; }
+  .article-card.is-soon { cursor: default; opacity: 0.72; }
+  .article-kicker { font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 14px; }
+  .article-card h3 { font-size: 18px; font-weight: 600; line-height: 1.28; margin-bottom: 12px; color: var(--text-1); }
+  .article-card p { font-size: 12.5px; color: var(--text-2); line-height: 1.65; flex: 1; margin-bottom: 18px; }
+  .article-meta { display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; color: var(--text-3); font-family: 'IBM Plex Mono'; }
 
-  footer.pdt-footer { padding: 40px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 11.5px; color: var(--text-muted); }
-  footer.pdt-footer a { color: var(--accent-gold); text-decoration: none; }
+  /* ============ EXPLORADORES / CAPACIDADES ============ */
+  .explorer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+  .explorer-card { background: var(--surface-1); padding: 32px; transition: background 0.25s ease, box-shadow 0.25s ease; position: relative; }
+  .explorer-card.is-live:hover { background: var(--surface-2); box-shadow: var(--shadow-lift); z-index: 2; }
+  .explorer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .explorer-glyph { width: 38px; height: 38px; border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono'; font-size: 13px; color: var(--text-2); transition: border-color 0.25s ease, color 0.25s ease; }
+  .explorer-card.is-live:hover .explorer-glyph { border-color: var(--signal); color: var(--signal); }
+  .explorer-status { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green); border: 1px solid var(--green); padding: 3px 8px 3px 20px; position: relative; }
+  .explorer-status::before { content: ""; position: absolute; left: 8px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--green); animation: pulse 2.2s ease-in-out infinite; }
+  .explorer-status.is-pending { color: var(--text-3); border-color: var(--border-strong); padding-left: 8px; }
+  .explorer-status.is-pending::before { display: none; }
+  .explorer-card h3 { font-size: 19px; font-weight: 600; margin-bottom: 10px; }
+  .explorer-card p { font-size: 12.5px; color: var(--text-2); line-height: 1.65; margin-bottom: 20px; }
+  .explorer-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 20px; }
+  .explorer-spec { background: var(--surface-2); padding: 12px 14px; }
+  .explorer-spec .val { font-family: 'IBM Plex Mono'; font-size: 15px; }
+  .explorer-spec .lbl { font-size: 10px; color: var(--text-3); margin-top: 3px; }
+  .explorer-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: var(--text-1); text-decoration: none; border-bottom: 1px solid var(--signal); padding-bottom: 3px; transition: gap 0.2s ease; }
+  .explorer-cta:hover { gap: 12px; }
 
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 30px; }
-    .container { padding: 0 20px; }
+  .deliverables-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .deliverables-list div { font-size: 11.5px; color: var(--text-2); }
+  .deliverables-label { font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+
+  /* ============ MANUAL STRIP ============ */
+  .manual-strip { display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--surface-1); border: 1px solid var(--border); box-shadow: var(--shadow-soft); padding: 22px 26px; margin-top: 20px; flex-wrap: wrap; }
+  .manual-strip-text h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .manual-strip-text p { font-size: 12px; color: var(--text-2); }
+  .btn-manual { background: transparent; border: 1px solid var(--border-strong); color: var(--text-1); padding: 11px 20px; font-family: 'Archivo'; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 11.5px; text-decoration: none; white-space: nowrap; transition: border-color 0.2s ease, color 0.2s ease; }
+  .btn-manual:hover { border-color: var(--signal); color: var(--signal); }
+
+  /* ============ FOOTER ============ */
+  .foot { padding: 32px 0; display: flex; justify-content: space-between; font-size: 11px; color: var(--text-3); flex-wrap: wrap; gap: 10px; }
+  .foot a { color: var(--signal); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .compare-grid, .historic-layout, .data-layout, .article-grid, .explorer-grid { grid-template-columns: 1fr; }
+    .readout-strip { grid-template-columns: repeat(3, 1fr); }
+    .readout-item:nth-child(3) { border-right: none; }
+    .masthead-nav { display: none; }
   }
 </style>
 </head>
@@ -156,162 +243,284 @@
 
   <div id="gate">
     <div class="gate-card">
-      <img src="assets/logo.jpeg" alt="ORION Intelligence" />
+      <img src="assets/logo.jpeg" alt="ORIÓN" />
       <p class="gate-eyebrow">Unidad de Inteligencia · Acceso restringido</p>
-      <h2>PDT-Colombia</h2>
-      <p>Este es un producto en fase de validación técnica. Ingresa la clave de acceso que te compartió el equipo de ORION.</p>
+      <h2>Hub metodológico ORIÓN</h2>
+      <p>Este hub reúne el método y las herramientas de machine learning para el sector público. Ingresa la clave que te compartió el equipo de ORIÓN.</p>
       <div class="gate-form">
         <input type="password" id="gate-input" placeholder="CLAVE DE ACCESO" autocomplete="off" />
         <button id="gate-btn">Ingresar</button>
       </div>
       <p id="gate-error"></p>
-      <p class="gate-hint">¿No tienes clave? <a href="https://wa.me/573154732360?text=Hola%20ORION%2C%20quisiera%20acceso%20a%20la%20demo%20de%20PDT-Colombia." style="color:var(--accent-gold);" target="_blank" rel="noopener noreferrer">Solicítala por WhatsApp</a></p>
+      <p class="gate-hint">¿No tienes clave? <a href="https://wa.me/573154732360?text=Hola%20ORI%C3%93N%2C%20quisiera%20acceso%20al%20hub%20metodol%C3%B3gico.">Solicítala por WhatsApp</a></p>
     </div>
   </div>
 
   <div id="contenido">
 
-    <header class="top-bar">
-      <div class="container top-bar-inner">
-        <a class="brand-mini" href="index.html">
-          <img src="assets/logo.jpeg" alt="ORION" />
-          ORION Intelligence
-        </a>
-        <nav>
-          <a href="#metodo">Metodología</a>
-          <a href="#dashboards">Dashboards</a>
-          <a href="#manual">Manual</a>
-          <a href="index.html">← Sitio principal</a>
+    <div class="masthead">
+      <div class="grid-wrap masthead-top">
+        <a class="wordmark" href="index.html"><span class="mark">Ω</span>ORION — UNIDAD DE INTELIGENCIA</a>
+        <nav class="masthead-nav">
+          <a href="#capacidades">Líneas de capacidad</a>
+          <a href="#informes">Informes y artículos</a>
+          <a href="#exploradores">Exploradores interactivos</a>
+          <a href="index.html" class="back">← Sitio principal</a>
         </nav>
       </div>
-    </header>
+      <div class="grid-wrap">
+        <div class="readout-strip">
+          <div class="readout-item"><div class="val mono" data-count="4">0</div><div class="lbl">Líneas de capacidad ML</div></div>
+          <div class="readout-item"><div class="val mono" data-count="1">0</div><div class="lbl">Caso insignia desplegado</div></div>
+          <div class="readout-item"><div class="val mono" data-count="6">0</div><div class="lbl">Módulos ML en producción</div></div>
+          <div class="readout-item"><div class="val mono" data-count="128">0</div><div class="lbl">Archivos auditados (caso PDT)</div></div>
+          <div class="readout-item"><div class="val mono" data-count="101209">0</div><div class="lbl">Identidades resueltas (caso PDT)</div></div>
+          <div class="readout-item"><div class="val mono">1958–2023</div><div class="lbl">Cobertura temporal (caso PDT)</div></div>
+        </div>
+      </div>
+    </div>
 
     <section class="hero">
-      <div class="container">
-        <span class="hero-tag">L-01 · Political Intelligence — caso de aplicación</span>
-        <h1>PDT-Colombia: el motor de inteligencia electoral detrás de nuestra línea de servicio.</h1>
-        <p class="lead">Un gemelo digital político construido sobre 65 años de resultados electorales colombianos —9 cargos de elección popular, identidad de partido y persona resuelta, y seis módulos de machine learning que convierten datos crudos en trayectorias, familias políticas, redes de poder y señales tempranas de riesgo.</p>
-
-        <div class="stat-strip">
-          <div class="stat-tile"><div class="num mono">128</div><div class="lbl">Archivos electorales auditados</div></div>
-          <div class="stat-tile"><div class="num mono">11,2M</div><div class="lbl">Filas cargadas</div></div>
-          <div class="stat-tile"><div class="num mono">101.209</div><div class="lbl">Personas con identidad resuelta</div></div>
-          <div class="stat-tile"><div class="num mono">783.376</div><div class="lbl">Candidaturas en el vector de features</div></div>
-          <div class="stat-tile"><div class="num mono">1958–2023</div><div class="lbl">Cobertura temporal</div></div>
+      <div class="grid-wrap hero-grid">
+        <div>
+          <div class="hero-index mono">00 / HUB — MACHINE LEARNING PARA EL SECTOR PÚBLICO</div>
+          <h1>Inteligencia económica, agencia estratégica y aprendizaje de máquina aplicados a decisiones de alto impacto.</h1>
+        </div>
+        <div class="hero-aside">
+          <p>ORIÓN diseña e implementa capacidad analítica para gobierno, territorio y estrategia — desde el mapeo de actores hasta modelos predictivos con validación temporal. Este hub reúne el método y su primera aplicación construida de punta a punta: el <strong>Political Digital Twin de Colombia</strong>, un gemelo digital sobre 65 años de resultados electorales que hoy funciona como caso insignia de nuestra línea de Political Intelligence.</p>
+          <p class="note mono">CEDE · Universidad de los Andes — datos sin curaduría ideológica declarada</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="metodo">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">Cómo funciona</p>
-          <h2>Seis módulos, un mismo principio: sin fuga de información.</h2>
-          <p>Cada modelo se construye únicamente con lo que se sabía hasta el momento que predice o clasifica — nunca con el resultado que intenta explicar. Esta disciplina, verificada variable por variable, es lo que separa un ejercicio académico de un sistema que se puede usar para decidir.</p>
-        </div>
+    <section class="section reveal" id="capacidades">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">—</span><h2>Líneas de capacidad</h2></div>
+        <p class="section-desc">Cuatro dimensiones de aplicación de machine learning al sector público. Cada línea comparte el mismo estándar metodológico — sin fuga de información, límites documentados — con distinto grado de madurez operativa.</p>
 
-        <div class="modulos-grid">
-          <div class="modulo-card">
-            <div class="modulo-tag">Feature engineering</div>
-            <div class="modulo-head"><span class="modulo-num">01</span><h3>Vector de candidatura</h3></div>
-            <p><strong>783.376 candidaturas × 21 variables</strong>, una fila por persona-elección. Cada feature (años de experiencia, nivel de cargo anterior, salto de nivel, crecimiento de votación, cambios de partido previos, expansión territorial acumulada) se calcula con <code>lag()</code> y funciones acumulativas <strong>estrictamente hacia atrás en el tiempo</strong> — nunca con información de la elección que se está evaluando.</p>
-            <p>La resolución de identidad (partido y persona) usa <strong>bloqueo por contexto</strong> —década, geografía, apellidos— en vez de distancia de edición sobre el catálogo completo: a escala de cientos de miles de registros, comparar todo contra todo es computacionalmente inviable y produce falsos positivos por coincidencia textual.</p>
+        <div class="explorer-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="explorer-card">
+            <div class="explorer-top"><div class="explorer-glyph">L1</div><span class="explorer-status">Desplegado</span></div>
+            <h3 style="font-size:16px;">Political Intelligence</h3>
+            <p style="font-size:12px;">Análisis electoral granular, trayectorias, redes de poder y detección de anomalías. Caso insignia: Political Digital Twin de Colombia.</p>
           </div>
-
-          <div class="modulo-card">
-            <div class="modulo-tag">Detección de anomalías</div>
-            <div class="modulo-head"><span class="modulo-num">02</span><h3>Radar de outsiders</h3></div>
-            <p>Tres métodos no supervisados, independientes, sobre el mismo espacio de features: <strong>Isolation Forest</strong> (aísla observaciones vía particiones aleatorias — menos particiones para aislar, más atípico), <strong>Local Outlier Factor</strong> (densidad relativa respecto a los vecinos más cercanos) y <strong>distancia de Mahalanobis</strong> (distancia al centroide de su propio nivel de cargo, ponderada por covarianza).</p>
-            <p>No se promedian en un score único — se reporta cada uno y dónde <strong>coinciden</strong> los tres, porque una sola métrica de anomalía estadística no distingue una trayectoria políticamente insurgente de un error de captura de datos.</p>
+          <div class="explorer-card">
+            <div class="explorer-top"><div class="explorer-glyph">L2</div><span class="explorer-status is-pending">Metodología</span></div>
+            <h3 style="font-size:16px;">Public Policy Intelligence</h3>
+            <p style="font-size:12px;">Focalización, evaluación de impacto y desarrollo territorial — mismo estándar de validación, caso propio en construcción.</p>
           </div>
-
-          <div class="modulo-card">
-            <div class="modulo-tag">Clustering no supervisado</div>
-            <div class="modulo-head"><span class="modulo-num">03</span><h3>ADN político</h3></div>
-            <p><strong>KMeans</strong> sobre 9 dimensiones estandarizadas de carrera (experiencia, ambición, territorialidad, lealtad partidista, movilidad, resiliencia, velocidad, capacidad electoral, victorias) agregadas por persona. El número de familias (k=6) no se impuso a mano — se decidió por <strong>curva de codo de inercia</strong> sobre k=2..10.</p>
-            <p>La distancia euclidiana en ese espacio estandarizado responde "¿a quién se parece este candidato?" — una pregunta de similitud de <em>forma de carrera</em>, no de ideología: la fuente no tiene variables de contenido programático.</p>
+          <div class="explorer-card">
+            <div class="explorer-top"><div class="explorer-glyph">L3</div><span class="explorer-status is-pending">Metodología</span></div>
+            <h3 style="font-size:16px;">Government AI</h3>
+            <p style="font-size:12px;">Asistentes normativos, gestión documental y automatización de reportes para entidades públicas.</p>
           </div>
-
-          <div class="modulo-card">
-            <div class="modulo-tag">Ranking &amp; redes</div>
-            <div class="modulo-head"><span class="modulo-num">04</span><h3>Red de poder</h3></div>
-            <p>Cada migración de un político de un partido a otro es una arista ponderada en un grafo dirigido. Sobre ese grafo: <strong>PageRank</strong> (qué partido concentra capital político heredado de muchas fuentes, no solo una grande), <strong>centralidad de intermediación</strong> (qué partido es puente entre bloques que si no, no se conectarían) y <strong>detección de comunidades de Louvain</strong> (bloques de partidos con migración densa entre sí, sin ninguna etiqueta ideológica de entrada).</p>
+          <div class="explorer-card">
+            <div class="explorer-top"><div class="explorer-glyph">L4</div><span class="explorer-status is-pending">Núcleo</span></div>
+            <h3 style="font-size:16px;">Decision Intelligence</h3>
+            <p style="font-size:12px;">El eje que atraviesa las tres líneas anteriores: escenarios, riesgo, priorización — de modelo a recomendación ejecutiva.</p>
           </div>
-
-          <div class="modulo-card">
-            <div class="modulo-tag">Aprendizaje supervisado</div>
-            <div class="modulo-head"><span class="modulo-num">05</span><h3>Forecasting con validación temporal</h3></div>
-            <p>Modelos <strong>randomForest</strong> con separación <strong>estrictamente temporal</strong> entre entrenamiento y evaluación (nunca aleatoria) — se entrena con elecciones anteriores a un corte y se evalúa sobre las posteriores, el único esquema de validación honesto cuando el objetivo es predecir el futuro, no interpolar el pasado. AUC 0,70–0,78 según el horizonte, documentado junto con el desbalance de clases y la ausencia explícita de variables de encuestas o financiación.</p>
-          </div>
-
-          <div class="modulo-card">
-            <div class="modulo-tag">Sensibilidad de red</div>
-            <div class="modulo-head"><span class="modulo-num">06</span><h3>Simulación contrafactual</h3></div>
-            <p>Remover un nodo (partido) del grafo de migración y medir el efecto observable sobre el PageRank de los partidos restantes y sobre las personas cuya trayectoria pasó por él. Documentado explícitamente como <strong>ejercicio de sensibilidad estructural</strong>, no como simulación causal — no infiere a qué partido alternativo habría migrado cada persona si el nodo removido nunca hubiera existido.</p>
-          </div>
-        </div>
-
-        <div class="pipeline-nota">
-          <strong>Por qué esto importa para una decisión real:</strong> cualquier modelo puede reportar un número. Lo que hace defendible una recomendación de ORION es que cada uno de estos seis módulos documenta explícitamente sus límites metodológicos — dónde el dato no alcanza, qué pregunta no puede responder, y qué se necesitaría para que sí pudiera. Un cliente no recibe una caja negra: recibe el razonamiento completo.
         </div>
       </div>
     </section>
 
-    <section class="section" id="dashboards">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">Acceso a los dashboards</p>
-          <h2>Dos exploradores interactivos, datos reales.</h2>
-          <p>Cada uno es un archivo autocontenido — sin servidor, sin base de datos, los datos viajan embebidos en el propio HTML.</p>
-        </div>
+    <section class="section reveal">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L2 · L3</span><h2>Metodología sin caso construido</h2></div>
+        <p class="section-desc">L2 y L3 comparten el estándar de ORIÓN, pero todavía no tienen un caso desplegado como PDT-Colombia — lo que sigue es el marco de trabajo, no una herramienta en producción.</p>
 
-        <div class="dash-grid">
-          <a class="dash-card" href="pdt-explorador-personas.html" target="_blank" rel="noopener noreferrer">
-            <div class="dash-icon">◈</div>
-            <h3>Explorador de personas</h3>
-            <p>Trayectoria completa, perfil de ADN político y score de anomalía de 11.625 personas notables — llegaron a nivel nacional, tienen carrera larga, o fueron detectadas como outliers.</p>
-            <div class="dash-meta"><span><strong>11.625</strong> personas</span><span><strong>6</strong> familias políticas</span></div>
-            <div class="dash-cta">Abrir explorador →</div>
+        <div class="article-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="article-card is-soon">
+            <div class="article-kicker">L2 · Public Policy Intelligence</div>
+            <h3 style="font-size:16px;">¿Cómo diseñar y evaluar intervenciones públicas con impacto medible en el territorio?</h3>
+            <p>Diagnóstico socioeconómico granular, diseño de políticas basadas en evidencia y evaluación rigurosa de impacto — combinando métodos econométricos aplicados con lectura territorial para identificar brechas de desarrollo, focalizar subsidios y demostrar de forma cuantitativa la efectividad de programas públicos.</p>
+            <div class="deliverables-list">
+              <div class="deliverables-label">Entregables previstos</div>
+              <div>— Evaluación de impacto cuasiexperimental</div>
+              <div>— Índice de priorización y focalización territorial</div>
+              <div>— Policy briefs ejecutivos con recomendación</div>
+            </div>
+            <div class="article-meta"><span>ECONOMETRÍA · SIG</span><span>SIN CASO</span></div>
+          </div>
+          <div class="article-card is-soon">
+            <div class="article-kicker">L3 · Government AI</div>
+            <h3 style="font-size:16px;">¿Cómo automatizar procesos, analizar normativas y gestionar información masiva en el sector público?</h3>
+            <p>Implementación práctica de inteligencia artificial para fortalecer la gestión gubernamental: asistentes de IA normativa, gestión documental automatizada, y sistemas de generación de reportes que multiplican la capacidad técnica de los equipos del Estado.</p>
+            <div class="deliverables-list">
+              <div class="deliverables-label">Entregables previstos</div>
+              <div>— Asistente de consulta normativa (RAG)</div>
+              <div>— Pipeline de extracción documental</div>
+              <div>— Guía de gobernanza de datos e IA ética</div>
+            </div>
+            <div class="article-meta"><span>LLM · RAG</span><span>SIN CASO</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L1</span><h2>Caso insignia — Political Digital Twin de Colombia</h2></div>
+        <p class="section-desc">Lo que sigue es la instancia construida y en producción de la línea Political Intelligence: un mismo corpus electoral leído como evidencia narrativa y como instrumento de consulta en vivo.</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L1 · 01</span><h2>Comparativa Senado vs. Cámara</h2></div>
+        <p class="section-desc">Estructura institucional de las dos corporaciones nacionales de elección popular en Colombia.</p>
+
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-head"><h3>Senado</h3><span class="mono">CIRCUNSCRIPCIÓN NACIONAL</span></div>
+            <div class="compare-row"><span class="k">Curules en juego</span><span class="v">108</span></div>
+            <div class="compare-row"><span class="k">Umbral electoral</span><span class="v">3,0%</span></div>
+            <div class="compare-row"><span class="k">Circunscripciones especiales</span><span class="v">2 (indígena, afro)</span></div>
+            <div class="compare-row"><span class="k">Periodo</span><span class="v">4 años</span></div>
+          </div>
+          <div class="compare-col">
+            <div class="compare-head"><h3>Cámara</h3><span class="mono">CIRCUNSCRIPCIÓN TERRITORIAL</span></div>
+            <div class="compare-row"><span class="k">Curules en juego</span><span class="v">188</span></div>
+            <div class="compare-row"><span class="k">Umbral electoral</span><span class="v">Departamental</span></div>
+            <div class="compare-row"><span class="k">Circunscripciones especiales</span><span class="v">5 (afro, indígena, exterior, víctimas, raizal)</span></div>
+            <div class="compare-row"><span class="k">Periodo</span><span class="v">4 años</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L1 · 02</span><h2>Componente histórico — mapa de comportamiento del voto</h2></div>
+        <p class="section-desc">Vista ilustrativa del sistema de color propuesto para el mapa histórico — pendiente de construcción funcional sobre datos reales de variación municipal. El código semántico ya está definido: el color no decora, mide una sola variable.</p>
+
+        <div class="historic-layout">
+          <div class="historic-map">
+            <div class="data-panel-head">MAPA MUNICIPAL — VISTA ILUSTRATIVA, PENDIENTE DE CONSTRUIR</div>
+            <div class="map-canvas">
+              <div class="map-node" style="left:12%; top:20%; width:8%; height:14%; background:var(--green);"></div>
+              <div class="map-node" style="left:24%; top:38%; width:11%; height:18%; background:var(--red);"></div>
+              <div class="map-node" style="left:38%; top:15%; width:7%; height:10%; background:var(--gray-vote);"></div>
+              <div class="map-node" style="left:48%; top:44%; width:14%; height:22%; background:var(--green);"></div>
+              <div class="map-node" style="left:65%; top:22%; width:9%; height:15%; background:var(--gray-vote);"></div>
+              <div class="map-node" style="left:58%; top:58%; width:10%; height:16%; background:var(--red);"></div>
+              <div class="map-node" style="left:76%; top:40%; width:12%; height:19%; background:var(--gray-vote);"></div>
+              <div class="map-node" style="left:20%; top:65%; width:9%; height:14%; background:var(--gray-vote);"></div>
+            </div>
+            <div class="map-legend">
+              <div class="map-legend-item"><span class="map-legend-swatch" style="background:var(--green);"></span>Ganancia de votos</div>
+              <div class="map-legend-item"><span class="map-legend-swatch" style="background:var(--red);"></span>Pérdida de votos</div>
+              <div class="map-legend-item"><span class="map-legend-swatch" style="background:var(--gray-vote);"></span>Estable (margen ±5–10 votos)</div>
+            </div>
+          </div>
+          <div class="historic-side">
+            <div class="data-panel-head">ESTADO</div>
+            <div class="side-metric"><div class="val mono">—</div><div class="lbl">Sin datos reales agregados todavía</div></div>
+            <div class="side-metric"><div class="val mono">—</div><div class="lbl">Requiere extracción por municipio y elección</div></div>
+            <div class="side-metric"><div class="val mono mono">§</div><div class="lbl">Ver manual técnico para el diseño de la variable</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L1 · 03</span><h2>Ranking — capital político (PageRank)</h2></div>
+        <p class="section-desc">Datos reales del explorador de partidos: los 5 partidos con mayor PageRank en el grafo completo de migración partidista (4.401 partidos, 10.419 aristas). Tabla homogénea, sin color intercalado — la jerarquía la da la tipografía y la alineación, no el fondo de fila.</p>
+
+        <div class="data-layout" style="grid-template-columns: 1fr;">
+          <div class="data-panel">
+            <div class="data-panel-head">RANKING — CAPITAL POLÍTICO (PAGERANK), DATOS REALES</div>
+            <table class="clean">
+              <thead><tr><th>#</th><th>Partido</th><th class="num">PageRank</th><th class="num">Bloque (Louvain)</th></tr></thead>
+              <tbody>
+                <tr><td class="rank">01</td><td class="name">Partido Liberal Colombiano</td><td class="num">0,0565</td><td class="num">3</td></tr>
+                <tr><td class="rank">02</td><td class="name">Partido Conservador Colombiano</td><td class="num">0,0543</td><td class="num">2</td></tr>
+                <tr><td class="rank">03</td><td class="name">Partido de la U</td><td class="num">0,0465</td><td class="num">1</td></tr>
+                <tr><td class="rank">04</td><td class="name">Cambio Radical</td><td class="num">0,0408</td><td class="num">1</td></tr>
+                <tr><td class="rank">05</td><td class="name">Alianza Verde</td><td class="num">0,0252</td><td class="num">1</td></tr>
+              </tbody>
+            </table>
+            <div class="data-panel-note">Fuente: <span class="mono">poliTwin-colombia/output/red_de_poder_nodos.csv</span> — la tabla completa (4.401 partidos, filtrable) vive en el explorador de partidos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="informes">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L1 · A</span><h2>Informes y artículos analíticos</h2></div>
+        <p class="section-desc">Divulgación con método visible: cómo se usa el aprendizaje de máquina en asuntos públicos, qué se encontró, y qué significa — sin sesgo ideológico declarado. Producto de la línea Political Intelligence.</p>
+
+        <div class="article-grid">
+          <div class="article-card is-soon">
+            <div class="article-kicker">Tipologías de partidos</div>
+            <h3>Más allá de la ideología: 175 años de partidos colombianos bajo K-Means.</h3>
+            <p>Solo 1,8% de los partidos registrados están institucionalizados y nacionalizados. La institucionalización, no la ideología, es el eje que mejor distingue al sistema de partidos.</p>
+            <div class="article-meta"><span>K-MEANS · K=4</span><span>PRÓXIMAMENTE</span></div>
+          </div>
+          <a class="article-card is-live" href="assets/Informe_PDT-Colombia.pdf" target="_blank" rel="noopener noreferrer">
+            <div class="article-kicker">Trayectorias y redes de poder</div>
+            <h3>El motor que reconstruye 101.209 carreras políticas sin fuga de información.</h3>
+            <p>Seis módulos de machine learning — de la detección de anomalías al forecasting con validación temporal — documentados con sus límites explícitos.</p>
+            <div class="article-meta"><span>6 MÓDULOS ML</span><span>ABRIR PDF →</span></div>
           </a>
-          <a class="dash-card" href="pdt-explorador-partidos.html" target="_blank" rel="noopener noreferrer">
-            <div class="dash-icon">◎</div>
-            <h3>Explorador de partidos</h3>
-            <p>Los 4.401 partidos del grafo de migración, sin recortar — PageRank, centralidad, comunidades de Louvain, y de dónde vienen / hacia dónde van los políticos de cada partido.</p>
-            <div class="dash-meta"><span><strong>4.401</strong> partidos</span><span><strong>10.419</strong> aristas de migración</span></div>
-            <div class="dash-cta">Abrir explorador →</div>
-          </a>
+          <div class="article-card is-soon">
+            <div class="article-kicker">Metodología común</div>
+            <h3>Por qué K-Means dos veces: clasificación estática vs. trayectoria dinámica.</h3>
+            <p>Los dos estudios usan el mismo algoritmo sobre preguntas distintas — qué comparten y qué distingue a un partido de una trayectoria.</p>
+            <div class="article-meta"><span>COMPARATIVO</span><span>PRÓXIMAMENTE</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="manual" style="border-bottom:none;">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-eyebrow">Documentación técnica</p>
-          <h2>Manual de uso y diccionario de variables.</h2>
-          <p>Qué mide cada indicador, cómo se calcula, y qué límites tiene — para que ningún número se lea sin su método.</p>
+    <section class="section reveal" id="exploradores">
+      <div class="grid-wrap">
+        <div class="section-label"><span class="section-num mono">L1 · B</span><h2>Exploradores interactivos de machine learning</h2></div>
+        <p class="section-desc">Acceso directo a los dos motores del caso insignia — los mismos datos del corpus, consultables caso por caso.</p>
+
+        <div class="explorer-grid">
+          <div class="explorer-card is-live">
+            <div class="explorer-top"><div class="explorer-glyph">P</div><span class="explorer-status">Activo</span></div>
+            <h3>Explorador de personas — ADN político</h3>
+            <p>Perfil de 9 dimensiones por persona, familias políticas (KMeans, 6 clusters) y score de anomalía (Isolation Forest) sobre trayectorias individuales.</p>
+            <div class="explorer-specs">
+              <div class="explorer-spec"><div class="val mono">11.625</div><div class="lbl">Personas indexadas</div></div>
+              <div class="explorer-spec"><div class="val mono">6</div><div class="lbl">Familias políticas</div></div>
+            </div>
+            <a class="explorer-cta" href="pdt-explorador-personas.html" target="_blank" rel="noopener noreferrer">Abrir explorador →</a>
+          </div>
+          <div class="explorer-card is-live">
+            <div class="explorer-top"><div class="explorer-glyph">R</div><span class="explorer-status">Activo</span></div>
+            <h3>Explorador de partidos — red de poder</h3>
+            <p>Grafo completo de migración partidista: PageRank, grados de entrada/salida e intermediación, sobre comunidades detectadas por Louvain.</p>
+            <div class="explorer-specs">
+              <div class="explorer-spec"><div class="val mono">4.401</div><div class="lbl">Partidos en el grafo</div></div>
+              <div class="explorer-spec"><div class="val mono">10.419</div><div class="lbl">Aristas de migración</div></div>
+            </div>
+            <a class="explorer-cta" href="pdt-explorador-partidos.html" target="_blank" rel="noopener noreferrer">Abrir explorador →</a>
+          </div>
         </div>
+
         <div class="manual-strip">
           <div class="manual-strip-text">
             <h3>Manual de dashboards PDT-Colombia (PDF)</h3>
-            <p>Diccionario completo de las 9 variables de ADN político, las 8 de red de partidos, y la metodología del score de anomalía.</p>
+            <p>Diccionario completo de variables — qué mide cada indicador, cómo se calcula y qué límites tiene.</p>
           </div>
           <a class="btn-manual" href="assets/Manual_Dashboards_PDT-Colombia.pdf" target="_blank" rel="noopener noreferrer">Descargar PDF</a>
         </div>
       </div>
     </section>
 
-    <footer class="pdt-footer">
-      <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-        <span>ORION Intelligence — Unidad de Inteligencia Estratégica · <a href="index.html">Volver al sitio</a></span>
-        <span class="mono">Fuente: CEDE, Universidad de los Andes · 1958–2023</span>
-      </div>
-    </footer>
+    <div class="grid-wrap foot">
+      <span>ORIÓN — Unidad de Inteligencia · Hub metodológico · <a href="index.html">Volver al sitio principal</a></span>
+      <span class="mono">CEDE · Universidad de los Andes · 1958–2023</span>
+    </div>
 
   </div>
 
 <script>
-(function() {
+(function () {
   var CLAVE = "orion2026";
   var gate = document.getElementById("gate");
   var contenido = document.getElementById("contenido");
@@ -323,6 +532,7 @@
     gate.style.display = "none";
     contenido.classList.add("visible");
     try { sessionStorage.setItem("pdt_acceso", "1"); } catch (e) {}
+    initInteractions();
   }
 
   function intentar() {
@@ -336,13 +546,57 @@
   }
 
   btn.addEventListener("click", intentar);
-  input.addEventListener("keydown", function(e) { if (e.key === "Enter") intentar(); });
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") intentar(); });
+
+  function initInteractions() {
+    var masthead = document.querySelector(".masthead");
+    window.addEventListener("scroll", function () {
+      masthead.classList.toggle("is-scrolled", window.scrollY > 4);
+    });
+
+    var revealEls = document.querySelectorAll(".reveal");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+
+    var counters = document.querySelectorAll("[data-count]");
+    var counted = false;
+    function runCounters() {
+      if (counted) return;
+      counted = true;
+      counters.forEach(function (el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var start = performance.now();
+        var duration = 1100;
+        function tick(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var value = Math.round(target * eased);
+          el.textContent = value.toLocaleString("es-CO");
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+    var stripEl = document.querySelector(".readout-strip");
+    if (stripEl) {
+      var mastheadIO = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { runCounters(); mastheadIO.disconnect(); }
+      }, { threshold: 0.4 });
+      mastheadIO.observe(stripEl);
+    }
+  }
 
   try {
     if (sessionStorage.getItem("pdt_acceso") === "1") desbloquear();
   } catch (e) {}
 })();
 </script>
-
 </body>
 </html>

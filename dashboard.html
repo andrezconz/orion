@@ -13,7 +13,7 @@
     <div class="app-container">
       <header>
         <div class="brand-identity">
-          <img src="assets/logo.jpeg" alt="ORIÓN Estrategia" style="width:48px;height:48px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:2px solid var(--accent,#4fff91);" />
+          <img src="assets/logo.jpeg" alt="ORIÓN Estrategia" style="width:48px;height:48px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:2px solid var(--accent-gold);" />
           <p>Unidad de Inteligencia Estratégica</p>
           <h1>Arquitecto de Decisiones</h1>
           <p>LatAm 2026 | Consultoría de Andrez Felipe Guerrero Torres</p>
@@ -25,52 +25,129 @@
 
       <main class="main-layout">
         <div class="content-area">
-          <section class="terminal-section">
-            <div class="terminal-card">
-              <div class="input-group">
-                <label for="input-signal" class="brand-font" style="font-size: 0.8rem; color: var(--text-secondary);">Entrada de Señal (URL / PDF Text / Noticias)</label>
-                <textarea id="input-signal" placeholder="Pegue aquí el reporte de la IEA, BID o Gaceta Regulatoria para procesar..."></textarea>
-                <button id="deploy-btn" class="btn-deploy">
-                  <span>Ejecutar Despliegue</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                </button>
-                <div id="loading-indicator" class="loading">Procesando bajo lentes de Economía, Diplomacia y Resiliencia...</div>
-              </div>
+          <section class="concept-section">
+            <span class="concept-eyebrow">Marco conceptual</span>
+            <h2>El individuo, no el bloque, es la unidad de análisis</h2>
+            <p class="concept-lede">
+              Casi toda inteligencia política agrupa primero por categoría — partido, ideología, generación — y describe personas a partir de esa etiqueta. ORIÓN invierte el orden: observa la trayectoria de cada actor político como una secuencia propia de decisiones y cargos, y deja que las tipologías emerjan de esos datos. La categoría deja de ser el punto de partida y pasa a ser, cuando aparece, un resultado del análisis.
+            </p>
+
+            <div class="concept-diagram-card">
+              <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama: de bloque agregado a individuo, a patrón emergente">
+                <text x="70" y="34" fill="#e8e2d0" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">01 · BLOQUE</text>
+                <text x="70" y="52" fill="#8f8a78" font-family="Inter, sans-serif" font-size="10.5">Categoría asignada de entrada</text>
+                <g fill="#c8a96a" opacity="0.85">
+                  <circle cx="90" cy="110" r="7"/><circle cx="115" cy="95" r="7"/><circle cx="140" cy="115" r="7"/>
+                  <circle cx="95" cy="140" r="7"/><circle cx="125" cy="150" r="7"/><circle cx="150" cy="130" r="7"/>
+                  <circle cx="70" cy="130" r="7"/><circle cx="160" cy="105" r="7"/>
+                </g>
+                <rect x="55" y="80" width="125" height="90" rx="4" fill="none" stroke="#3a362c" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <text x="60" y="192" fill="#605c4e" font-family="Inter, sans-serif" font-size="9.5">partido / ideología / generación</text>
+
+                <path d="M 210 120 L 300 120" stroke="#3a362c" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+                <text x="215" y="105" fill="#8f8a78" font-family="Inter, sans-serif" font-size="9" font-style="italic">se observa la trayectoria</text>
+
+                <text x="335" y="34" fill="#e8e2d0" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">02 · INDIVIDUO</text>
+                <text x="335" y="52" fill="#8f8a78" font-family="Inter, sans-serif" font-size="10.5">Secuencia propia de cargos y decisiones</text>
+                <g stroke="#c8a96a" stroke-width="1.2" fill="none" opacity="0.55">
+                  <path d="M 345 150 L 375 110 L 410 135 L 445 95"/>
+                  <path d="M 345 165 L 380 175 L 415 160 L 450 180"/>
+                  <path d="M 350 100 L 385 90 L 420 105 L 455 130"/>
+                </g>
+                <g fill="#e8dfc2">
+                  <circle cx="345" cy="150" r="4"/><circle cx="375" cy="110" r="4"/><circle cx="410" cy="135" r="4"/><circle cx="445" cy="95" r="4"/>
+                  <circle cx="345" cy="165" r="4"/><circle cx="380" cy="175" r="4"/><circle cx="415" cy="160" r="4"/><circle cx="450" cy="180" r="4"/>
+                  <circle cx="350" cy="100" r="4"/><circle cx="385" cy="90" r="4"/><circle cx="420" cy="105" r="4"/><circle cx="455" cy="130" r="4"/>
+                </g>
+                <text x="340" y="205" fill="#605c4e" font-family="Inter, sans-serif" font-size="9.5">12 variables de trayectoria por persona</text>
+
+                <path d="M 500 120 L 590 120" stroke="#3a362c" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+                <text x="493" y="105" fill="#8f8a78" font-family="Inter, sans-serif" font-size="9" font-style="italic">k-means sin usar la etiqueta</text>
+
+                <text x="625" y="34" fill="#e8e2d0" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">03 · PATRÓN EMERGENTE</text>
+                <text x="625" y="52" fill="#8f8a78" font-family="Inter, sans-serif" font-size="10.5">Tipología descubierta, no impuesta</text>
+                <g opacity="0.9">
+                  <circle cx="650" cy="105" r="6" fill="#e9877a"/><circle cx="665" cy="118" r="6" fill="#e9877a"/><circle cx="645" cy="128" r="6" fill="#e9877a"/>
+                  <circle cx="700" cy="95" r="6" fill="#93b06a"/><circle cx="715" cy="108" r="6" fill="#93b06a"/><circle cx="695" cy="118" r="6" fill="#93b06a"/><circle cx="712" cy="128" r="6" fill="#93b06a"/>
+                  <circle cx="760" cy="150" r="6" fill="#5aa3a3"/><circle cx="775" cy="163" r="6" fill="#5aa3a3"/><circle cx="755" cy="172" r="6" fill="#5aa3a3"/>
+                  <circle cx="830" cy="115" r="6" fill="#9b87c4"/><circle cx="845" cy="128" r="6" fill="#9b87c4"/><circle cx="825" cy="140" r="6" fill="#9b87c4"/><circle cx="850" cy="145" r="6" fill="#9b87c4"/>
+                </g>
+                <circle cx="656" cy="118" r="26" fill="none" stroke="#e9877a" stroke-width="1" opacity="0.4"/>
+                <circle cx="705" cy="112" r="26" fill="none" stroke="#93b06a" stroke-width="1" opacity="0.4"/>
+                <circle cx="763" cy="162" r="26" fill="none" stroke="#5aa3a3" stroke-width="1" opacity="0.4"/>
+                <circle cx="837" cy="130" r="26" fill="none" stroke="#9b87c4" stroke-width="1" opacity="0.4"/>
+                <text x="620" y="205" fill="#605c4e" font-family="Inter, sans-serif" font-size="9.5">4 tipologías, verificadas por silhouette y t-SNE</text>
+                <defs>
+                  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="#3a362c"/>
+                  </marker>
+                </defs>
+              </svg>
+            </div>
+
+            <div class="concept-applied">
+              <h3>Aplicado: el módulo ADN Político de PDT-Colombia</h3>
+              <p>
+                Este marco no es sólo teoría — es el motor detrás del módulo ADN Político del Political Digital Twin de Colombia. Sobre 101.209 trayectorias individuales (1958–2023) se corrió un K-Means de dos niveles usando únicamente variables de comportamiento y cargo, sin usar el nombre del partido como insumo. Las 4 tipologías que resultaron —y sus subtipos reales por votación— son exhibidas abajo, con las figuras generadas directamente en R sobre el modelo entrenado.
+              </p>
+              <a href="./pdt-colombia.html" class="btn-deploy">Ver el caso completo en PDT-Colombia →</a>
             </div>
           </section>
 
-          <section id="results-section" class="output-grid">
-            <article class="module" id="module-radar">
-              <div class="module-header">
-                <h3>Radar de Riesgos</h3>
-                <span class="module-tag">Briefing Técnico</span>
-              </div>
-              <div class="module-content" id="content-radar">Esperando señal de entrada...</div>
-            </article>
+          <section class="concept-section" aria-labelledby="exhibits-heading">
+            <span class="concept-eyebrow">Evidencia — figuras reales</span>
+            <h2 id="exhibits-heading" style="font-size:1.15rem; max-width:none;">Salidas del modelo entrenado, sin retoques</h2>
+            <div class="exhibit-grid">
+              <article class="exhibit-card">
+                <img src="assets/kmeans/fig1_silhouette.png" alt="Índice de silhouette por número de clusters, con k=4 marcado como valor elegido" loading="lazy" />
+                <div class="exhibit-meta">
+                  <span class="exhibit-badge">Real · generado en R</span>
+                  <h4>Selección de k</h4>
+                  <p>Índice de silhouette evaluado entre k=2 y k=10; k=4 se elige por balance entre cohesión y número de tipologías interpretables.</p>
+                  <span class="exhibit-source">Fuente: Entrega Final, Machine Learning 2026 — Universidad de los Andes</span>
+                </div>
+              </article>
 
-            <article class="module" id="module-linkedin">
-              <div class="module-header">
-                <h3>Táctica de LinkedIn</h3>
-                <span class="module-tag">Thought Leadership</span>
-              </div>
-              <div class="module-content" id="content-linkedin">Esperando señal de entrada...</div>
-            </article>
+              <article class="exhibit-card">
+                <img src="assets/kmeans/fig2_pca_clusters.png" alt="Clusters proyectados sobre las dos primeras componentes principales" loading="lazy" />
+                <div class="exhibit-meta">
+                  <span class="exhibit-badge">Real · generado en R</span>
+                  <h4>4 tipologías, nivel 1</h4>
+                  <p>Las trayectorias individuales proyectadas en PCA, coloreadas por el cluster asignado por K-Means.</p>
+                  <span class="exhibit-source">Fuente: Entrega Final, Machine Learning 2026 — Universidad de los Andes</span>
+                </div>
+              </article>
 
-            <article class="module" id="module-networking">
-              <div class="module-header">
-                <h3>Conector de Círculos</h3>
-                <span class="module-tag">Networking</span>
-              </div>
-              <div class="module-content" id="content-networking">Esperando señal de entrada...</div>
-            </article>
+              <article class="exhibit-card">
+                <img src="assets/kmeans/fig5_tsne_nivel1.png" alt="Proyección t-SNE de los 4 clusters de nivel 1" loading="lazy" />
+                <div class="exhibit-meta">
+                  <span class="exhibit-badge">Real · generado en R</span>
+                  <h4>Verificación no lineal</h4>
+                  <p>t-SNE confirma la separación entre tipologías sin asumir la estructura lineal de PCA. La cercanía local es informativa; no interpretar distancias entre grupos.</p>
+                  <span class="exhibit-source">Fuente: Entrega Final, Machine Learning 2026 — Universidad de los Andes</span>
+                </div>
+              </article>
 
-            <article class="module" id="module-consulting">
-              <div class="module-header">
-                <h3>Filtro de Valor</h3>
-                <span class="module-tag">Consultoría</span>
-              </div>
-              <div class="module-content" id="content-consulting">Esperando señal de entrada...</div>
-            </article>
+              <article class="exhibit-card">
+                <img src="assets/kmeans/fig4_nivel2_pca.png" alt="Segundo nivel: clusters de partidos no-coalición con votos reales 1958-2023" loading="lazy" />
+                <div class="exhibit-meta">
+                  <span class="exhibit-badge">Real · generado en R</span>
+                  <h4>Segundo nivel, con votos reales</h4>
+                  <p>Dentro de los partidos no-coalición, un segundo K-Means sobre resultados electorales reales separa partido institucionalizado, de nicho y no institucionalizado.</p>
+                  <span class="exhibit-source">Fuente: Entrega Final, Machine Learning 2026 — Universidad de los Andes</span>
+                </div>
+              </article>
+
+              <article class="exhibit-card is-wide">
+                <img src="assets/kmeans/arbol_decision_clusters.png" alt="Árbol de decisión que explica la asignación de cada tipología" loading="lazy" />
+                <div class="exhibit-meta">
+                  <span class="exhibit-badge">Real · generado en R</span>
+                  <h4>Qué variables explican cada tipología</h4>
+                  <p>Árbol de decisión (rpart) entrenado sobre el mismo cluster de K-Means, con 99.1% de precisión: la participación presidencial y el grupo representativo bastan para reconstruir casi toda la asignación.</p>
+                  <span class="exhibit-source">Fuente: 07_1_Ranking_Variables_RF.R, Entrega Final — Universidad de los Andes</span>
+                </div>
+              </article>
+            </div>
           </section>
         </div>
 
@@ -102,60 +179,29 @@
           </section>
 
           <section class="sidebar-module">
-            <h3 class="brand-font">Feed de Inteligencia</h3>
-            <div class="feed-list">
-              <div class="feed-item">
-                <span class="feed-date">04 MAY 2026</span>
-                <p>ISSB Brasil: Nuevas normas de reporte NIIF S1/S2 entrarán en vigor en Q3.</p>
-              </div>
-              <div class="feed-item">
-                <span class="feed-date">03 MAY 2026</span>
-                <p>Hidrógeno Verde Chile: Planta Magallanes incrementa capacidad HVDC.</p>
-              </div>
-              <div class="feed-item">
-                <span class="feed-date">02 MAY 2026</span>
-                <p>Minería Colombia: Revisión de licencias en zona de reserva.</p>
-              </div>
+            <h3 class="brand-font">Caso insignia</h3>
+            <div class="specs-menu">
+              <a href="./pdt-colombia.html" class="spec-link">
+                <span class="spec-code">PDT</span>
+                <span class="spec-title">Political Digital Twin — Colombia</span>
+                <span class="spec-icon">↗</span>
+              </a>
             </div>
           </section>
 
           <section class="sidebar-module">
-            <h3 class="brand-font">Calculadora de Impacto</h3>
-            <div class="calculator-mini">
-              <div class="calc-field">
-                <label>CAPEX Estimado (M USD)</label>
-                <input type="number" id="calc-capex" placeholder="0.00">
-              </div>
-              <div class="calc-field">
-                <label>Rentabilidad Social (%)</label>
-                <input type="number" id="calc-social" placeholder="0.00">
-              </div>
-              <button id="calc-btn" class="btn-deploy" style="padding: 0.5rem; font-size: 0.7rem; width: 100%;">Proyectar Impacto</button>
-              <div id="calc-result" style="margin-top: 1rem; font-size: 0.8rem; color: var(--accent-gold); display: none;"></div>
-            </div>
-          </section>
-
-          <section class="sidebar-module">
-            <h3 class="brand-font">Lente Verde IA</h3>
-            <div class="ai-module">
-              <p style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1rem;">Modelo no supervisado de clasificación territorial (Colombia 2026).</p>
-              <button id="ai-run-btn" class="btn-deploy" style="padding: 0.5rem; font-size: 0.7rem; width: 100%; border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold);">Ejecutar Clusterización</button>
-              
-              <div id="ai-results" class="ai-status" style="display: none; margin-top: 1rem;">
-                <div class="cluster-tag alfa">Cluster Alfa: Hubs de Transición</div>
-                <div class="cluster-tag beta">Cluster Beta: Riesgo Crítico</div>
-                <div class="cluster-tag gamma">Cluster Gamma: Activos Varados</div>
-              </div>
-            </div>
+            <h3 class="brand-font">Nota metodológica</h3>
+            <p class="methodology-note">
+              Todo lo marcado <strong>Real</strong> en esta página proviene de un modelo entrenado y ejecutado sobre datos verificables — sin cifras ilustrativas ni simulaciones de interfaz. Donde una capacidad de ORIÓN aún no tiene caso construido, se declara explícitamente como metodología sin caso.
+            </p>
           </section>
         </aside>
       </main>
 
       <footer>
-        <div>&copy; 2026 AFGT Consultoría. Rigor y Resiliencia.</div>
-        <div>ISSB NIIF S1/S2 | Energy Transition | Applied Economics</div>
+        <div>&copy; 2026 ORIÓN Estrategia. Rigor y Resiliencia.</div>
+        <div><a href="./index.html" style="color:inherit;">← Volver al inicio</a></div>
       </footer>
     </div>
-    <script type="module" src="/main.js"></script>
   </body>
 </html>
