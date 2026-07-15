@@ -1,54 +1,61 @@
 <meta charset="UTF-8">
 <title>Explorador de partidos — Political Digital Twin de Colombia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --surface: #f2ede0;
-    --surface-raised: #e9e2cd;
-    --surface-2: #fbf9f2;
-    --ink: #221f16;
-    --text-secondary: #5b5644;
-    --text-muted: #8c8468;
-    --line: #cdc2a0;
-    --accent: #a3702c;
+    --surface: #fbfaf6;
+    --surface-raised: #f0ece0;
+    --surface-2: #fffdf9;
+    --ink: #171b24;
+    --text-secondary: #4c4c48;
+    --text-muted: #8a8471;
+    --line: #e2dccb;
+    --accent: #b8237a;
     --entra: #2a4d8f;
     --sale: #c98a1f;
     --critical: #a23b2e;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --surface: #14181f; --surface-raised: #1c2230; --surface-2: #191d26;
-      --ink: #ece6d6; --text-secondary: #b9b19a; --text-muted: #837c68;
-      --line: #333c52; --accent: #d9a24f;
+      --surface: #0d0d10; --surface-raised: #1a1a1f; --surface-2: #14161a;
+      --ink: #f0eee6; --text-secondary: #b6b3a6; --text-muted: #7c7a6f;
+      --line: #2a2c38; --accent: #3690b3;
       --entra: #5b83c9; --sale: #c98500; --critical: #e08170;
     }
   }
   :root[data-theme="dark"] {
-    --surface: #14181f; --surface-raised: #1c2230; --surface-2: #191d26;
-    --ink: #ece6d6; --text-secondary: #b9b19a; --text-muted: #837c68;
-    --line: #333c52; --accent: #d9a24f;
+    --surface: #0d0d10; --surface-raised: #1a1a1f; --surface-2: #14161a;
+    --ink: #f0eee6; --text-secondary: #b6b3a6; --text-muted: #7c7a6f;
+    --line: #2a2c38; --accent: #3690b3;
     --entra: #5b83c9; --sale: #c98500; --critical: #e08170;
   }
   :root[data-theme="light"] {
-    --surface: #f2ede0; --surface-raised: #e9e2cd; --surface-2: #fbf9f2;
-    --ink: #221f16; --text-secondary: #5b5644; --text-muted: #8c8468;
-    --line: #cdc2a0; --accent: #a3702c;
+    --surface: #fbfaf6; --surface-raised: #f0ece0; --surface-2: #fffdf9;
+    --ink: #171b24; --text-secondary: #4c4c48; --text-muted: #8a8471;
+    --line: #e2dccb; --accent: #b8237a;
     --entra: #2a4d8f; --sale: #c98a1f; --critical: #a23b2e;
   }
 
   * { box-sizing: border-box; }
   html, body {
     background: var(--surface); color: var(--ink);
-    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: 15px; line-height: 1.5; margin: 0;
   }
   ::selection { background: var(--accent); color: var(--surface-2); }
   .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
-  .serif { font-family: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif; }
+  .serif { font-family: "Playfair Display", Georgia, serif; }
+
+  .site-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .site-brand img { height: 22px; width: auto; }
+  .site-brand span { font-size: 12px; color: var(--text-muted); }
 
   .app { max-width: 1240px; margin: 0 auto; padding: 40px 24px 80px; }
 
   .eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
-  h1 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-weight: 600; font-size: 32px; margin: 0 0 12px; text-wrap: balance; }
+  h1 { font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 32px; margin: 0 0 12px; text-wrap: balance; }
   .dek { color: var(--text-secondary); font-size: 14.5px; max-width: 640px; margin: 0 0 28px; line-height: 1.55; }
 
   .buscador {
@@ -77,7 +84,7 @@
 
   .panel { border: 1px solid var(--line); background: var(--surface-2); padding: 28px 30px; min-height: 500px; }
   .panel-vacio { display: flex; align-items: center; justify-content: center; height: 460px; color: var(--text-muted); font-size: 14px; }
-  .panel-nombre { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 6px; text-wrap: balance; }
+  .panel-nombre { font-family: "Playfair Display", Georgia, serif; font-size: 24px; font-weight: 600; margin-bottom: 6px; text-wrap: balance; }
   .panel-comunidad { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 22px; }
   .panel-comunidad .encabezan { color: var(--text-secondary); font-weight: 400; }
 
@@ -103,6 +110,7 @@
 </style>
 
 <div class="app">
+  <a href="index.html" class="site-brand"><img src="assets/logo-color.png" alt="ORIÓN" /><span>← Volver al inicio</span></a>
   <div class="eyebrow">Módulo 11 · Explorador de partidos</div>
   <h1>Red de poder — Political Digital Twin de Colombia</h1>
   <p class="dek">Los 4.401 partidos del grafo de migración partidista (1958–2023), con PageRank, centralidad y comunidad de Louvain — busca cualquier partido y ve de dónde vienen y hacia dónde van los políticos que pasan por él.</p>

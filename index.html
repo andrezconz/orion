@@ -305,7 +305,34 @@
       .case-stat .l { font-size: 0.72rem; color: var(--slate-400); letter-spacing: 0.04em; margin-top: 4px; }
       .case-cta { margin-top: 30px; }
 
-      /* ---------- 07 Para quien ---------- */
+      /* ---------- 07 Boletin ---------- */
+      .newsletter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+      @media (max-width: 800px) { .newsletter-grid { grid-template-columns: 1fr; } }
+      .article-card {
+        background: var(--gray-50); border: 1px solid var(--rule); padding: 32px 28px;
+        display: flex; flex-direction: column; gap: 14px;
+      }
+      .article-tag {
+        display: inline-flex; align-self: flex-start; font-family: var(--sans); font-size: 0.66rem;
+        font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-gold);
+        border: 1px solid rgba(184,35,122,0.3); background: rgba(184,35,122,0.06);
+        padding: 4px 12px; border-radius: 999px;
+      }
+      .article-card h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+      .article-card p.excerpt { font-size: 0.92rem; color: var(--slate-600); line-height: 1.75; }
+      .article-meta { font-family: var(--sans); font-size: 0.75rem; color: var(--slate-400); margin-top: auto; padding-top: 6px; }
+      .newsletter-subscribe {
+        display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+        border-top: 1px solid var(--rule); padding-top: 32px;
+      }
+      .newsletter-subscribe input {
+        flex: 1; min-width: 220px; padding: 13px 16px; border: 1px solid var(--rule); background: var(--paper);
+        font-family: var(--sans); font-size: 0.9rem; color: var(--navy-900); border-radius: 2px;
+      }
+      .newsletter-subscribe input:focus { outline: none; border-color: var(--accent-gold); }
+      .newsletter-subscribe p { font-size: 0.82rem; color: var(--slate-400); width: 100%; margin-top: 6px; }
+
+      /* ---------- 08 Para quien ---------- */
       .audience-list { columns: 2; column-gap: 60px; max-width: 780px; }
       @media (max-width: 640px) { .audience-list { columns: 1; } }
       .audience-item {
@@ -440,6 +467,7 @@
         <a href="#reto" class="nav-link">Riesgo público</a>
         <a href="#framework" class="nav-link">Framework</a>
         <a href="#pdt-colombia" class="nav-link">Caso insignia</a>
+        <a href="#boletin" class="nav-link">Boletín</a>
         <a href="#test" class="nav-link">Test</a>
         <div class="lang-switch">
           <a href="index.html" class="active">ES</a><span>|</span><a href="index-en.html">EN</a>
@@ -589,11 +617,44 @@
         </div>
       </section>
 
-      <!-- 07 PARA QUIEN -->
+      <!-- 07 BOLETIN -->
+      <section class="chapter" id="boletin">
+        <div class="container">
+          <div class="chapter-head reveal">
+            <p class="eyebrow">07 — Boletín ORIÓN</p>
+            <h2>Análisis que no cabe en una reunión de 30 minutos.</h2>
+            <p class="chapter-lede">Cada dos semanas, una lectura corta sobre lo que estamos viendo en los datos electorales y en la aplicación real de machine learning al sector público — sin relleno, sin autopromoción.</p>
+          </div>
+
+          <div class="newsletter-grid reveal">
+            <article class="article-card">
+              <span class="article-tag">Análisis de partidos</span>
+              <h3>Lo que 65 años de datos electorales dicen de los partidos colombianos</h3>
+              <p class="excerpt">El PageRank sobre la red de migración partidista de PDT-Colombia ubica al Partido Liberal (0.0565) y al Conservador (0.0543) como los de mayor capital político heredado, seguidos por la U (0.0465), Cambio Radical (0.0408) y Alianza Verde (0.0252). Pero el dato más interesante no es el ranking: es que el modelo, sin usar el nombre del partido como insumo, encuentra igual seis tipologías de trayectoria — desde "élite nacional" hasta "debutantes leales" — que explican mejor el comportamiento de un candidato que su membresía partidista.</p>
+              <span class="article-meta">Basado en PDT-Colombia, módulo de redes de poder · 6 min de lectura</span>
+            </article>
+
+            <article class="article-card">
+              <span class="article-tag">Machine learning en lo público</span>
+              <h3>Por qué la mayoría de proyectos de IA en gobierno no cambian ninguna decisión</h3>
+              <p class="excerpt">El patrón se repite: una entidad compra un dashboard, lo llena de indicadores, y seis meses después nadie lo consulta antes de decidir. El problema casi nunca es el modelo — es que el proyecto se detuvo en "Analytical Modeling" y nunca llegó a "Decision Intelligence": la traducción del resultado estadístico en una acción concreta, con un responsable y una fecha. Sin ese último paso, el machine learning en el sector público es un ejercicio técnico caro, no una herramienta de gobierno.</p>
+              <span class="article-meta">Marco ORION Intelligence Framework, capa 04 · 5 min de lectura</span>
+            </article>
+          </div>
+
+          <div class="newsletter-subscribe reveal">
+            <input type="email" placeholder="tu@correo.com" id="newsletterEmail" />
+            <button type="button" class="btn-primary" id="newsletterBtn" style="border:none;cursor:pointer;">Suscribirme al boletín</button>
+            <p>Sin spam. Cancelas cuando quieras.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 PARA QUIEN -->
       <section class="chapter" id="paraquien">
         <div class="container">
           <div class="chapter-head reveal">
-            <p class="eyebrow">07 — Para quién</p>
+            <p class="eyebrow">08 — Para quién</p>
             <h2>Equipos que deben decidir bajo presión pública.</h2>
             <p class="chapter-lede">ORIÓN trabaja mejor cuando la decisión combina territorio, reputación, recursos públicos, actores múltiples y consecuencias medibles.</p>
           </div>
@@ -608,11 +669,11 @@
         </div>
       </section>
 
-      <!-- 08 TEST DE AFINIDAD -->
+      <!-- 09 TEST DE AFINIDAD -->
       <section class="chapter quiz-section" id="test">
         <div class="container">
           <div class="chapter-head reveal">
-            <p class="eyebrow">08 — Test de afinidad política</p>
+            <p class="eyebrow">09 — Test de afinidad política</p>
             <h2>Antes de entrar al motor completo, un ejercicio de dos minutos.</h2>
             <p class="chapter-lede">Responde cinco preguntas sobre cómo construirías una carrera política y dinos en qué región vives. Con tu partido afín, ORIÓN busca en el modelo real de PDT-Colombia al candidato histórico cuyo comportamiento se parece más al tuyo, y lo contrasta con el electorado real de tu región según la Encuesta de Cultura Política del DANE — y de ahí en adelante, tú decides si quieres explorar el resto.</p>
           </div>
@@ -697,6 +758,14 @@
       const nav = document.getElementById('siteNav');
       window.addEventListener('scroll', () => {
         nav.classList.toggle('is-scrolled', window.scrollY > 40);
+      });
+
+      // ---------- Newsletter (no backend wired yet) ----------
+      document.getElementById('newsletterBtn').addEventListener('click', () => {
+        const input = document.getElementById('newsletterEmail');
+        if (!input.value || !input.value.includes('@')) { input.focus(); return; }
+        alert('Gracias — te escribimos al próximo boletín.');
+        input.value = '';
       });
 
       // ================= TEST DE AFINIDAD =================
