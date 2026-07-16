@@ -418,6 +418,41 @@
       .rp-bar-fill { height: 100%; }
       .rp-bar-pct { font-size: 0.72rem; color: rgba(251,250,246,0.55); text-align: right; }
       .rp-note { font-size: 0.72rem; color: rgba(251,250,246,0.42); line-height: 1.6; }
+
+      .quiz-report-toggle {
+        display: block; width: 100%; text-align: left; background: none; cursor: pointer;
+        border: 1px dashed rgba(255,255,255,0.25); color: var(--accent-warm); font-family: var(--sans);
+        font-size: 0.85rem; font-weight: 600; padding: 14px 18px; border-radius: 2px; margin-bottom: 20px;
+        transition: all 0.2s ease;
+      }
+      .quiz-report-toggle:hover { border-color: var(--accent-warm); background: rgba(54,144,179,0.06); }
+      .capacity-report:empty { display: none; }
+      .capacity-report {
+        background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.14);
+        padding: 26px 24px; margin-bottom: 28px;
+      }
+      .cr-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--paper); margin-bottom: 4px; }
+      .cr-sub { font-size: 0.78rem; color: rgba(251,250,246,0.5); margin-bottom: 22px; }
+      .cr-index { margin-bottom: 18px; }
+      .cr-index-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+      .cr-index-name { font-size: 0.82rem; color: var(--paper); font-weight: 600; }
+      .cr-index-val { font-family: var(--serif); font-size: 0.95rem; color: var(--accent-warm); font-weight: 600; }
+      .cr-index-track { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; margin-bottom: 5px; }
+      .cr-index-fill { height: 100%; background: var(--accent-warm); }
+      .cr-index-desc { font-size: 0.74rem; color: rgba(251,250,246,0.48); line-height: 1.55; }
+      .cr-qual {
+        border: 1px solid rgba(255,255,255,0.14); padding: 14px 16px; margin-bottom: 18px; font-size: 0.8rem;
+        color: rgba(251,250,246,0.65); line-height: 1.6;
+      }
+      .cr-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); }
+      @media (max-width: 600px) { .cr-summary { grid-template-columns: 1fr; } }
+      .cr-summary h5 { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+      .cr-summary.fortalezas h5 { color: #7a9b6e; }
+      .cr-summary.oportunidades h5 { color: #b3695a; }
+      .cr-summary ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+      .cr-summary li { font-size: 0.78rem; color: rgba(251,250,246,0.7); }
+      .cr-method { font-size: 0.7rem; color: rgba(251,250,246,0.4); line-height: 1.6; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+
       .quiz-unlock { display: flex; flex-direction: column; gap: 12px; }
       .quiz-explorer-link {
         display: flex; justify-content: space-between; align-items: center; gap: 14px;
@@ -723,6 +758,9 @@
 
               <div class="quiz-region-panel" id="regionPanel"></div>
 
+              <button type="button" class="quiz-report-toggle" id="reportToggle">Ver informe completo de capacidad y riesgo →</button>
+              <div class="capacity-report" id="capacityReport"></div>
+
               <div class="quiz-unlock">
                 <a class="quiz-explorer-link" href="pdt-explorador-personas.html">
                   <span><span class="exp-title">Explorador de personas</span><span class="exp-sub">101.209 trayectorias individuales, filtrables por tipología y partido</span></span>
@@ -852,6 +890,23 @@
       ];
       const NATIONAL = { identifica: 12.1, voto2022: 78.3, izq: 13.3, centro: 40.7, der: 23.9, ns: 22.1 };
 
+      // ================= PERFIL DE CAPACIDAD Y RIESGO POLÍTICO =================
+      // Deciles nacionales reales (11.625 personas, PDT-Colombia) por variable — usados para
+      // convertir el valor crudo de cualquier líder en un percentil real, por interpolación.
+      const NATIONAL_DECILES = {"resiliencia":[0,0,1,1,1,1,2,2,3,4,926],"territorialidad":[1,1,1,1,1,1,2,18,32,34,34],"lealtad_partidista":[0.05,0.33,0.38,0.5,0.5,0.5,0.67,0.83,1,1,1],"movilidad":[1,1,2,2,2,2,2,2,3,3,7],"capacidad_electoral":[0,0,0,38,156,381,773,1512,3178,9230,6745280],"velocidad":[0.04,0.17,0.22,0.27,0.31,0.36,0.4,0.5,0.67,1,927],"victorias_ratio":[0.0,0.0,0.0,0.0,0.0,0.0,0.2,0.375,0.5,0.75,1.0],"cargo_diversidad":[1,1,1,1,1,1,1,2,2,3,7]};
+      // Deciles de score_outlier (Isolation Forest, ya existente en el modelo) calculados
+      // dentro de cada una de las 6 tipologías por separado, no contra todo el país.
+      const CLUSTER_OUTLIER_DECILES = {"1":[0.542,0.64,0.654,0.664,0.672,0.68,0.688,0.7,0.714,0.737,0.796],"2":[0.412,0.502,0.518,0.531,0.545,0.561,0.575,0.595,0.621,0.651,0.78],"3":[0.477,0.506,0.517,0.523,0.529,0.535,0.543,0.55,0.558,0.579,0.676],"4":[0.438,0.508,0.521,0.53,0.54,0.549,0.558,0.569,0.586,0.604,0.691],"5":[0.48,0.493,0.502,0.512,0.519,0.527,0.535,0.543,0.554,0.577,0.671],"6":[0.485,0.517,0.531,0.541,0.552,0.563,0.574,0.588,0.605,0.634,0.737]};
+      // Variables crudas reales por cada uno de los 74 perfiles curados (mismo dataset del test).
+      const PROFILE_METRICS = {"Garces Restrepo Lorenzo Antonio":{"res":0,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.5,"out":0.694,"cl":1,"vr":0.25,"cd":3},"Bedoya Gil Gabriel Euclides":{"res":2,"terr":1,"leal":0.88,"mov":1,"cap":0,"vel":0.36,"out":0.502,"cl":2,"vr":0.875,"cd":1},"Gaviria Munoz Simon":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":102757,"vel":1,"out":0.523,"cl":3,"vr":0.5,"cd":1},"Segebre Berardinelli Jose Antonio":{"res":1,"terr":1,"leal":0.67,"mov":2,"cap":0,"vel":0.33,"out":0.53,"cl":4,"vr":0.333,"cd":2},"Avila Tobar Jaime Alberto":{"res":0,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.17,"out":0.493,"cl":5,"vr":0.5,"cd":1},"Martinez Rosales Emilio":{"res":2,"terr":1,"leal":0.6,"mov":2,"cap":0,"vel":0.42,"out":0.531,"cl":6,"vr":0.6,"cd":2},"Marin Lozano Jose Alfredo":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.67,"out":0.688,"cl":1,"vr":0.333,"cd":3},"Mena Legarda Carlos":{"res":3,"terr":1,"leal":0.89,"mov":1,"cap":0,"vel":0.36,"out":0.502,"cl":2,"vr":0.778,"cd":1},"Diaz Contreras Jairo":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":1},"Gomez Duran Jose Olegario":{"res":1,"terr":1,"leal":0.67,"mov":2,"cap":0,"vel":0.33,"out":0.569,"cl":4,"vr":0.333,"cd":2},"Amaya Arregoces Nelson Rafael":{"res":0,"terr":1,"leal":1,"mov":1,"cap":0,"vel":0.17,"out":0.493,"cl":5,"vr":0.5,"cd":1},"Diaz Parada Hernando Jose":{"res":2,"terr":1,"leal":0.6,"mov":2,"cap":0,"vel":0.42,"out":0.531,"cl":6,"vr":0.4,"cd":2},"Palacio Vega Guillermo Leon":{"res":1,"terr":1,"leal":0.8,"mov":2,"cap":0,"vel":0.5,"out":0.7,"cl":1,"vr":0.4,"cd":3},"Lizcano Gonzalez Oscar Tulio":{"res":2,"terr":1,"leal":0.67,"mov":1,"cap":0,"vel":0.5,"out":0.518,"cl":2,"vr":0.667,"cd":1},"Rangel Sosa Miguel Angel":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":1},"Ricaurte Sossa Frank":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.25,"out":0.508,"cl":4,"vr":0.25,"cd":2},"Diaz Granados Abadia Eduardo Agaton":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.5,"out":0.502,"cl":5,"vr":1,"cd":1},"Mosquera Lozano Jose Americo":{"res":2,"terr":1,"leal":0.6,"mov":2,"cap":0,"vel":0.42,"out":0.531,"cl":6,"vr":0.4,"cd":2},"Ortega Narvaez Temistocles":{"res":3,"terr":1,"leal":0.83,"mov":3,"cap":0,"vel":0.42,"out":0.714,"cl":1,"vr":0.5,"cd":3},"Henao Escudero Gabriel Herman":{"res":3,"terr":1,"leal":0.88,"mov":1,"cap":0,"vel":0.36,"out":0.502,"cl":2,"vr":0.875,"cd":1},"Bernal Cordoba Daniel":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":2},"Amaya Arias Leyda Margarita":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.33,"out":0.508,"cl":4,"vr":0.5,"cd":2},"Amar Sepulveda Jose Gabriel":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.5,"out":0.502,"cl":5,"vr":0.5,"cd":1},"Gaitan Fajardo Gavi Patricia":{"res":2,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.44,"out":0.541,"cl":6,"vr":0.5,"cd":2},"Prieto Riveros Jorge Elieser":{"res":1,"terr":1,"leal":0.8,"mov":2,"cap":0,"vel":0.5,"out":0.7,"cl":1,"vr":0.4,"cd":3},"Castillo Forero Meliano Andres":{"res":3,"terr":1,"leal":0.88,"mov":1,"cap":0,"vel":0.31,"out":0.502,"cl":2,"vr":0.75,"cd":1},"Perez Alvarez Maryori De Jesus":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":2},"Ladino Gutierrez Leonardo Favio":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.25,"out":0.508,"cl":4,"vr":0.25,"cd":2},"Miranda Pena Luvi Katherine":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.5,"out":0.502,"cl":5,"vr":1,"cd":1},"Munoz Cabrera Juan Diego":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.5,"out":0.517,"cl":6,"vr":0.5,"cd":2},"Mejia Mejia Carlos Felipe":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.44,"out":0.68,"cl":1,"vr":0.5,"cd":2},"Uscategui Pastrana Jose Jaime":{"res":2,"terr":1,"leal":0.67,"mov":1,"cap":0,"vel":0.5,"out":0.518,"cl":2,"vr":0.667,"cd":1},"Ballesteros Archila Edwin Gilberto":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":1},"Guaqueta De Diago Liliana Graciela":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.25,"out":0.53,"cl":4,"vr":0.25,"cd":2},"Acosta Infante Yenica Sugein":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.5,"out":0.502,"cl":5,"vr":1,"cd":1},"Aguilar Zambrano Ivan Fernando":{"res":2,"terr":1,"leal":0.67,"mov":2,"cap":0,"vel":0.42,"out":0.531,"cl":6,"vr":0.333,"cd":2},"Nino Avendano Segundo Senen":{"res":1,"terr":1,"leal":0.75,"mov":3,"cap":0,"vel":0.42,"out":0.68,"cl":1,"vr":0.25,"cd":3},"Navas Talero Carlos German":{"res":2,"terr":1,"leal":0.67,"mov":1,"cap":0,"vel":0.5,"out":0.518,"cl":2,"vr":1,"cd":1},"Delgado Guerrero Segundo Raul":{"res":0,"terr":1,"leal":0.67,"mov":2,"cap":0,"vel":0.5,"out":0.517,"cl":3,"vr":0.333,"cd":2},"Cuastumal Malte Cristobal":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.25,"out":0.53,"cl":4,"vr":0.25,"cd":2},"Manrique Berrio Gabriel Raul":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.33,"out":0.512,"cl":5,"vr":0.333,"cd":2},"Herrera Rey Tito Alfonso":{"res":2,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.36,"out":0.541,"cl":6,"vr":0.25,"cd":2},"Tintinago Majin Adelmo":{"res":1,"terr":1,"leal":0.8,"mov":2,"cap":0,"vel":0.5,"out":0.7,"cl":1,"vr":0.2,"cd":2},"Montes Lara Alvaro":{"res":4,"terr":1,"leal":0.9,"mov":1,"cap":0,"vel":0.36,"out":0.502,"cl":2,"vr":0.8,"cd":1},"Diaz Marco Tulio":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.25,"out":0.53,"cl":4,"vr":0.25,"cd":2},"Leon Aguillon Alejandro":{"res":3,"terr":1,"leal":0.88,"mov":2,"cap":0,"vel":0.36,"out":0.541,"cl":6,"vr":0.625,"cd":3},"Rubio Cortes Olga Victoria":{"res":1,"terr":1,"leal":0.8,"mov":2,"cap":0,"vel":0.5,"out":0.7,"cl":1,"vr":0.2,"cd":3},"Duque Arciniegas Jorge Armando":{"res":1,"terr":1,"leal":1,"mov":2,"cap":0,"vel":0.25,"out":0.512,"cl":5,"vr":0.5,"cd":2},"Rivera Villa Ramiro":{"res":2,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.42,"out":0.541,"cl":6,"vr":0.5,"cd":2},"Velasquez Jaramillo Hugo Orlando":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.44,"out":0.68,"cl":1,"vr":0.25,"cd":3},"Lopez Bejarano Jesus":{"res":2,"terr":1,"leal":0.67,"mov":1,"cap":0,"vel":0.5,"out":0.518,"cl":2,"vr":0.667,"cd":1},"Blackburn Cortes Jose":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":1,"cd":1},"Cordoba Perez Mario Eliecer":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.08,"out":0.508,"cl":4,"vr":0.5,"cd":2},"Moreno Ramirez Betty Esperanza":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.5,"out":0.517,"cl":6,"vr":0.5,"cd":2},"Daza Guevara Robert":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.5,"out":0.68,"cl":1,"vr":0.5,"cd":2},"Uribe Munoz Alirio":{"res":2,"terr":1,"leal":0.67,"mov":1,"cap":0,"vel":0.5,"out":0.518,"cl":2,"vr":0.667,"cd":1},"Cancimance Lopez Jorge Andres":{"res":1,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":0.5,"out":0.531,"cl":6,"vr":0.5,"cd":2},"Serpa Mendoza Gilberto":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.5,"out":0.7,"cl":1,"vr":0.25,"cd":3},"Ospina Giraldo Adolfo":{"res":3,"terr":1,"leal":0.88,"mov":1,"cap":0,"vel":0.36,"out":0.502,"cl":2,"vr":0.75,"cd":1},"Libreros Henao Freddy Hernando":{"res":0,"terr":1,"leal":0.67,"mov":2,"cap":0,"vel":0.5,"out":0.517,"cl":3,"vr":0.333,"cd":2},"Montero Ojeda Martha Eugenia":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.25,"out":0.53,"cl":4,"vr":0.25,"cd":2},"Elizalde Gomez Rafael":{"res":2,"terr":1,"leal":0.67,"mov":2,"cap":0,"vel":0.42,"out":0.531,"cl":6,"vr":0.333,"cd":3},"Vives Lacouture Luis Eduardo":{"res":3,"terr":1,"leal":0.83,"mov":3,"cap":0,"vel":0.42,"out":0.714,"cl":1,"vr":0.833,"cd":3},"Delgado Parra Guillermo Enrique":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":2},"Iguaran Jhon Jairo":{"res":2,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.42,"out":0.541,"cl":6,"vr":0.5,"cd":2},"Arboleda Palacio Oscar":{"res":3,"terr":1,"leal":0.83,"mov":3,"cap":0,"vel":0.36,"out":0.714,"cl":1,"vr":0.667,"cd":3},"Velez Escobar Ignacio":{"res":3,"terr":1,"leal":0.75,"mov":1,"cap":0,"vel":0.36,"out":0.518,"cl":2,"vr":0.75,"cd":2},"Ramirez Moreno Jose":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.13,"out":0.53,"cl":4,"vr":0.25,"cd":3},"Duran Medina Emilio":{"res":3,"terr":1,"leal":0.83,"mov":2,"cap":0,"vel":0.36,"out":0.541,"cl":6,"vr":0.667,"cd":3},"Urrutia Ocoro Maria Isabel":{"res":2,"terr":1,"leal":0.83,"mov":2,"cap":0,"vel":0.5,"out":0.7,"cl":1,"vr":0.333,"cd":2},"Perez Benitez Eder Ricardo":{"res":4,"terr":1,"leal":0.88,"mov":2,"cap":0,"vel":0.36,"out":0.502,"cl":2,"vr":0.625,"cd":2},"Escue Musicue Alcibiades":{"res":0,"terr":1,"leal":0.5,"mov":2,"cap":0,"vel":1,"out":0.517,"cl":3,"vr":0.5,"cd":2},"Duran Duran Yolanda":{"res":1,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.25,"out":0.53,"cl":4,"vr":0.25,"cd":3},"Ballesteros Jaimes Jose Eduardo":{"res":2,"terr":1,"leal":0.75,"mov":2,"cap":0,"vel":0.36,"out":0.541,"cl":6,"vr":0.25,"cd":3}};
+      // Red real de migración partidista (PageRank, capital heredado, intermediación),
+      // normalizada 0–1 por el máximo entre los 4.401 partidos del grafo.
+      const PARTY_NETWORK = {"Partido Liberal":{"pr":1.0,"cap":1.0,"inter":1.0},"Partido Conservador":{"pr":0.9618,"cap":0.9479,"inter":0.6808},"Partido de la U":{"pr":0.8227,"cap":0.9153,"inter":0.3686},"Cambio Radical":{"pr":0.7221,"cap":0.8083,"inter":0.269},"Alianza Verde":{"pr":0.4461,"cap":0.3819,"inter":0.1662},"Centro Democrático":{"pr":0.3952,"cap":0.3041,"inter":0.1205},"Polo Democrático":{"pr":0.1506,"cap":0.1588,"inter":0.0904},"ASI":{"pr":0.3628,"cap":0.3549,"inter":0.1059},"MIRA":{"pr":0.0075,"cap":0.0068,"inter":0.0127},"Nuevo Liberalismo":{"pr":0.1224,"cap":0.1299,"inter":0.0268},"Pacto Histórico":{"pr":0.0403,"cap":0.0078,"inter":0.0187},"Opción Ciudadana":{"pr":0.1658,"cap":0.213,"inter":0.0392},"Convergencia Ciudadana":{"pr":0.1432,"cap":0.2121,"inter":0.0679},"ALAS Equipo Colombia":{"pr":0.1235,"cap":0.1888,"inter":0.0143},"MAIS":{"pr":0.1973,"cap":0.1563,"inter":0.044}};
+      // Familia real del partido (nivel 2 del clustering de partidos no-coalición). null = sin
+      // suficientes candidaturas no-coalición para clasificar — se declara honestamente, no se infiere.
+      const PARTY_FAMILY = {"Partido Liberal":"institucionalizado","Partido Conservador":"institucionalizado","Partido de la U":null,"Cambio Radical":null,"Alianza Verde":"institucionalizado","Centro Democrático":null,"Polo Democrático":"institucionalizado","ASI":"institucionalizado","MIRA":null,"Nuevo Liberalismo":null,"Pacto Histórico":null,"Opción Ciudadana":"no_institucionalizado","Convergencia Ciudadana":"institucionalizado","ALAS Equipo Colombia":"nicho","MAIS":"institucionalizado"};
+      const FAMILY_LABEL = { institucionalizado: 'partido institucionalizado', nicho: 'partido de nicho', no_institucionalizado: 'partido no institucionalizado' };
+
       const state = { step: 0, party: null, answers: {}, region: null };
 
       const steps = document.querySelectorAll('.quiz-step');
@@ -952,7 +1007,12 @@
           cargosEl.appendChild(span);
         });
 
+        state.matchedProfile = profile;
+        document.getElementById('capacityReport').innerHTML = '';
+        document.getElementById('reportToggle').textContent = 'Ver informe completo de capacidad y riesgo →';
+
         const reg = REGIONS.find(r => r.r === state.region);
+        state.matchedRegion = reg;
         const panel = document.getElementById('regionPanel');
         if (reg) {
           const bar = (label, value, color) =>
@@ -983,8 +1043,82 @@
       document.getElementById('quizRestart').addEventListener('click', () => {
         state.party = null; state.answers = {}; state.region = null;
         document.querySelectorAll('.quiz-opt.selected').forEach(el => el.classList.remove('selected'));
+        document.getElementById('capacityReport').innerHTML = '';
         goStep(0);
       });
+
+      // ---------- Cálculo de los 9 índices ----------
+      function pct(value, deciles) {
+        for (let i = 0; i < 10; i++) {
+          if (value <= deciles[i + 1]) {
+            const lo = deciles[i], hi = deciles[i + 1];
+            const frac = hi > lo ? (value - lo) / (hi - lo) : 0;
+            return Math.round(i * 10 + frac * 10);
+          }
+        }
+        return 100;
+      }
+
+      function renderCapacityReport() {
+        const profile = state.matchedProfile, reg = state.matchedRegion;
+        const m = PROFILE_METRICS[profile.n];
+        const toggle = document.getElementById('reportToggle');
+        const el = document.getElementById('capacityReport');
+        if (el.innerHTML) { el.innerHTML = ''; toggle.textContent = 'Ver informe completo de capacidad y riesgo →'; return; }
+        toggle.textContent = '← Ocultar informe';
+
+        const iResiliencia = Math.round((pct(m.res, NATIONAL_DECILES.resiliencia) + pct(m.vr, NATIONAL_DECILES.victorias_ratio)) / 2);
+        const iTerritorial = Math.round((pct(m.terr, NATIONAL_DECILES.territorialidad) + pct(m.cd, NATIONAL_DECILES.cargo_diversidad)) / 2);
+        const iLealtad = pct(m.leal, NATIONAL_DECILES.lealtad_partidista);
+        const iCapacidad = pct(m.cap, NATIONAL_DECILES.capacidad_electoral);
+        const iVersatilidad = Math.round((pct(m.mov, NATIONAL_DECILES.movilidad) + pct(m.cd, NATIONAL_DECILES.cargo_diversidad)) / 2);
+        const net = PARTY_NETWORK[profile.p];
+        const iCentralidad = Math.round(((net.pr + net.cap) / 2) * 100);
+        const iAtipicidad = pct(m.out, CLUSTER_OUTLIER_DECILES[String(m.cl)]);
+        const iMomentum = Math.round((pct(m.vel, NATIONAL_DECILES.velocidad) + pct(m.terr, NATIONAL_DECILES.territorialidad)) / 2);
+        const fam = PARTY_FAMILY[profile.p];
+
+        const idx = (name, val, desc) =>
+          '<div class="cr-index"><div class="cr-index-head"><span class="cr-index-name">' + name + '</span><span class="cr-index-val">' + val + '</span></div>' +
+          '<div class="cr-index-track"><div class="cr-index-fill" style="width:' + Math.min(100, val) + '%;"></div></div>' +
+          '<div class="cr-index-desc">' + desc + '</div></div>';
+
+        let html = '<div class="cr-title">Perfil de Capacidad y Riesgo Político</div>';
+        html += '<div class="cr-sub">' + profile.n + ' · ' + profile.t + ' · ' + profile.p + '</div>';
+
+        html += idx('1 · Resiliencia electoral', iResiliencia, 'Percentil nacional combinando recuperación tras derrota y proporción de victorias, sobre 11.625 trayectorias reales.');
+        html += idx('2 · Exposición territorial', iTerritorial, 'Percentil de concentración territorial y diversidad de niveles de cargo ocupados.');
+        html += idx('3 · Alineación partidista', iLealtad, 'Percentil de lealtad partidista' + (reg ? ' — en su región, solo ' + reg.identifica + '% de la ciudadanía se identifica con algún partido (nacional: ' + NATIONAL.identifica + '%).' : '.'));
+        html += idx('4 · Capacidad electoral relativa', iCapacidad, 'Percentil de capacidad electoral cruda' + (reg ? ', en una región donde el ' + reg.voto2022 + '% votó en 2022 (nacional: ' + NATIONAL.voto2022 + '%).' : '.'));
+        html += idx('5 · Versatilidad de cargo', iVersatilidad, 'Percentil de movilidad entre tipos de cargo y diversidad de la trayectoria.');
+        html += idx('6 · Centralidad partidista heredada', iCentralidad, 'PageRank + capital político heredado real de ' + profile.p + ' en la red de migración partidista (4.401 partidos, no depende de la trayectoria personal del líder).');
+        html += idx('8 · Atipicidad intra-tipología', iAtipicidad, 'Score de anomalía (Isolation Forest) comparado solo contra los demás de su misma tipología "' + profile.t + '", no contra todo el país.');
+        html += idx('9 · Momentum ajustado por dispersión', iMomentum, 'Cruce entre velocidad de escalamiento entre elecciones y concentración territorial — separa crecimiento con base amplia de crecimiento concentrado en un solo territorio.');
+
+        html += '<div class="cr-qual"><strong>7 · Coherencia ideológico-territorial:</strong> ' +
+          (fam
+            ? profile.p + ' es un ' + FAMILY_LABEL[fam] + (reg ? ', en una región donde el ' + (100 - reg.ns).toFixed(1) + '% de la ciudadanía sí se ubica en una franja ideológica clara (izquierda, centro o derecha) — el ' + reg.ns + '% restante no sabe o no responde.' : '.')
+            : 'Sin dato suficiente: ' + profile.p + ' no aparece con candidaturas propias (no-coalición) suficientes en el modelo de tipologías de partido para clasificar su familia. Se declara honestamente en vez de inferirlo.') +
+          '</div>';
+
+        const allIdx = [
+          ['Resiliencia electoral', iResiliencia], ['Exposición territorial', iTerritorial], ['Alineación partidista', iLealtad],
+          ['Capacidad electoral relativa', iCapacidad], ['Versatilidad de cargo', iVersatilidad], ['Centralidad partidista heredada', iCentralidad],
+          ['Atipicidad intra-tipología', iAtipicidad], ['Momentum ajustado', iMomentum]
+        ];
+        const fortalezas = allIdx.filter(([, v]) => v >= 66).map(([n]) => n);
+        const oportunidades = allIdx.filter(([, v]) => v <= 33).map(([n]) => n);
+        html += '<div class="cr-summary">' +
+          '<div class="fortalezas"><h5>Fortalezas relativas</h5><ul>' + (fortalezas.length ? fortalezas.map(f => '<li>' + f + '</li>').join('') : '<li>Ninguna por encima del percentil 66.</li>') + '</ul></div>' +
+          '<div class="oportunidades"><h5>Áreas de oportunidad</h5><ul>' + (oportunidades.length ? oportunidades.map(f => '<li>' + f + '</li>').join('') : '<li>Ninguna por debajo del percentil 33.</li>') + '</ul></div>' +
+        '</div>';
+
+        html += '<p class="cr-method">Los 9 índices cruzan datos individuales reales (PDT-Colombia, 11.625 trayectorias), la red real de migración partidista (4.401 partidos) y la Encuesta de Cultura Política del DANE 2023, ponderada con su factor de expansión oficial. Son percentiles y puntajes de red, no una medición de personalidad ni de intención de voto futura.</p>';
+
+        el.innerHTML = html;
+      }
+
+      document.getElementById('reportToggle').addEventListener('click', renderCapacityReport);
 
       renderProgress();
     </script>
