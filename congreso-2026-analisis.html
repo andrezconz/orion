@@ -18,7 +18,22 @@
   html, body { margin: 0; height: 100%; background: var(--ink); color: var(--text-1); font-family: var(--sans); overflow: hidden; }
   .mono { font-variant-numeric: tabular-nums; }
 
-  .stage { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+  .bg-texture {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(circle at 12% 15%, rgba(63,169,201,0.09), transparent 42%),
+      radial-gradient(circle at 88% 85%, rgba(212,58,146,0.07), transparent 46%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02), transparent 60%);
+  }
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9; pointer-events: none;
+    display: flex; align-items: center; gap: 9px; padding: 20px 8vw 0;
+  }
+  .topbar svg { width: 20px; height: 22px; opacity: 0.9; }
+  .topbar span { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); }
+  .topbar span b { color: var(--text-2); font-weight: 600; }
+
+  .stage { position: relative; width: 100vw; height: 100vh; overflow: hidden; z-index: 1; }
   .scene {
     position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;
     padding: 6vh 8vw; opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease;
@@ -83,7 +98,7 @@
   .branch li { font-size: 12px; color: var(--text-2); display: flex; justify-content: space-between; }
   .branch p.consequence { font-size: 12px; color: var(--text-3); line-height: 1.55; border-top: 1px solid var(--line); padding-top: 10px; }
 
-  /* Scene 6 - commissions */
+  /* Grupos de barras apiladas (perfil predominante) */
   .comm-grid { display: flex; flex-direction: column; gap: 10px; max-width: 760px; margin-top: 14px; width: 100%; }
   .comm-row { display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 12px; }
   .comm-label { font-size: 11.5px; color: var(--text-2); }
@@ -91,8 +106,31 @@
   .comm-stack { display: flex; height: 18px; border-radius: 3px; overflow: hidden; }
   .comm-seg { height: 100%; }
 
-  /* Scene 7 - closing */
-  #scene7 { align-items: center; text-align: center; }
+  /* Scene 6 - figuras a seguir */
+  .figuras-grid { display: flex; flex-direction: column; gap: 9px; max-width: 780px; margin-top: 16px; width: 100%; }
+  .figura-card { display: grid; grid-template-columns: 30px 1fr auto; align-items: center; gap: 16px; padding: 13px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+  .figura-rank { font-family: var(--serif); font-size: 19px; font-weight: 700; color: var(--teal); opacity: 0.85; }
+  .figura-name { font-family: var(--serif); font-size: 15px; font-weight: 600; }
+  .figura-meta { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+  .figura-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); margin-right: 5px; display: inline-block; }
+  .figura-score { text-align: right; white-space: nowrap; }
+  .figura-score b { font-family: var(--serif); font-size: 17px; color: var(--magenta); display: block; line-height: 1.1; }
+  .figura-score span { font-size: 8.5px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Scene 7 - eficiencia electoral / hacia dónde vira */
+  .eff-grid { display: flex; flex-direction: column; gap: 7px; max-width: 780px; margin-top: 16px; width: 100%; }
+  .eff-row { display: grid; grid-template-columns: 176px 1fr 108px; align-items: center; gap: 12px; }
+  .eff-label { font-size: 11.5px; color: var(--text-2); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .eff-track { height: 13px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+  .eff-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--magenta)); }
+  .eff-fill.zero { background: repeating-linear-gradient(135deg, rgba(255,255,255,0.14) 0 4px, transparent 4px 8px); }
+  .eff-val { font-size: 11px; color: var(--text-1); font-family: var(--sans); }
+  .eff-val.zero { color: var(--text-3); font-style: italic; }
+  .takeaway-box { margin-top: 18px; max-width: 780px; padding: 15px 20px; border-left: 2px solid var(--magenta); background: rgba(212,58,146,0.06); border-radius: 0 5px 5px 0; }
+  .takeaway-box p { margin: 0; font-size: 13px; color: var(--text-1); line-height: 1.65; }
+
+  /* Scene 8 - closing */
+  #scene8 { align-items: center; text-align: center; }
   .cta-btn { display: inline-block; margin-top: 26px; padding: 15px 32px; background: var(--teal); color: var(--ink); border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; }
 
   .source-note { position: absolute; bottom: 18px; left: 8vw; font-size: 10.5px; color: var(--text-3); max-width: 60ch; }
@@ -109,6 +147,19 @@
 </style>
 </head>
 <body>
+
+<div class="bg-texture" aria-hidden="true"></div>
+<div class="topbar" aria-hidden="true">
+  <svg viewBox="0 0 88 96" role="img" aria-hidden="true">
+    <g stroke="var(--teal)" stroke-width="1.4" opacity="0.85">
+      <line x1="44" y1="52" x2="18" y2="30"/><line x1="44" y1="52" x2="24" y2="70"/>
+      <line x1="44" y1="52" x2="60" y2="20"/><line x1="44" y1="52" x2="68" y2="52"/><line x1="44" y1="52" x2="50" y2="78"/>
+    </g>
+    <g fill="var(--teal)"><circle cx="18" cy="30" r="3.4"/><circle cx="24" cy="70" r="3"/><circle cx="60" cy="20" r="3.6"/><circle cx="68" cy="52" r="3.2"/><circle cx="50" cy="78" r="3"/></g>
+    <circle cx="44" cy="52" r="9" fill="var(--ink)"/>
+  </svg>
+  <span>ORIÓN · <b>Congreso 2026</b></span>
+</div>
 
 <div class="stage" id="stage">
 
@@ -203,13 +254,23 @@
   </section>
 
   <section class="scene" id="scene6">
-    <span class="badge proj">Proyección proporcional · estructura real (Senado.gov.co)</span>
-    <h1 class="scene-title">Cómo quedarían las comisiones</h1>
-    <p class="narration">El Pacto Histórico tendría la bancada más grande en las 7 comisiones — pero mayoría absoluta en ninguna. La negociación real la hacen los partidos, no una fórmula.</p>
-    <div class="comm-grid" id="commGrid"></div>
+    <span class="badge real">Real · trayectoria + capacidad electoral, PDT-Colombia, sobre los 103 electos</span>
+    <h1 class="scene-title">Figuras a seguir en el nuevo Senado</h1>
+    <p class="narration">De los 56 electos con carrera documentada, este es el ranking por capacidad electoral acumulada — un índice del modelo PDT que combina volumen de votación histórica y consistencia entre elecciones. No mide poder futuro, mide qué tan probados están en las urnas. El hallazgo llama la atención: 4 de los 5 primeros lugares son del Partido Conservador.</p>
+    <div class="figuras-grid" id="figurasGrid"></div>
   </section>
 
   <section class="scene" id="scene7">
+    <span class="badge analysis">Análisis · síntesis propia sobre votos y curules certificados</span>
+    <h1 class="scene-title">Hacia dónde vira la forma de hacer política</h1>
+    <p class="narration">Entre quienes sí ganaron curul, el costo de conversión es sorprendentemente parejo: entre 173 mil y 186 mil votos por escaño, sin importar el tamaño de la bancada. Ahí no está la ventaja real — está en llegar a la escala mínima.</p>
+    <div class="eff-grid" id="effGrid"></div>
+    <div class="takeaway-box">
+      <p>El Frente Amplio Unitario sacó 396.042 votos reales — más de lo que varios partidos chicos lograron por separado — y terminó con cero curules. Ahora Colombia, en cambio, fusionó tres partidos pequeños (Mira, Nuevo Liberalismo, Dignidad y Compromiso) en una sola lista y con 900.606 votos consiguió 5 escaños. Sumado a lo visto en la Escena 3B — que el Pacto Histórico combinó esa misma lógica de coalición con la mayor tasa de renovación (76% debutantes) — el patrón que emerge no es ideológico sino estructural: consolidarse en una lista amplia, y adentro renovar caras, es la fórmula que mejor está funcionando bajo las reglas actuales.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="scene8">
     <svg class="logo-mark" style="width:64px;height:70px;" viewBox="0 0 88 96" role="img" aria-hidden="true">
       <g stroke="var(--teal)" stroke-width="1.1" opacity="0.85">
         <line x1="44" y1="52" x2="18" y2="30"/><line x1="44" y1="52" x2="24" y2="70"/>
@@ -264,17 +325,27 @@ const PERFIL_PARTIDOS = [
   {n:"Circ. indígena", deb:2, cont:0, sw:0},
 ];
 
-const COMISIONES = [
-  {n:"Comisión I", t:"Constitucional, DD.HH., territorial", size:19},
-  {n:"Comisión II", t:"Relaciones exteriores, defensa", size:13},
-  {n:"Comisión III", t:"Hacienda y crédito público", size:15},
-  {n:"Comisión IV", t:"Presupuesto", size:15},
-  {n:"Comisión V", t:"Agro, ambiente, minas", size:13},
-  {n:"Comisión VI", t:"Comunicaciones, educación", size:13},
-  {n:"Comisión VII", t:"Trabajo, salud, vivienda", size:14},
+const FIGURAS = [
+  {nombre:"Marcos Daniel Pineda García", partido:"Partido Conservador", cluster:"Élite nacional", anos:15, victorias:3, cap:99482},
+  {nombre:"David Alejandro Barguil Assis", partido:"Partido Conservador", cluster:"Élite nacional", anos:8, victorias:3, cap:95246},
+  {nombre:"Wadith Alberto Manzur Imbett", partido:"Partido Conservador", cluster:"Debutantes leales", anos:4, victorias:2, cap:95010},
+  {nombre:"Christian Munir Garcés Aljure", partido:"Centro Democrático", cluster:"Ascendentes regionales", anos:22, victorias:2, cap:79427},
+  {nombre:"Nadya Georgette Blel Scaff", partido:"Partido Conservador", cluster:"Élite nacional", anos:22, victorias:4, cap:73876},
 ];
-const SEATS = {"Pacto Histórico":25,"Centro Democrático":17,"Liberal":13,"Alianza":11,"Conservador":10,"La U":9,"Cambio Radical":7,"Ahora Colombia":5,"Salvación":4,"Indígena":2};
-const COLORS = ["#d43a92","#3fa9c9","#c9a24a","#8a6fd8","#6fbf73","#e0805a","#9a9a9a","#5b8fd8","#c96f9a","#7c7a6f"];
+
+const EFICIENCIA = [
+  {n:"Alianza por Colombia", votos:1904154, seats:11},
+  {n:"Partido de la U", votos:1565786, seats:9},
+  {n:"Partido Liberal", votos:2275182, seats:13},
+  {n:"Pacto Histórico", votos:4413636, seats:25},
+  {n:"Salvación Nacional", votos:705924, seats:4},
+  {n:"Cambio Radical - Alma", votos:1248021, seats:7},
+  {n:"Centro Democrático", votos:3035715, seats:17},
+  {n:"Ahora Colombia", votos:900606, seats:5},
+  {n:"Partido Conservador", votos:1863663, seats:10},
+  {n:"Frente Amplio Unitario", votos:396042, seats:0},
+  {n:"Creemos", votos:227957, seats:0},
+];
 
 // bar list scene 2 (curules reales, no porcentaje de votos)
 const barList = document.getElementById('barList');
@@ -286,16 +357,34 @@ barList.innerHTML = SENADO_PARTIDOS.map(([name,seats]) => `
     <div class="bar-val">${seats}</div>
   </div>`).join('');
 
-// commissions scene 7
-const total = Object.values(SEATS).reduce((a,b)=>a+b,0);
-const commGrid = document.getElementById('commGrid');
-commGrid.innerHTML = COMISIONES.map(c => {
-  const segs = Object.entries(SEATS).map(([party,s],i) => {
-    const w = (s/total*100).toFixed(1);
-    return `<div class="comm-seg" style="width:${w}%;background:${COLORS[i]};" title="${party}"></div>`;
-  }).join('');
-  return `<div class="comm-row"><div class="comm-label"><b>${c.n}</b>${c.t} · ${c.size} miembros</div><div class="comm-stack">${segs}</div></div>`;
-}).join('');
+// figuras a seguir, scene 6
+const figurasGrid = document.getElementById('figurasGrid');
+figurasGrid.innerHTML = FIGURAS.map((f,i) => `
+  <div class="figura-card">
+    <div class="figura-rank">${String(i+1).padStart(2,'0')}</div>
+    <div>
+      <div class="figura-name">${f.nombre}</div>
+      <div class="figura-meta"><span class="figura-tag">${f.partido}</span><span class="figura-tag">${f.cluster}</span>${f.anos} años activo · ${f.victorias} victorias documentadas</div>
+    </div>
+    <div class="figura-score"><b>${f.cap.toLocaleString('es-CO')}</b><span>Cap. electoral</span></div>
+  </div>`).join('');
+
+// eficiencia de conversión voto→curul, scene 7
+const effGrid = document.getElementById('effGrid');
+const conCurul = EFICIENCIA.filter(e => e.seats > 0).map(e => ({...e, ratio: e.votos/e.seats}));
+const maxRatio = Math.max(...conCurul.map(e => e.ratio));
+const sinCurul = EFICIENCIA.filter(e => e.seats === 0);
+effGrid.innerHTML = conCurul.sort((a,b) => a.ratio - b.ratio).map(e => `
+  <div class="eff-row">
+    <div class="eff-label">${e.n}</div>
+    <div class="eff-track"><div class="eff-fill" style="width:${(e.ratio/maxRatio*100).toFixed(1)}%;"></div></div>
+    <div class="eff-val">${Math.round(e.ratio).toLocaleString('es-CO')} v/curul</div>
+  </div>`).join('') + sinCurul.map(e => `
+  <div class="eff-row">
+    <div class="eff-label">${e.n}</div>
+    <div class="eff-track"><div class="eff-fill zero" style="width:100%;"></div></div>
+    <div class="eff-val zero">${e.votos.toLocaleString('es-CO')} votos, 0 curules</div>
+  </div>`).join('');
 
 // sankey de switchers, scene 4
 (function renderSankey() {
@@ -353,7 +442,8 @@ const SOURCE_NOTES = [
   "REAL: mismo cruce de trayectoria + tipología conductual (clustering k-means, PDT-Colombia) sobre los 103 electos certificados.",
   "REAL: los 6 switchers surgen del mismo cruce de trayectoria 1958–2023 usado en la Escena 3, sobre los 103 electos certificados. Tipología de partido (\"institucionalizado\"): PDT-Colombia / nivel2_partidos_clusterizados.",
   "REAL: conteo de bancadas según Valora Analitik, El Colombiano, Minuto60, IFM Noticias (17 jul. 2026), sobre curules certificadas.",
-  "PROYECCIÓN: reparto proporcional propio. Estructura y tamaño de comisiones: Senado.gov.co (dato real).",
+  "REAL: índice de capacidad electoral, PDT-Colombia (CEDE / Universidad de los Andes) — calculado sobre trayectoria histórica documentada, no sobre el resultado 2026.",
+  "ANÁLISIS: síntesis propia sobre votos por partido (La Silla Vacía) y curules certificadas (Valora Analitik, Infobae). La lectura de \"hacia dónde vira\" es interpretación de ORIÓN, no un hecho verificable.",
   "orionestrategia.netlify.app · Datos reales primero, análisis después."
 ];
 
